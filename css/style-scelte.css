@@ -1,0 +1,10 @@
+main {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 20px;
+  }
+  
+  .four {
+    background: white;
+    grid-row:span 2;
+  }
