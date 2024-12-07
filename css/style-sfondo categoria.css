@@ -7,7 +7,7 @@ body {
 }
 header {
     background-color: rgba(0, 0, 0, 0);
-    color: rgb(0, 0, 0);
+    color: rgb(255, 0, 0);
     padding: 10px 20px;
     text-align: center;
     position: relative;
@@ -23,7 +23,7 @@ nav {
 nav a {
     float: left;
     display: block;
-    color: rgb(255, 255, 255);
+    color: rgb(209, 6, 6);
     text-align: center;
     padding: 14px 20px;
     text-decoration: none;
