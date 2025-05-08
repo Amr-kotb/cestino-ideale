@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cestino Intelligente</title>
+    <link rel="icon" href="/img/logo/AK_logo__6_-removebg-preview.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/style-sfondo-categoria.css">
+    <link rel="stylesheet" href="/css/style-scelte.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        nav {
+            background-color: #013352; /* Colore per la barra di navigazione */
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        section#vai-avanti {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .product-card {
+            background-color: white;
+            padding: 20px;
+            width: 300px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .product-card h2 {
+            font-size: 24px;
+            color: #013352;
+        }
+
+        .product-card p {
+            font-size: 16px;
+            color: #333;
+        }
+
+        .price {
+            font-size: 22px;
+            color: #013352;
+            margin: 10px 0;
+        }
+
+        .price span {
+            font-size: 18px;
+            color: #999;
+        }
+
+        .price input {
+            width: 80px;
+            text-align: center;
+            padding: 5px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .cta-btn {
+            background-color: #013352;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 18px;
+            margin-top: 15px;
+            display: inline-block;
+        }
+
+        .cta-btn:hover {
+            background-color: #025e74;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="/index.html">Home</a>
+        <a href="/index.html/social">Social</a>
+        <a href="/pages/terza-pagina.html">Vai avanti</a>
+    </nav>
+
+    <section id="vai-avanti">
+        <h1>Il Cestino Intelligente</h1>
+        <p>Scopri come il nostro cestino intelligente può semplificarti la vita!</p>
+        <div class="product-container">
+            <!-- Prodotto 1 -->
+            <div class="product-card">
+                <img src="/img/cestino-1.jpg" alt="Cestino Intelligente">
+                <h2>Cestino Intelligente 1</h2>
+                <p>Un cestino con sensore che si apre automaticamente. Perfetto per l'uso in casa e ufficio.</p>
+                <div class="price">
+                    Prezzo: <span>€</span><input type="number" value="99.99" min="0" step="0.01">
+                </div>
+                <a href="#" class="cta-btn">Acquista ora</a>
+            </div>
+
+            <!-- Prodotto 2 -->
+            <div class="product-card">
+                <img src="/img/cestino-2.jpg" alt="Cestino Intelligente">
+                <h2>Cestino Intelligente 2</h2>
+                <p>Cestino eco-friendly che si connette con il tuo smartphone per una gestione intelligente dei rifiuti.</p>
+                <div class="price">
+                    Prezzo: <span>€</span><input type="number" value="129.99" min="0" step="0.01">
+                </div>
+                <a href="#" class="cta-btn">Acquista ora</a>
+            </div>
+
+            <!-- Prodotto 3 -->
+            <div class="product-card">
+                <img src="/img/cestino-3.jpg" alt="Cestino Intelligente">
+                <h2>Cestino Intelligente 3</h2>
+                <p>Cestino con sistema di compostaggio integrato per ridurre l'impatto ambientale.</p>
+                <div class="price">
+                    Prezzo: <span>€</span><input type="number" value="149.99" min="0" step="0.01">
+                </div>
+                <a href="#" class="cta-btn">Acquista ora</a>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>
