@@ -5,160 +5,104 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cestino Intelligente</title>
-    <link rel="icon" href="/img/logo/AK_logo__6_-removebg-preview.png" type="image/x-icon">
-    <link rel="stylesheet" href="/css/style-sfondo-categoria.css">
-    <link rel="stylesheet" href="/css/style-scelte.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <link rel="stylesheet" href="/css/var.css">
+    <link rel="stylesheet" href="/css/style.css">
 
-        /* nuova barra di navigazione */
-        nav {
-            background-color: #013352;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        nav a {
-            display: inline-block;
-            color: white;
-            text-align: center;
-            padding: 20px 30px;
-            text-decoration: none;
-            font-size: 22px;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-        }
-
-        nav a:hover {
-            background-color: #021d2d;
-        }
-
-        section#vai-avanti {
-            padding: 20px;
-            text-align: center;
-        }
-
-        .product-container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .product-card {
-            background-color: white;
-            padding: 20px;
-            width: 300px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            border-radius: 8px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .product-card img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-
-        .product-card h2 {
-            font-size: 24px;
-            color: #013352;
-        }
-
-        .product-card p {
-            font-size: 16px;
-            color: #013352;
-        }
-
-        .price {
-            font-size: 22px;
-            color: #013352;
-            margin: 10px 0;
-        }
-
-        .cta-btn {
-            background-color: #013352;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 18px;
-            margin-top: 15px;
-            display: inline-block;
-            transition: background-color 0.3s ease;
-        }
-
-        .cta-btn:hover {
-            background-color: #025e74;
-        }
-    </style>
 </head>
 
 <body>
 
-    <nav>
-        <a href="/index.html">Home</a>
-        <a href="/index.html">Social</a>
-        <a href="/pages/funzionamento.html">Vai Avanti</a>
-    </nav>
+    <main>
+        <nav>
+            <a href="/index.html">Home</a>
+            <a href="/pages/prodotti.html#social">Social</a>
+            <a href="/pages/funzionamento.html">Vai Avanti</a>
+        </nav>
 
-    <section id="vai-avanti">
-        <h1>Il Cestino Intelligente</h1>
-        <p>Scopri come il nostro cestino intelligente può semplificarti la vita!</p>
-        <div class="product-container">
+        <section id="vai-avanti">
+            <h1>Il Cestino Intelligente</h1>
+            <p>Scopri come il nostro cestino intelligente può semplificarti la vita!</p>
+            <div class="product-container">
 
-            <!-- Prodotto 1 -->
-            <div class="product-card">
-                <img src="/img/cestino-1.jpg" alt="Cestino Intelligente">
-                <h2>Cestino Intelligente 1</h2>
-                <p>Un cestino con sensore che si apre automaticamente. Perfetto per l'uso in casa e ufficio.</p>
-                <div class="price">Prezzo: 123</div>
-                <a class="cta-btn" href="/categorie/prodotto1.html">Acquista ora</a>
+                <!-- Prodotto 1 -->
+                <div class="product-card">
+                    <img src="/img/cestino/cestinoD.png" alt="Cestino Intelligente">
+                    <h2>Cestino Intelligente 1</h2>
+                    <p>Un cestino con sensore che si apre automaticamente. Perfetto per l'uso in casa e ufficio.</p>
+                    <div class="price">Prezzo: 123</div>
+                    <a class="cta-btn" href="/categorie/prodotto1.html">Acquista ora</a>
+                </div>
+
+                <!-- Prodotto 2 -->
+                <div class="product-card">
+                    <img src="/img/cestino/cestinoL.png" alt="Cestino Intelligente">
+                    <h2>Cestino Intelligente 2</h2>
+                    <p>Cestino eco-friendly che si connette con il tuo smartphone per una gestione intelligente dei
+                        rifiuti.
+                    </p>
+                    <div class="price">Prezzo: 444</div>
+                    <a class="cta-btn" href="/categorie/prodotto2.html">Acquista ora</a>
+                </div>
+
+                <!-- Prodotto 3 -->
+                <div class="product-card">
+                    <img src="/img/cestino/cestinoLD.png" alt="Cestino Intelligente">
+                    <h2>Cestino Intelligente 3</h2>
+                    <p>Cestino con sistema di compostaggio integrato per ridurre l'impatto ambientale.</p>
+                    <div class="price">Prezzo: 125</div>
+                    <a class="cta-btn" href="/categorie/prodotto3.html">Acquista ora</a>
+                </div>
+
+                <!-- Prodotto 4 -->
+                <div class="product-card">
+                    <img src="/img/cestino/cestinoLDB.png" alt="Cestino Intelligente">
+                    <h2>Cestino Intelligente 4</h2>
+                    <p>Modello avanzato con LED informativi e sistema di notifica per raccolta differenziata.</p>
+                    <div class="price">Prezzo: 199</div>
+                    <a class="cta-btn" href="/categorie/prodotto4.html">Acquista ora</a>
+                </div>
+
             </div>
+        </section>
+    </main>
 
-            <!-- Prodotto 2 -->
-            <div class="product-card">
-                <img src="/img/cestino-2.jpg" alt="Cestino Intelligente">
-                <h2>Cestino Intelligente 2</h2>
-                <p>Cestino eco-friendly che si connette con il tuo smartphone per una gestione intelligente dei rifiuti.
-                </p>
-                <div class="price">Prezzo: 444</div>
-                <a class="cta-btn" href="/categorie/prodotto2.html">Acquista ora</a>
-            </div>
+    <footer>
+        <section id="contattaci">
+            <h2>Contattaci</h2>
+            <p>Hai bisogno di aiuto? Puoi scriverci a
+                <a href="mailto:akotb594@gmail.com" class="email-link">akotb594@gmail.com</a>.
+            </p>
+            <p>Oppure chiamaci al numero: <strong>+39 347 312 3532</strong>.</p>
+        </section>
 
-            <!-- Prodotto 3 -->
-            <div class="product-card">
-                <img src="/img/cestino-3.jpg" alt="Cestino Intelligente">
-                <h2>Cestino Intelligente 3</h2>
-                <p>Cestino con sistema di compostaggio integrato per ridurre l'impatto ambientale.</p>
-                <div class="price">Prezzo: 125</div>
-                <a class="cta-btn" href="/categorie/prodotto3.html">Acquista ora</a>
-            </div>
-
-            <!-- Prodotto 4 -->
-            <div class="product-card">
-                <img src="/img/cestino-4.jpg" alt="Cestino Intelligente">
-                <h2>Cestino Intelligente 4</h2>
-                <p>Modello avanzato con LED informativi e sistema di notifica per raccolta differenziata.</p>
-                <div class="price">Prezzo: 199</div>
-                <a class="cta-btn" href="/categorie/prodotto4.html">Acquista ora</a>
-            </div>
-
-        </div>
-    </section>
-
+        <section id="social">
+            <h2>Social</h2>
+            <p>Seguici sui nostri social per rimanere aggiornato:</p>
+            <ul>
+                <li>
+                    <a href="https://www.instagram.com" target="_blank" aria-label="Instagram">
+                        <box-icon name="instagram-alt" type="logo"></box-icon>
+                        <span>Instagram</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.tiktok.com" target="_blank" aria-label="TikTok">
+                        <box-icon name="tiktok" type="logo"></box-icon>
+                        <span>TikTok</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.discord.com" target="_blank" aria-label="Discord">
+                        <box-icon name="discord-alt" type="logo"></box-icon>
+                        <span>Discord</span>
+                    </a>
+                </li>
+            </ul>
+        </section>
+        <br>
+        <p>&copy; 2024 - Sito Web. Tutti i diritti riservati.</p>
+    </footer>
 </body>
 
 </html>
