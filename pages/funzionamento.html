@@ -9,7 +9,33 @@
     <link rel="stylesheet" href="/css/var.css">
     <link rel="stylesheet" href="/css/style.css">
 
-   
+    <style>
+        .step {
+            cursor: pointer;
+            background-color: #f2f2f2;
+            border-radius: 10px;
+            padding: 10px 15px;
+            margin-bottom: 15px;
+            transition: background-color 0.3s;
+        }
+
+        .step:hover {
+            background-color: #e0e0e0;
+        }
+
+        .description {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: all 0.4s ease-in-out;
+            margin-top: 5px;
+        }
+
+        .step.active .description {
+            max-height: 500px;
+            opacity: 1;
+        }
+    </style>
 </head>
 
 <body>
@@ -19,39 +45,80 @@
     </nav>
 
     <section id="funzionamento">
-        <h1>Funzionamento e Componenti del cestino Intelligente</h1>
-        <ul>
-            <li>
-                <h2>Step 1: Idea</h2>
+        <h1>Funzionamento e Componenti del Cestino Intelligente</h1>
+
+        <div class="step" onclick="toggleStep(this, 'audio1')">
+            <h2>Step 1: Idea</h2>
+            <div class="description">
                 <p>Abbiamo pensato a un cestino che rileva automaticamente il tipo di rifiuto e lo smista correttamente
                     per favorire la raccolta differenziata.</p>
-            </li>
+            </div>
+            <audio id="audio1" src="/audio/idea.mp3"></audio>
+        </div>
 
-            <li>
-                <h2>Step 2: Codice</h2>
+        <div class="step" onclick="toggleStep(this, 'audio2')">
+            <h2>Step 2: Codice</h2>
+            <div class="description">
                 <p>Utilizziamo un microcontrollore programmato in C/C++ che controlla sensori e attuatori per
                     identificare il materiale (plastica, carta, metallo, ecc.).</p>
-            </li>
+            </div>
+            <audio id="audio2" src="/audio/codice.mp3"></audio>
+        </div>
 
-            <li>
-                <h2>Step 3: Componenti</h2>
+        <div class="step" onclick="toggleStep(this, 'audio3')">
+            <h2>Step 3: Componenti</h2>
+            <div class="description">
                 <p>Il cestino è composto da: sensori IR e di prossimità, un modulo di riconoscimento del materiale,
                     motori per l'apertura automatica dei coperchi, e un display LCD per le istruzioni.</p>
-            </li>
+            </div>
+            <audio id="audio3" src="/audio/componenti.mp3"></audio>
+        </div>
 
-            <li>
-                <h2>Vantaggi</h2>
+        <div class="step" onclick="toggleStep(this, 'audio4')">
+            <h2>Vantaggi</h2>
+            <div class="description">
                 <p>Favorisce il riciclo, riduce l'errore umano nella differenziazione dei rifiuti, è comodo e
                     automatizzato, perfetto per scuole, uffici e ambienti pubblici.</p>
-            </li>
+            </div>
+            <audio id="audio4" src="/audio/vantaggi.mp3"></audio>
+        </div>
 
-            <li>
-                <h2>Prezzo</h2>
-                <p>Il nostro cestino intelligente è disponibile a partire da <strong style="color: #c62828;">€99</strong>. Offriamo anche
-                    soluzioni personalizzate per aziende o enti pubblici.</p>
-            </li>
-        </ul>
+        <div class="step" onclick="toggleStep(this, 'audio5')">
+            <h2>Prezzo</h2>
+            <div class="description">
+                <p>Il nostro cestino intelligente è disponibile a partire da <strong style="color: #c62828;">€99</strong>.
+                    Offriamo anche soluzioni personalizzate per aziende o enti pubblici.</p>
+            </div>
+            <audio id="audio5" src="/audio/prezzo.mp3"></audio>
+        </div>
     </section>
+
+    <script>
+        function toggleStep(element, audioId) {
+            // Chiude tutti gli altri
+            document.querySelectorAll('.step').forEach(step => {
+                if (step !== element) {
+                    step.classList.remove('active');
+                    const audio = step.querySelector('audio');
+                    audio.pause();
+                    audio.currentTime = 0;
+                }
+            });
+
+            // Alterna l’attivo
+            const isActive = element.classList.contains('active');
+            element.classList.toggle('active');
+
+            const audio = document.getElementById(audioId);
+            if (!isActive) {
+                audio.currentTime = 0;
+                audio.play();
+            } else {
+                audio.pause();
+                audio.currentTime = 0;
+            }
+        }
+    </script>
 </body>
 
 </html>

@@ -4,33 +4,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>primo prodotto </title>
+    <title>Primo Prodotto</title>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/var.css">
+
+    <!-- Stile interno per l'animazione -->
+    <style>
+        /* Animazione fade + slide */
+        @keyframes fadeSlideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Stile per la sezione del prodotto */
+        .product-intro {
+            opacity: 0;
+            transform: translateY(30px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            animation: fadeSlideIn 1s ease-out forwards;
+            animation-delay: 0.5s;
+            margin: 40px 0;
+        }
+
+        .product-image {
+            width: 220px;
+            height: auto;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-description h2 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .product-description p {
+            font-size: 1.1em;
+            max-width: 600px;
+            padding: 0 15px;
+        }
+
+        /* Stile base */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            background-color: #f0f0f0;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: #f8f8f8;
+            padding: 30px;
+            text-align: center;
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        footer ul li {
+            margin: 5px 0;
+        }
+
+        .email-link {
+            color: #0066cc;
+            text-decoration: underline;
+        }
+    </style>
 </head>
 
 <body>
     <main>
         <nav>
-
             <a href="/index.html">Home</a>
-            <a href="/categorie/prodotto2.html">vai avanti</a>
-
-
+            <a href="/categorie/prodotto2.html">Vai avanti</a>
         </nav>
 
+        <!-- Sezione animata con immagine e descrizione -->
+        <section class="product-intro" id="productIntro">
+            <img src="/img/cestino.png" alt="Cestino Intelligente 1" class="product-image">
+            <div class="product-description">
+                <h2>Cestino Intelligente 1</h2>
+                <p>Un cestino innovativo dotato di sensori per riconoscere e differenziare i rifiuti automaticamente.</p>
+            </div>
+        </section>
 
-        <center>
-            <h1>Cestino Intelligente 1</h1>
-        </center>
-        <ul>
-
-
-
-
-
-        </ul>
+        <!-- Lista (se ti serve) -->
+        <ul></ul>
     </main>
 
     <footer>
@@ -66,8 +151,10 @@
                 </li>
             </ul>
         </section>
+
         <br>
         <p>&copy; 2024 - Sito Web. Tutti i diritti riservati.</p>
     </footer>
 </body>
+
 </html>

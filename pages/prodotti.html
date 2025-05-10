@@ -9,10 +9,82 @@
     <link rel="stylesheet" href="/css/var.css">
     <link rel="stylesheet" href="/css/style.css">
 
+    <!-- ✅ Stile personalizzato -->
+    <style>
+        @keyframes zoomFadeIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .product-card {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 270px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: zoomFadeIn 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        /* ✅ Ritardo progressivo per animazione */
+        .product-card:nth-child(1) { animation-delay: 0.2s; }
+        .product-card:nth-child(2) { animation-delay: 0.4s; }
+        .product-card:nth-child(3) { animation-delay: 0.6s; }
+        .product-card:nth-child(4) { animation-delay: 0.8s; }
+
+        /* ✅ Effetto hover che "sale" */
+        .product-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 18px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        .cta-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .price {
+            font-weight: bold;
+            color: #28a745;
+            margin: 10px 0;
+        }
+    </style>
 </head>
 
 <body>
-
     <main>
         <nav>
             <a href="/index.html">Home</a>
@@ -37,9 +109,7 @@
                 <div class="product-card">
                     <img src="/img/cestino/cestinoL.png" alt="Cestino Intelligente">
                     <h2>Cestino Intelligente 2</h2>
-                    <p>Cestino eco-friendly che si connette con il tuo smartphone per una gestione intelligente dei
-                        rifiuti.
-                    </p>
+                    <p>Cestino eco-friendly che si connette con il tuo smartphone per una gestione intelligente dei rifiuti.</p>
                     <div class="price">Prezzo: 444</div>
                     <a class="cta-btn" href="/categorie/prodotto2.html">Acquista ora</a>
                 </div>
@@ -103,5 +173,4 @@
         <p>&copy; 2024 - Sito Web. Tutti i diritti riservati.</p>
     </footer>
 </body>
-
 </html>
