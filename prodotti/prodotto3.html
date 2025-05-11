@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quarto prodotto</title>
+    <title>Primo Prodotto</title>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/var.css">
 
-    <!-- Stili personalizzati e animazione -->
+    <!-- Stile interno per l'animazione -->
     <style>
+        /* Animazione fade + slide */
         @keyframes fadeSlideIn {
             0% {
                 opacity: 0;
@@ -22,6 +23,7 @@
             }
         }
 
+        /* Stile per la sezione del prodotto */
         .product-intro {
             opacity: 0;
             transform: translateY(30px);
@@ -53,17 +55,25 @@
             padding: 0 15px;
         }
 
+        /* Stile base */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
         nav {
-            background-color: #f0f0f0;
-            padding: 15px;
+            background-color: #013352;
             display: flex;
             justify-content: center;
-            gap: 30px;
+            flex-wrap: wrap;
+            text-align: center;
+
         }
 
         nav a {
             text-decoration: none;
-            color: #333;
+            color: #ffffff;
             font-weight: bold;
         }
 
@@ -93,18 +103,20 @@
     <main>
         <nav>
             <a href="/index.html">Home</a>
-            <a href="/categorie/prodotto3.html">Torna indietro</a>
+            <a href="/prodotti/prodotto2.html">Vai indietro</a>
+            <a href="/prodotti/prodotto4.html">Vai avanti</a>
         </nav>
 
         <!-- Sezione animata con immagine e descrizione -->
         <section class="product-intro" id="productIntro">
-            <img src="/img/cestino4.png" alt="Cestino Intelligente 4" class="product-image">
+            <img src="/img/cestino/cestinoL.png" alt="Cestino Intelligente 1" class="product-image">
             <div class="product-description">
-                <h2>Cestino Intelligente 4</h2>
-                <p>Il nostro top di gamma: rilevamento vocale, riconoscimento visivo avanzato, controllo remoto da smartphone e sistema di auto-igienizzazione. Ideale per ambienti pubblici e smart city.</p>
+                <h2>Cestino Intelligente 1</h2>
+                <p>Un cestino innovativo dotato di sensori per riconoscere e differenziare i rifiuti automaticamente.</p>
             </div>
         </section>
 
+        <!-- Lista (se ti serve) -->
         <ul></ul>
     </main>
 
@@ -141,8 +153,10 @@
                 </li>
             </ul>
         </section>
+
         <br>
         <p>&copy; 2024 - Sito Web. Tutti i diritti riservati.</p>
     </footer>
 </body>
+
 </html>

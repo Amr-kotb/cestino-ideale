@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terzo Prodotto</title>
+    <title>Primo Prodotto</title>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/var.css">
 
-    <!-- Stili personalizzati e animazione -->
+    <!-- Stile interno per l'animazione -->
     <style>
+        /* Animazione fade + slide */
         @keyframes fadeSlideIn {
             0% {
                 opacity: 0;
@@ -22,6 +23,7 @@
             }
         }
 
+        /* Stile per la sezione del prodotto */
         .product-intro {
             opacity: 0;
             transform: translateY(30px);
@@ -53,6 +55,7 @@
             padding: 0 15px;
         }
 
+        /* Stile base */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -60,17 +63,25 @@
         }
 
         nav {
-            background-color: #f0f0f0;
-            padding: 15px;
+            background-color: #013352;
             display: flex;
             justify-content: center;
-            gap: 30px;
+            flex-wrap: wrap;
+            text-align: center;
+            padding: 10px 0;
         }
 
         nav a {
             text-decoration: none;
-            color: #333;
+            color: #ffffff;
             font-weight: bold;
+            padding: 10px 20px;
+            margin: 5px;
+        }
+
+        nav a:hover {
+            background-color: #0073e6;
+            border-radius: 5px;
         }
 
         footer {
@@ -99,19 +110,21 @@
     <main>
         <nav>
             <a href="/index.html">Home</a>
-            <a href="/categorie/prodotto2.html">Torna indietro</a>
-            <a href="/categorie/prodotto4.html">Vai avanti</a>
+            <a href="/prodotti/prodotto1.html">Vai indietro</a>
+            <a href="/prodotti/prodotto3.html">Vai avanti</a>
         </nav>
 
         <!-- Sezione animata con immagine e descrizione -->
         <section class="product-intro" id="productIntro">
-            <img src="/img/cestino3.png" alt="Cestino Intelligente 3" class="product-image">
+            <img src="/img/cestino.png" alt="Cestino Intelligente 1" class="product-image">
             <div class="product-description">
-                <h2>Cestino Intelligente 3</h2>
-                <p>Il nostro modello più avanzato: alimentato da energia solare, con app dedicata, apertura automatica touchless e intelligenza artificiale per la differenziazione precisa dei rifiuti.</p>
+                <h2>Cestino Intelligente 2</h2>
+                <p>Il nostro secondo cestino con LED che ti aiuteranno ogni giorno. Ti dimentichi di buttare la spazzatura?</p>
+                <p>Bene, da oggi non sarà un problema, perché con i nostri LED, una volta pieno, il LED rosso inizia a lampeggiare finché non cambi il sacchetto!</p>
             </div>
         </section>
 
+        <!-- Lista (se mi serve) -->
         <ul></ul>
     </main>
 
@@ -148,6 +161,7 @@
                 </li>
             </ul>
         </section>
+
         <br>
         <p>&copy; 2024 - Sito Web. Tutti i diritti riservati.</p>
     </footer>

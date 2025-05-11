@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secondo Prodotto</title>
+    <title>Primo Prodotto</title>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/var.css">
 
-    <!-- Stili e animazione inclusi -->
+    <!-- Stile interno per l'animazione -->
     <style>
+        /* Animazione fade + slide */
         @keyframes fadeSlideIn {
             0% {
                 opacity: 0;
@@ -22,6 +23,7 @@
             }
         }
 
+        /* Stile per la sezione del prodotto */
         .product-intro {
             opacity: 0;
             transform: translateY(30px);
@@ -53,6 +55,7 @@
             padding: 0 15px;
         }
 
+        /* Stile base */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -60,16 +63,17 @@
         }
 
         nav {
-            background-color: #f0f0f0;
-            padding: 15px;
+            background-color: #013352;
             display: flex;
             justify-content: center;
-            gap: 30px;
+            flex-wrap: wrap;
+            text-align: center;
+
         }
 
         nav a {
             text-decoration: none;
-            color: #333;
+            color: #ffffff;
             font-weight: bold;
         }
 
@@ -99,19 +103,19 @@
     <main>
         <nav>
             <a href="/index.html">Home</a>
-            <a href="/categorie/prodotto1.html">Torna indietro</a>
-            <a href="/categorie/prodotto3.html">Vai avanti</a>
-        </nav>
+            <a href="/prodotti/prodotto3.html">Vai indietro</a>
+            </nav>
 
-        <!-- Sezione con immagine e descrizione animata -->
+        <!-- Sezione animata con immagine e descrizione -->
         <section class="product-intro" id="productIntro">
-            <img src="/img/cestino2.png" alt="Cestino Intelligente 2" class="product-image">
+            <img src="/img/cestino.png" alt="Cestino Intelligente 1" class="product-image">
             <div class="product-description">
-                <h2>Cestino Intelligente 2</h2>
-                <p>Un'evoluzione del primo modello: più capiente, con riconoscimento avanzato dei materiali e connessione Wi-Fi per monitoraggio remoto.</p>
+                <h2>Cestino Intelligente 1</h2>
+                <p>Un cestino innovativo dotato di sensori per riconoscere e differenziare i rifiuti automaticamente.</p>
             </div>
         </section>
 
+        <!-- Lista (se ti serve) -->
         <ul></ul>
     </main>
 
@@ -148,6 +152,7 @@
                 </li>
             </ul>
         </section>
+
         <br>
         <p>&copy; 2024 - Sito Web. Tutti i diritti riservati.</p>
     </footer>
