@@ -2,15 +2,14 @@
 <html lang="it">
 
 <head>
-    <base href="/cestino-ideale/">
-    <link rel="icon" href="img/cestino/ChatGPT_Image_10_mag_2025__13_44_51-removebg-preview.png" type="image/x-icon">
+    <link rel="icon" href="../img/cestino/ChatGPT_Image_10_mag_2025__13_44_51-removebg-preview.png" type="image/x-icon">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cestino Intelligente</title>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-    <link rel="stylesheet" href="css/var.css">
-    <link rel="stylesheet" href="css/style.css">
-    
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/var.css">
+
     <!--  Stile personalizzato -->
     <style>
         @keyframes zoomFadeIn {
@@ -18,6 +17,7 @@
                 opacity: 0;
                 transform: scale(0.8);
             }
+
             100% {
                 opacity: 1;
                 transform: scale(1);
@@ -33,7 +33,7 @@
         }
 
         .product-card {
-            background-color: #fff;
+            background-color: #1a1a1a;
             border-radius: 12px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             width: 270px;
@@ -45,10 +45,21 @@
         }
 
         /*  Ritardo progressivo per animazione */
-        .product-card:nth-child(1) { animation-delay: 0.2s; }
-        .product-card:nth-child(2) { animation-delay: 0.4s; }
-        .product-card:nth-child(3) { animation-delay: 0.6s; }
-        .product-card:nth-child(4) { animation-delay: 0.8s; }
+        .product-card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .product-card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .product-card:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .product-card:nth-child(4) {
+            animation-delay: 0.8s;
+        }
 
         /*  Effetto hover che "sale" */
         .product-card:hover {
@@ -89,8 +100,8 @@
 <body>
     <main>
         <nav>
-            <a href="index.html">Home</a>
-            <a href="pages/funzionamento.html">Vai Avanti</a>
+            <a href="../index.html">Home</a>
+            <a href="./funzionamento.html">Vai Avanti</a>
         </nav>
 
         <section id="vai-avanti">
@@ -100,38 +111,39 @@
 
                 <!-- Prodotto 1 -->
                 <div class="product-card">
-                    <img src="img/cestino/cestinoD.png" alt="Cestino Intelligente">
+                    <img src="../img/cestino/cestinoD.png" alt="Cestino Intelligente">
                     <h2>Cestino Intelligente 1</h2>
                     <p>Un cestino con sensore che si apre automaticamente. Perfetto per l'uso in casa e ufficio.</p>
                     <div class="price">Prezzo: 123</div>
-                    <a class="cta-btn" href="prodotti/prodotto1.html">Acquista ora</a>
+                    <a class="cta-btn" href="../prodotti/prodotto1.html">Acquista ora</a>
                 </div>
 
                 <!-- Prodotto 2 -->
                 <div class="product-card">
-                    <img src="img/cestino/cestinoL.png" alt="Cestino Intelligente">
+                    <img src="../img/cestino/cestinoL.png" alt="Cestino Intelligente">
                     <h2>Cestino Intelligente 2</h2>
-                    <p>Cestino eco-friendly che si connette con il tuo smartphone per una gestione intelligente dei rifiuti.</p>
+                    <p>Cestino eco-friendly che si connette con il tuo smartphone per una gestione intelligente dei
+                        rifiuti.</p>
                     <div class="price">Prezzo: 444</div>
-                    <a class="cta-btn" href="prodotti/prodotto2.html">Acquista ora</a>
+                    <a class="cta-btn" href="../prodotti/prodotto2.html">Acquista ora</a>
                 </div>
 
                 <!-- Prodotto 3 -->
                 <div class="product-card">
-                    <img src="img/cestino/cestinoLD.png" alt="Cestino Intelligente">
+                    <img src="../img/cestino/cestinoLD.png" alt="Cestino Intelligente">
                     <h2>Cestino Intelligente 3</h2>
                     <p>Cestino con sistema di compostaggio integrato per ridurre l'impatto ambientale.</p>
                     <div class="price">Prezzo: 125</div>
-                    <a class="cta-btn" href="prodotti/prodotto3.html">Acquista ora</a>
+                    <a class="cta-btn" href="../prodotti/prodotto3.html">Acquista ora</a>
                 </div>
 
                 <!-- Prodotto 4 -->
                 <div class="product-card">
-                    <img src="img/cestino/cestinoLDB.png" alt="Cestino Intelligente">
+                    <img src="../img/cestino/cestinoLDB.png" alt="Cestino Intelligente">
                     <h2>Cestino Intelligente 4</h2>
                     <p>Modello avanzato con LED informativi e sistema di notifica per raccolta differenziata.</p>
                     <div class="price">Prezzo: 199</div>
-                    <a class="cta-btn" href="prodotti/prodotto4.html">Acquista ora</a>
+                    <a class="cta-btn" href="../prodotti/prodotto4.html">Acquista ora</a>
                 </div>
 
             </div>
@@ -175,4 +187,5 @@
         <p>&copy; 2024 - Sito Web. Tutti i diritti riservati.</p>
     </footer>
 </body>
+
 </html>
