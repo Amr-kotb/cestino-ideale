@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <link rel="icon" href="../img/cestino/ChatGPT_Image_10_mag_2025__13_44_51-removebg-preview.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cestino Intelligente</title>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/var.css">
+
+    <style>
+        @keyframes zoomFadeIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #64ffda, 0 0 20px #007bff;
+            }
+
+            to {
+                text-shadow: 0 0 20px #007bff, 0 0 40px;
+            }
+        }
+
+        .product-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .product-card {
+            display: flex;
+            flex-direction: row;
+            background-color: #1a1a1a;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 800px;
+            padding: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: zoomFadeIn 0.8s ease-out forwards;
+            opacity: 0;
+            gap: 20px;
+        }
+
+        .product-card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-card img {
+            width: 250px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .product-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .product-info h2 {
+            color: white;/*colore del titolo*/
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .product-info p {
+            color: #ddd; /*colore del paragrafo*/
+            line-height: 1.5;
+        }
+
+        .price {
+            font-weight: bold;
+            color: #28a745;
+            margin: 15px 0;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 18px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        .cta-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Responsive */
+        @media screen and (max-width: 768px) {
+            .product-card {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .product-card img {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .product-info {
+                text-align: center;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="./funzionamento.html">Vai Avanti</a>
+        </nav>
+
+        <section id="vai-avanti">
+            <h1>Il Cestino Intelligente</h1>
+            <p>Scopri come il nostro cestino intelligente può semplificarti la vita!</p>
+
+            <div class="product-container">
+                <!-- Prodotto 4 -->
+                <div class="product-card">
+                    <img src="/img/cestino/cestinoFinale.png" alt="Cestino Intelligente">
+                    <div class="product-info">
+                        <h2>Cestino Intelligente 4</h2>
+                        <p>Modello avanzato con LED informativi e sistema di notifica per raccolta differenziata.</p>
+                        <div class="price">Prezzo: 199€</div>
+                        <a class="cta-btn" href="/pagamento/pagamento4.html">Acquista ora</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <section id="contattaci">
+            <h2>Contattaci</h2>
+            <p>Hai bisogno di aiuto? Puoi scriverci a
+                <a href="mailto:akotb594@gmail.com" class="email-link">akotb594@gmail.com</a>.
+            </p>
+            <p>Oppure chiamaci al numero: <strong>+39 347 312 3532</strong>.</p>
+        </section>
+
+        <section id="social">
+            <h2>Social</h2>
+            <p>Seguici sui nostri social per rimanere aggiornato:</p>
+            <ul>
+                <li>
+                    <a href="https://www.instagram.com" target="_blank" aria-label="Instagram">
+                        <box-icon name="instagram-alt" type="logo"></box-icon>
+                        <span>Instagram</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.tiktok.com" target="_blank" aria-label="TikTok">
+                        <box-icon name="tiktok" type="logo"></box-icon>
+                        <span>TikTok</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.discord.com" target="_blank" aria-label="Discord">
+                        <box-icon name="discord-alt" type="logo"></box-icon>
+                        <span>Discord</span>
+                    </a>
+                </li>
+            </ul>
+        </section>
+        <br>
+        <p>&copy; 2024 - Sito Web. Tutti i diritti riservati.</p>
+    </footer>
+</body>
+
+</html>
