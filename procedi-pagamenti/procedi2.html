@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conferma Pagamento prodotto 2</title>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      font-family: 'Poppins', sans-serif;
+      margin: 0; padding: 0;
+      box-sizing: border-box;
+      outline: none; border: none;
+      text-transform: capitalize;
+      transition: all 0.2s linear;
+    }
+
+    body, html {
+      height: 100%;
+      overflow: hidden;
+      position: relative;
+      background-color: #f3f3f3;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 50px;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    .payment-confirmation {
+      background: white;
+      padding: 30px;
+      width: 100%;
+      max-width: 500px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .payment-confirmation h2 {
+      font-size: 24px;
+      color: #333;
+    }
+
+    .payment-confirmation p {
+      font-size: 18px;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .payment-confirmation .success-icon {
+      font-size: 50px;
+      color: #27ae60;
+    }
+
+    .payment-confirmation .details {
+      background: #f7f7f7;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .payment-confirmation .details h4 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .payment-confirmation .details p {
+      margin: 5px 0;
+      font-size: 16px;
+      color: #666;
+    }
+
+    .back-button {
+      background-color: #27ae60;
+      color: white;
+      padding: 10px 20px;
+      font-size: 18px;
+      border-radius: 5px;
+      text-decoration: none;
+      margin-top: 20px;
+      display: inline-block;
+      transition: background-color 0.3s;
+    }
+
+    .back-button:hover {
+      background-color: #2ecc71;
+    }
+
+    .loading {
+      font-size: 50px;
+      color: #27ae60;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Container principale -->
+<div class="container">
+  <div class="payment-confirmation">
+    <!-- Icona di successo -->
+    <div class="success-icon">
+      &#10004; <!-- Segno di spunta -->
+    </div>
+    
+    <h2>Pagamento Completato!</h2>
+    <h3>prodotto 2</h3>
+    <p>Il tuo pagamento è stato effettuato con successo.</p>
+    
+    <!-- Dettagli pagamento -->
+    <div class="details">
+      <h4>Dettagli del pagamento:</h4>
+      <p><strong>Importo:</strong> €199.99</p>
+      <p><strong>Metodo di pagamento:</strong> Visa</p>
+      <p><strong>Data del pagamento:</strong> 13 Maggio 2025</p>
+      <p><strong>ID Transazione:</strong> #XYZ123456789</p>
+    </div>
+    
+    <!-- Pulsante per tornare alla pagina principale -->
+    <a href="/index.html" class="back-button" onclick="showLoading()">Torna alla home</a>
+    
+    <!-- Animazione di caricamento -->
+    <div class="loading" id="loading">
+      &#x231b; <!-- Icona di orologio -->
+    </div>
+  </div>
+</div>
+
+<script>
+  function showLoading() {
+    const loading = document.getElementById('loading');
+    loading.style.display = 'block';
+    setTimeout(function() {
+      window.location.href = 'index.html'; // Redirige alla home dopo 2 secondi
+    }, 2000); // tempo per la simulazione del caricamento
+  }
+</script>
+
+</body>
+</html>
