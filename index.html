@@ -2,8 +2,7 @@
 <html lang="it">
 
 <head>
-    <link rel="icon" href="./img/cestino/ChatGPT_Image_10_mag_2025__13_44_51-removebg-preview.png"
-        type="image/x-icon">
+    <link rel="icon" href="./img/cestino/ChatGPT_Image_10_mag_2025__13_44_51-removebg-preview.png" type="image/x-icon">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cestino Ideale</title>
@@ -11,6 +10,82 @@
     <link rel="stylesheet" href="./css/var.css">
     <link rel="stylesheet" href="./css/style.css">
 
+    
+    <style>
+        /* Sezione animata */
+        .animated-section {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeSlideIn 1.5s ease-out forwards;
+            animation-delay: 0.5s;
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* Titolo con effetto glow */
+        .glow-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ffffff;
+            animation: glow 2s ease-in-out infinite alternate;
+            margin-bottom: 1rem;
+        }
+
+        /* Contenitore SVG centrato */
+        .svg-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Animazione icona SVG (oscillazione) */
+        .animated-trash {
+            animation: swing 2s infinite ease-in-out;
+        }
+
+        /* Keyframes */
+        @keyframes fadeSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #64ffda, 0 0 20px #007bff;
+            }
+
+            to {
+                text-shadow: 0 0 20px #007bff, 0 0 40px;
+            }
+        }
+
+        @keyframes swing {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            50% {
+                transform: rotate(5deg);
+            }
+
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+
+        
+    </style>
 </head>
 
 <body>
@@ -30,11 +105,23 @@
             <p>Questo sito fa al caso tuo!</p>
         </section>
 
-        <center>
-            <video src="./video/4tipi.mp4" width="720" controls></video>
-        </center>
+        <!-- Sezione IDEA animata -->
+        <section id="idea" class="animated-section">
+            <h2 class="glow-title">Idea</h2>
 
+            <div class="svg-container">
+                
+            </div>
 
+            <p>
+                La nostra idea è quella di un cestino che sia comodo e che agevoli la vita delle persone.
+                Il nostro è un <strong>cestino intelligente e programmabile</strong>. Per programmabile intendiamo la possibilità,
+                tramite un piccolo schermo LCD e un sensore, di cambiare il tipo di spazzatura da inserire nel cestino.
+                Questo cestino è dotato di: un <strong>LED lampeggiante</strong> durante l'apertura, un <strong>buzzer</strong> che suona, un
+                <strong>motore</strong> per l'apertura automatica e un <strong>sensore di prossimità</strong> che lo attiva al passaggio,
+                permettendo anche la selezione del tipo di rifiuto.
+            </p>
+        </section>
     </main>
 
     <footer>

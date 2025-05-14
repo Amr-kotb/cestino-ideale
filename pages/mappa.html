@@ -8,6 +8,7 @@
       display: flex;
       margin: 0;
       font-family: sans-serif;
+      background-color: #f4f4f4;
     }
 
     nav {
@@ -17,8 +18,11 @@
       width: 100%;
       background-color: #004c99;
       color: white;
-      padding: 10px 20px;
+      padding: 15px 20px;
       z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     nav a {
@@ -26,42 +30,55 @@
       margin-right: 20px;
       text-decoration: none;
       font-weight: bold;
+      font-size: 16px;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
     }
 
     .diagram {
-      margin-top: 50px;
+      margin-top: 80px;
       width: 35%;
       background-color: #0077cc;
       padding: 20px;
-      border-right: 2px solid #ffffff00;
-      height: calc(100vh - 50px);
+      height: calc(100vh - 80px);
       overflow-y: auto;
+      box-sizing: border-box;
+      border-right: 2px solid #ffffff00;
     }
 
     .code {
-      margin-top: 50px;
+      margin-top: 80px;
       width: 65%;
       background-color: #000000;
       color: white;
       padding: 20px;
       overflow-y: auto;
-      height: calc(100vh - 50px);
+      height: calc(100vh - 80px);
       font-family: monospace;
       position: relative;
+      box-sizing: border-box;
     }
 
     .block {
       background-color: #d3eaff;
       border: 2px solid #0077cc;
       padding: 12px;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
       cursor: pointer;
       border-radius: 6px;
       text-align: center;
+      transition: transform 0.2s ease;
+    }
+
+    .block:hover {
+      transform: scale(1.05);
+      background-color: #c1d8f7;
     }
 
     .highlight {
-      background-color: #003f83;
+      background-color: #003f83 !important;
     }
 
     .comment {
@@ -71,18 +88,25 @@
       margin-top: 10px;
       font-style: italic;
       color: #66ccff;
+      font-size: 1.1rem;
     }
 
     pre {
       white-space: pre-wrap;
+      word-wrap: break-word;
     }
   </style>
 </head>
 <body>
 
 <nav>
-  <a href="/index.html">Home</a>
-  <a href="/pages/funzionamento.html">Vai indietro</a>
+  <div>
+    <a href="/index.html">Home</a>
+    <a href="/pages/funzionamento.html">Vai indietro</a>
+  </div>
+  <div>
+    <span>Arduino Map</span>
+  </div>
 </nav>
 
 <div class="diagram">

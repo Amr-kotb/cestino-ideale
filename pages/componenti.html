@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vantaggi del Cestino Intelligente</title>
+  <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/var.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      height: 100vh;
+      animation: backgroundChange 6s infinite alternate;
+    }
+
+    @keyframes backgroundChange {
+      0% { background-color: #007bff; }
+      100% { background-color: #002751; }
+    }
+
+    nav {
+      width: 60px;
+      height: 100vh;
+      background-color: #021d2d;
+      position: fixed;
+      top: 0;
+      left: 0;
+      transition: width 0.3s ease;
+      overflow: hidden;
+    }
+
+    nav:hover {
+      width: 220px;
+    }
+
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 15px 0;
+      cursor: pointer;
+    }
+
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      margin: 4px 0;
+      border-radius: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-direction: column;
+      margin-top: 30px;
+    }
+
+    .nav-links a {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      color: white;
+      text-decoration: none;
+      padding: 15px;
+      box-sizing: border-box;
+      transition: margin-right 2s, color 1s;    }
+
+    .nav-links a:hover {
+      background-color: #002781;
+    }
+
+    .nav-links a i {
+      margin-right: 10px;
+      font-size: 20px;
+      min-width: 40px;
+      text-align: center;
+    }
+
+    .nav-links a span {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    nav:hover .nav-links a span {
+      opacity: 1;
+    }
+
+    .main-content {
+      margin-left: 60px;
+      padding: 20px;
+      flex-grow: 1;
+      transition: margin-left 0.3s ease;
+      width: 100%;
+    }
+
+    nav:hover ~ .main-content {
+      margin-left: 220px;
+    }
+
+    h1 {
+      font-size: 36px;
+      text-align: center;
+      color: #ffffff;
+      background-color: #004568;
+      padding: 15px 30px;
+      border-radius: 25px;
+      margin: 30px auto;
+      width: auto;
+      max-width: 80%;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .content {
+      font-size: 18px;
+      line-height: 1.6;
+      color: #ffffff;
+      padding-bottom: 50px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .highlight {
+      font-weight: bold;
+      color: #007bff;
+      transition: color 0.3s ease;
+    }
+
+    .highlight:hover {
+      color: #0056b3;
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="nav-links">
+      <a href="../index.html"><i class='bx bx-home'></i><span>Home</span></a>
+      <a href="/pages/componeti2.html"><i class='bx bx-right-arrow-alt'></i><span>Componenti 2</span></a>
+      <a href="/pages/funzionamento.html"><i class='bx bx-left-arrow-alt'></i><span>Indietro</span></a>
+    </div>
+  </nav>
+
+  <div class="main-content">
+    <h1>Componenti Elettronici del Progetto</h1>
+    <div class="content">
+      <p><span class="highlight"> Micro Servo:</span><br>
+        Il micro servo è un piccolo motore che può ruotare in base agli impulsi inviati dalla scheda Arduino UNO. Di solito, ruota da 0° a 180°, ma alcuni modelli arrivano fino a 270°. È composto da tre cavi:<br>
+        - <b>Marrone</b> → collegato a <b>GND</b> (terra)<br>
+        - <b>Rosso</b> → collegato a <b>5V</b> (alimentazione)<br>
+        - <b>Arancione</b> → collegato al <b>pin 9</b> (segnale)
+      </p>
+
+      <p><span class="highlight"> Resistenza:</span><br>
+        La resistenza è un componente a due terminali usato per limitare la corrente elettrica, dividere la tensione o generare calore. Il suo valore si calcola tramite il codice colori (4 bande):<br>
+        1. Prima banda: prima cifra significativa<br>
+        2. Seconda banda: seconda cifra significativa<br>
+        3. Terza banda: moltiplicatore<br>
+        4. Quarta banda: tolleranza
+      </p>
+    </div>
+  </div>
+</body>
+</html>
