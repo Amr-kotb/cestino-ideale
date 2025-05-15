@@ -67,8 +67,8 @@
       color: white;
       text-decoration: none;
       padding: 15px;
-      box-sizing: border-box;
-      transition: margin-right 2s, color 1s;    }
+      transition: background-color 0.3s ease;
+    }
 
     .nav-links a:hover {
       background-color: #002781;
@@ -96,6 +96,7 @@
       flex-grow: 1;
       transition: margin-left 0.3s ease;
       width: 100%;
+      color: white;
     }
 
     nav:hover ~ .main-content {
@@ -118,16 +119,21 @@
     .content {
       font-size: 18px;
       line-height: 1.6;
-      color: #ffffff;
-      padding-bottom: 50px;
       max-width: 900px;
       margin: auto;
+    }
+
+    .content ul {
+      padding-left: 20px;
+    }
+
+    .content li {
+      margin-bottom: 8px;
     }
 
     .highlight {
       font-weight: bold;
       color: #007bff;
-      transition: color 0.3s ease;
     }
 
     .highlight:hover {
@@ -145,7 +151,8 @@
     </div>
     <div class="nav-links">
       <a href="../index.html"><i class='bx bx-home'></i><span>Home</span></a>
-      <a href="./componenti.html"><i class='bx bx-left-arrow-alt'></i><span>Torna ai Componenti 1</span></a>
+      <a href="/pages/funzionamento.html"><i class='bx bx-left-arrow-alt'></i><span>Torna indietro
+      </span></a>
     </div>
   </nav>
 
@@ -153,44 +160,47 @@
     <h1>I prezzi dei nostri componenti</h1>
 
     <div class="content">
-      <p><span class="highlight">Costi</span><br>
-       Per il nostro progetto di cestino automatico, abbiamo calcolato attentamente i costi dei componenti. In una produzione singola, i costi sono:
+      <p>
+        Per il nostro progetto di <strong>cestino automatico</strong>, abbiamo calcolato attentamente i costi dei componenti. Ecco una stima dei prezzi per la produzione di una singola unità:
+      </p>
 
-      <p> Sensore HC-SR04: 2 euroB.</p>
+      <ul>
+        <li>Sensore HC-SR04: <strong>2 €</strong></li>
+        <li>Servomotore SG90: <strong>3 €</strong></li>
+        <li>Buzzer: <strong>1 €</strong></li>
+        <li>LED RGB: <strong>0,50 €</strong></li>
+        <li>Display LCD 16x2: <strong>4 €</strong></li>
+        <li>Arduino Uno: <strong>10 €</strong></li>
+        <li>Cavi jumper, resistenze, breadboard: <strong>5 €</strong></li>
+        <li>Struttura in plastica (40x30x30 cm): <strong>10 €</strong></li>
+      </ul>
 
-      <p>Servomotore SG90: 3 euro</p>
+      <p><strong>Totale per unità singola: circa 35-40 €</strong></p>
 
       <p>
-        Tavola forata per collegamenti senza saldatura. Riutilizzabile e utile per test.</p>
-Buzzer: 1 euro
+        Tuttavia, se si avvia una produzione su larga scala (quantità di 100 o più unità), i costi possono diminuire sensibilmente grazie alle economie di scala:
+      </p>
 
-LED RGB: 0,50 euro
+      <ul>
+        <li>HC-SR04: <strong>1 €</strong></li>
+        <li>Servomotore SG90: <strong>1,50 €</strong></li>
+        <li>Arduino Uno compatibile: <strong>5-6 €</strong></li>
+        <li>LCD 16x2: <strong>2,50 €</strong></li>
+        <li>Materiale plastico: meno di <strong>5 €</strong> a unità</li>
+      </ul>
 
-Display LCD 16x2: 4 euro
+      <p>
+        In questo scenario, il costo per unità può scendere a circa <strong>20-25 €</strong>. Vendendo ogni cestino a <strong>50 €</strong>, si ottiene un margine lordo di circa <strong>25-30 €</strong> per unità.
+      </p>
 
-Arduino Uno: 10 euro
+      <p>
+        Questo margine può coprire le spese di imballaggio, marketing e distribuzione, rendendo il progetto <strong>sostenibile</strong> e potenzialmente <strong>commercializzabile</strong>.
+      </p>
 
-Cavi jumper, resistenze, breadboard: 5 euro
-
-Struttura in plastica (40x30x30 cm): 10 euro
-
-
-Totale per unità singola: circa 35-40 euro
-
-Tuttavia, se si avvia una produzione su larga scala, acquistando componenti in lotti da 100 o più, i prezzi si abbassano anche del 30-50%. Per esempio:
-
-HC-SR04 scende a 1 euro
-
-Servomotore a 1,50 euro
-
-Arduino Uno compatibile a 5-6 euro
-
-LCD 16x2 a 2,50 euro
-
-Il materiale plastico, acquistato in fogli o in fabbrica, può costare meno di 5 euro a cestino
-Con queste economie di scala, il costo di produzione per unità può scendere a circa 20-25 euro.
-
-      </div>
+      <p>
+        In conclusione, il <strong>cestino automatico</strong> rappresenta un progetto valido sia dal punto di vista <em>educativo</em> che <em>tecnologico</em>, con buone prospettive anche sul piano industriale.
+      </p>
+    </div>
   </div>
 </body>
 </html>

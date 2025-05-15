@@ -8,24 +8,48 @@
   <link rel="stylesheet" href="../css/var.css">
   <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
   <style>
+    :root {
+      --primary-bg: #002751;
+      --primary-color: #ffffff;
+      --highlight: #002751;
+      --nav-bg: #021d2d;
+    }
+
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
       display: flex;
       height: 100vh;
-      animation: backgroundChange 6s infinite alternate;
+      background-color: var(--primary-bg);
+      color: var(--primary-color);
+      transition: background-color 0.5s, color 0.5s;
     }
 
-    @keyframes backgroundChange {
-      0% { background-color: #007bff; }
-      100% { background-color: #002751; }
+    .dark-mode {
+      --primary-bg: #f0f0f0;
+      --primary-color: #000000;
+      --nav-bg: #dddddd;
+      --highlight: #0056b3;
+    }
+
+    .dark-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: var(--highlight);
+      color: black;
+      border: none;
+      padding: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
     }
 
     nav {
       width: 60px;
       height: 100vh;
-      background-color: #021d2d;
+      background-color: var(--nav-bg);
       position: fixed;
       top: 0;
       left: 0;
@@ -46,10 +70,10 @@
     }
 
     .hamburger div {
-      width: 25px;
+      width: 30px;
       height: 3px;
       background-color: white;
-      margin: 4px 0;
+      margin: 5px 0;
       border-radius: 2px;
     }
 
@@ -63,21 +87,10 @@
       display: flex;
       align-items: center;
       width: 100%;
-      color: white;
+      color: var(--primary-color);
       text-decoration: none;
       padding: 15px;
       box-sizing: border-box;
-      transition: margin-right 2s, color 1s;    }
-
-    .nav-links a:hover {
-      background-color: #002781;
-    }
-
-    .nav-links a i {
-      margin-right: 10px;
-      font-size: 20px;
-      min-width: 40px;
-      text-align: center;
     }
 
     .nav-links a span {
@@ -97,45 +110,21 @@
       width: 100%;
     }
 
-    nav:hover ~ .main-content {
-      margin-left: 220px;
-    }
-
     h1 {
-      font-size: 36px;
       text-align: center;
-      color: #ffffff;
-      background-color: #004568;
-      padding: 15px 30px;
-      border-radius: 25px;
-      margin: 30px auto;
-      width: auto;
+      color: var(--primary-color);
+      background-color: var(--highlight);
+      padding: 15px;
+      border-radius: 15px;
       max-width: 80%;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    }
-
-    .content {
-      font-size: 18px;
-      line-height: 1.6;
-      color: #ffffff;
-      padding-bottom: 50px;
-      max-width: 900px;
       margin: auto;
-    }
-
-    .highlight {
-      font-weight: bold;
-      color: #ffffff;
-      transition: color 0.3s ease;
-    }
-
-    .highlight:hover {
-      color: #ffffff;
     }
   </style>
 </head>
 
 <body>
+  <button class="dark-toggle" onclick="toggleDarkMode()">🌓</button>
+
   <nav>
     <div class="hamburger">
       <div></div>
@@ -152,30 +141,25 @@
   <div class="main-content">
     <h1>Componenti Elettronici - Parte 2</h1>
     <div class="content">
-      <p><span class="highlight">Sensore di distanza ad ultrasuono a 4 pin:</span><br>
-        Il sensore di distanza ad ultrasuono è un tipo di sensore utilizzato per misurare la distanza tra il sensore e un oggetto mediante l'emissione di onde sonore ad alta frequenza. Queste onde vengono riflesse dall'oggetto e il sensore calcola la distanza in base al tempo impiegato dall'onda per ritornare al sensore. È formato da 4 pin:
-        <br>• <b>VCC</b> (alimentazione): Pin per fornire la tensione di alimentazione, solitamente 5V.
-        <br>• <b>GND</b> (terra): Pin per la connessione a terra.
-        <br>• <b>Trig</b> (Trigger): Pin utilizzato per inviare il segnale che attiva l'emissione degli ultrasuoni.
-        <br>• <b>Echo</b>: Pin che riceve il segnale di ritorno dell'onda sonora.
+      <p><strong>Sensore di distanza ad ultrasuono a 4 pin:</strong><br>
+        Questo sensore misura la distanza mediante l'emissione e ricezione di ultrasuoni. È formato da quattro pin:
+        <br><b>VCC</b> (alimentazione), <b>GND</b> (terra), <b>Trig</b> (trigger) e <b>Echo</b> (ricezione segnale).
       </p>
 
-      <p><span class="highlight">Buzzer:</span><br>
-        Un buzzer è un piccolo dispositivo elettronico che produce suoni o segnali acustici. È formato da un piccolo disco metallico che vibra quando viene alimentato elettricamente, generando così un suono.
-        Esistono due tipi principali:
-        <br>• <b>Buzzer attivo</b>: suona da solo quando riceve corrente.
-        <br>• <b>Buzzer passivo</b>: ha bisogno di un segnale (es. PWM) per suonare a diverse frequenze.
+      <p><strong>Buzzer:</strong><br>
+        Dispositivo che genera suoni e segnali acustici. Può essere attivo (suona da solo) o passivo (richiede segnale PWM).
       </p>
 
-      <p><span class="highlight">Arduino UNO R3:</span><br>
-        L'Arduino UNO R3 è una delle schede più popolari, utilizzata principalmente per la prototipazione di circuiti elettronici e lo sviluppo di progetti interattivi. È formato da:
-        <br>• Un microcontrollore <b>ATmega328P</b>.
-        <br>• Alimentazione tramite USB o alimentatore esterno.
-        <br>• Porta USB per programmazione e comunicazione.
-        <br>• 14 pin digitali (da 0 a 13), utilizzabili come ingresso/uscita.
-        <br>• 6 pin analogici (da A0 a A5), utilizzabili solo come ingressi.
+      <p><strong>Arduino UNO R3:</strong><br>
+        Scheda elettronica con microcontrollore ATmega328P, porte USB e 14 pin digitali per il controllo di dispositivi esterni.
       </p>
     </div>
   </div>
+
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+  </script>
 </body>
 </html>

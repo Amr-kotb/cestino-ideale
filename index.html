@@ -1,165 +1,229 @@
 <!DOCTYPE html>
 <html lang="it">
-
 <head>
-    <link rel="icon" href="./img/cestino/ChatGPT_Image_10_mag_2025__13_44_51-removebg-preview.png" type="image/x-icon">
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cestino Ideale</title>
-    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-    <link rel="stylesheet" href="./css/var.css">
-    <link rel="stylesheet" href="./css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cestino Ideale</title>
+  <link rel="icon" href="./img/cestino/ChatGPT_Image_10_mag_2025__13_44_51-removebg-preview.png" type="image/x-icon">
+  <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  <style>
+    :root {
+      --primary-bg: #002751;
+      --primary-color: #ffffff;
+      --highlight: #64ffda;
+      --nav-bg: #021d2d;
+      --glow-1: #64ffda;
+      --glow-2: #007bff;
+    }
 
-    
-    <style>
-        /* Sezione animata */
-        .animated-section {
-            opacity: 0;
-            transform: translateY(40px);
-            animation: fadeSlideIn 1.5s ease-out forwards;
-            animation-delay: 0.5s;
-            padding: 2rem;
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: var(--primary-bg);
+      color: var(--primary-color);
+      transition: background-color 0.4s, color 0.4s;
+    }
 
-        /* Titolo con effetto glow */
-        .glow-title {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #ffffff;
-            animation: glow 2s ease-in-out infinite alternate;
-            margin-bottom: 1rem;
-        }
+    header {
+      background-color: #004568;
+      padding: 20px;
+      text-align: center;
+    }
 
-        /* Contenitore SVG centrato */
-        .svg-container {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-        }
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0;
+    }
 
-        /* Animazione icona SVG (oscillazione) */
-        .animated-trash {
-            animation: swing 2s infinite ease-in-out;
-        }
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      background-color: var(--nav-bg);
+      padding: 15px 0;
+    }
 
-        /* Keyframes */
-        @keyframes fadeSlideIn {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
+    nav a {
+      color: var(--primary-color);
+      text-decoration: none;
+      padding: 10px 20px;
+      margin: 5px;
+      border-radius: 8px;
+      transition: background-color 0.3s, transform 0.2s;
+    }
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    nav a:hover {
+      background-color: #0056b3;
+      transform: scale(1.05);
+    }
 
-        @keyframes glow {
-            from {
-                text-shadow: 0 0 10px #64ffda, 0 0 20px #007bff;
-            }
+    #intro {
+      text-align: center;
+      padding: 20px;
+      font-size: 1.2rem;
+    }
 
-            to {
-                text-shadow: 0 0 20px #007bff, 0 0 40px;
-            }
-        }
+    .animated-section {
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeSlideIn 1.5s ease-out forwards;
+      animation-delay: 0.5s;
+      padding: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
 
-        @keyframes swing {
-            0% {
-                transform: rotate(0deg);
-            }
+    .glow-title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: var(--primary-color);
+      animation: glow 2s ease-in-out infinite alternate;
+      margin-bottom: 1rem;
+    }
 
-            50% {
-                transform: rotate(5deg);
-            }
+    .svg-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
 
-            100% {
-                transform: rotate(0deg);
-            }
-        }
+    .animated-trash {
+      animation: swing 2s infinite ease-in-out;
+      width: 80px;
+      height: auto;
+    }
 
-        
-    </style>
+    .cta-button {
+      margin-top: 20px;
+      background-color: var(--highlight);
+      color: black;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .cta-button:hover {
+      background-color: #00ffaa;
+    }
+
+    .dark-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: var(--highlight);
+      color: black;
+      border: none;
+      padding: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    footer {
+      background-color: var(--nav-bg);
+      color: var(--primary-color);
+      text-align: center;
+      padding: 2rem;
+    }
+
+    footer a {
+      color: var(--highlight);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: #00ffff;
+    }
+
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px var(--glow-1), 0 0 20px var(--glow-2); }
+      to { text-shadow: 0 0 20px var(--glow-2), 0 0 40px; }
+    }
+
+    @keyframes swing {
+      0% { transform: rotate(0deg); }
+      50% { transform: rotate(5deg); }
+      100% { transform: rotate(0deg); }
+    }
+
+    .dark-mode {
+      --primary-bg: #f0f0f0;
+      --primary-color: #000000;
+      --nav-bg: #dddddd;
+      --highlight: #0056b3;
+      --glow-1: #007bff;
+      --glow-2: #002751;
+    }
+  </style>
 </head>
 
 <body>
+  <button class="dark-toggle" onclick="toggleDarkMode()">🌓</button>
 
-    <main>
-        <header>
-            <h1>Ti serve un cestino?</h1>
-        </header>
+  <main>
+    <header>
+      <h1>Ti serve un cestino?</h1>
+    </header>
 
-        <nav>
-            <a href="./index.html">Home</a>
-            <a href="./pages/prodotti.html">I nostri prodotti</a>
-            <a href="./pages/funzionamento.html">Funzionamento</a>
-        </nav>
+    <nav>
+      <a href="./index.html">Home</a>
+      <a href="./pages/prodotti.html">I nostri prodotti</a>
+      <a href="./pages/funzionamento.html">Funzionamento</a>
+    </nav>
 
-        <section id="intro">
-            <p>Questo sito fa al caso tuo!</p>
-        </section>
+    <section id="intro">
+      <p>Questo sito fa al caso tuo!</p>
+    </section>
 
-        <!-- Sezione IDEA animata -->
-        <section id="idea" class="animated-section">
-            <h2 class="glow-title">Idea</h2>
+    <section id="idea" class="animated-section">
+      <h2 class="glow-title">Idea</h2>
+      <div class="svg-container">
+        <img src="/img/cestino/ChatGPT_Image_10_mag_2025__13_44_51-removebg-preview.png" alt="Icona cestino sinistra" class="animated-trash" />
+        <img src="/img/cestino/ChatGPT_Image_10_mag_2025__13_44_51-removebg-preview.png" alt="Icona cestino destra" class="animated-trash" />
+      </div>
+      <p>
+        La nostra idea è quella di un cestino che sia comodo e che agevoli la vita delle persone.
+        Il nostro è un <strong>cestino intelligente e programmabile</strong>. Per programmabile intendiamo la possibilità,
+        tramite un piccolo schermo LCD e un sensore, di cambiare il tipo di spazzatura da inserire nel cestino.
+        Questo cestino è dotato di: un <strong>LED lampeggiante</strong> durante l'apertura, un <strong>buzzer</strong> che suona,
+        un <strong>motore</strong> per l'apertura automatica e un <strong>sensore di prossimità</strong>.
+      </p>
+      <button class="cta-button" onclick="window.location.href='./pages/prodotti.html'">Scopri di più</button>
+    </section>
+  </main>
 
-            <div class="svg-container">
-                
-            </div>
+  <footer>
+    <section>
+      <h2>Contattaci</h2>
+      <p>Scrivici a <a href="mailto:akotb594@gmail.com">akotb594@gmail.com</a> o chiamaci: <strong>+39 347 312 3532</strong></p>
+    </section>
+    <section>
+      <h2>Seguici</h2>
+      <p>
+        <a href="https://www.instagram.com" target="_blank">Instagram</a> |
+        <a href="https://www.tiktok.com" target="_blank">TikTok</a> |
+        <a href="https://www.discord.com" target="_blank">Discord</a>
+      </p>
+    </section>
+    <p>&copy; 2024 - Tutti i diritti riservati</p>
+  </footer>
 
-            <p>
-                La nostra idea è quella di un cestino che sia comodo e che agevoli la vita delle persone.
-                Il nostro è un <strong>cestino intelligente e programmabile</strong>. Per programmabile intendiamo la possibilità,
-                tramite un piccolo schermo LCD e un sensore, di cambiare il tipo di spazzatura da inserire nel cestino.
-                Questo cestino è dotato di: un <strong>LED lampeggiante</strong> durante l'apertura, un <strong>buzzer</strong> che suona, un
-                <strong>motore</strong> per l'apertura automatica e un <strong>sensore di prossimità</strong> che lo attiva al passaggio,
-                permettendo anche la selezione del tipo di rifiuto.
-            </p>
-        </section>
-    </main>
-
-    <footer>
-        <section id="contattaci">
-            <h2>Contattaci</h2>
-            <p>Hai bisogno di aiuto? Puoi scriverci a
-                <a href="mailto:akotb594@gmail.com" class="email-link">akotb594@gmail.com</a>.
-            </p>
-            <p>Oppure chiamaci al numero: <strong>+39 347 312 3532</strong>.</p>
-        </section>
-
-        <section id="social">
-            <h2>Social</h2>
-            <p>Seguici sui nostri social per rimanere aggiornato:</p>
-            <ul>
-                <li>
-                    <a href="https://www.instagram.com" target="_blank" aria-label="Instagram">
-                        <box-icon name="instagram-alt" type="logo"></box-icon>
-                        <span>Instagram</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.tiktok.com" target="_blank" aria-label="TikTok">
-                        <box-icon name="tiktok" type="logo"></box-icon>
-                        <span>TikTok</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.discord.com" target="_blank" aria-label="Discord">
-                        <box-icon name="discord-alt" type="logo"></box-icon>
-                        <span>Discord</span>
-                    </a>
-                </li>
-            </ul>
-        </section>
-        <br>
-        <p>&copy; 2024 - Sito Web. Tutti i diritti riservati.</p>
-    </footer>
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+  </script>
 </body>
-
 </html>
