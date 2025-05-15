@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Mappa Interattiva Arduino</title>
+  <style>
+    body {
+      display: flex;
+      margin: 0;
+      font-family: sans-serif;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #004c99;
+      color: white;
+      padding: 10px 20px;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: white;
+      margin-right: 20px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .diagram {
+      margin-top: 50px;
+      width: 35%;
+      background-color: #0077cc;
+      padding: 20px;
+      border-right: 2px solid #ffffff00;
+      height: calc(100vh - 50px);
+      overflow-y: auto;
+    }
+
+    .code {
+      margin-top: 50px;
+      width: 65%;
+      background-color: #000000;
+      color: white;
+      padding: 20px;
+      overflow-y: auto;
+      height: calc(100vh - 50px);
+      font-family: monospace;
+      position: relative;
+    }
+
+    .block {
+      background-color: #d3eaff;
+      border: 2px solid #0077cc;
+      padding: 12px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      border-radius: 6px;
+      text-align: center;
+    }
+
+    .highlight {
+      background-color: #003f83;
+    }
+
+    .comment {
+      background-color: #111;
+      border-left: 4px solid #00ccff;
+      padding: 10px;
+      margin-top: 10px;
+      font-style: italic;
+      color: #66ccff;
+    }
+
+    pre {
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="./index.html">Home</a>
+  <a href="./pages/funzionamento.html">Vai indietro</a>
+</nav>
+
+<div class="diagram">
+  <div class="block" onclick="highlight('setup', 'Imposta i pin, avvia il display LCD e prepara il servo.')">🔧 Setup</div>
+  <div class="block" onclick="highlight('loop', 'Inizio del ciclo principale del programma Arduino.')">🔄 Inizio loop</div>
+  <div class="block" onclick="highlight('change', 'Cambia automaticamente il tipo di rifiuto ogni intervallo.')">🕒 Cambio tipo rifiuto</div>
+  <div class="block" onclick="highlight('measure', 'Misura la distanza con il sensore a ultrasuoni.')">📏 Misura distanza</div>
+  <div class="block" onclick="highlight('detect', 'Rileva se un rifiuto è stato posizionato.')">✅ Primo rilevamento</div>
+  <div class="block" onclick="highlight('servo', 'Attiva il servo e il buzzer se c’è un rifiuto.')">🚮 Azione servo/buzzer</div>
+  <div class="block" onclick="highlight('close', 'Chiude il servo e resetta il buzzer.')">🛑 Servo chiuso</div>
+</div>
+
+<div class="code">
+  <pre>
+<span id="setup">
+void setup() {
+  lcd.begin(16, 2);
+  Serial.begin(9600);
+  lcd.setCursor(0, 0);
+  lcd.print("Tipo rifiuto:");
+  lcd.setCursor(0, 1);
+  lcd.print(tipiRifiuto[indiceRifiuto]);
+
+  myServo.attach(9, 500, 2500);
+  myServo.write(0);
+
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+  pinMode(buzzerPin, OUTPUT);
+  pinMode(ledPin, OUTPUT);
+}
+</span>
+
+<span id="loop">
+void loop() {
+</span>
+
+<span id="change">
+  if (!rifiutoFissato && millis() - tempoUltimoCambio >= intervalloCambio) {
+    indiceRifiuto = (indiceRifiuto + 1) % 6;
+    lcd.setCursor(0, 1);
+    lcd.print("                ");
+    lcd.setCursor(0, 1);
+    lcd.print(tipiRifiuto[indiceRifiuto]);
+    tempoUltimoCambio = millis();
+  }
+</span>
+
+<span id="measure">
+  long durata, distanza;
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+  durata = pulseIn(echoPin, HIGH);
+  distanza = durata * 0.034 / 2;
+</span>
+
+<span id="detect">
+  if (!rifiutoFissato && distanza > 0 && distanza <= distanzaLimite) {
+    rifiutoFissato = true;
+    lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.print("Rifiuto scelto:");
+    lcd.setCursor(0, 1);
+    lcd.print(tipiRifiuto[indiceRifiuto]);
+  }
+</span>
+
+<span id="servo">
+  if (distanza > 0 && distanza <= distanzaLimite) {
+    myServo.write(90);
+    if (statoBuzzer == 0) {
+      for (int i = 0; i < 5; i++) {
+        tone(buzzerPin, 600);
+        digitalWrite(ledPin, HIGH);
+        delay(100);
+        noTone(buzzerPin);
+        digitalWrite(ledPin, LOW);
+        delay(100);
+      }
+      statoBuzzer = 1;
+    }
+    delay(2000);
+  }
+</span>
+
+<span id="close">
+  else {
+    myServo.write(0);
+    statoBuzzer = 0;
+  }
+  delay(500);
+}
+</span>
+  </pre>
+  <div id="comment" class="comment"></div>
+</div>
+
+<script>
+  function highlight(id, comment) {
+    // Rimuove evidenziazioni precedenti
+    document.querySelectorAll('span').forEach(el => el.classList.remove('highlight'));
+
+    // Evidenzia il blocco selezionato
+    const el = document.getElementById(id);
+    el.classList.add('highlight');
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    // Mostra commento descrittivo
+    document.getElementById('comment').textContent = comment;
+  }
+</script>
+
+</body>
+</html>
