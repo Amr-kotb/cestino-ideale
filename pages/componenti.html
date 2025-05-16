@@ -8,52 +8,31 @@
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/var.css">
   <style>
-    :root {
-      --primary-bg: #002751;
-      --primary-color: #ffffff;
-      --highlight: #64ffda;
-      --nav-bg: #021d2d;
-      --glow-1: #64ffda;
-      --glow-2: #007bff;
-    }
-
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
       display: flex;
       height: 100vh;
-      background-color: var(--primary-bg);
-      color: var(--primary-color);
-      transition: background-color 0.5s, color 0.5s;
+      animation: backgroundChange 6s infinite alternate;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
+    @keyframes backgroundChange {
+      0% { background-color: #007bff; }
+      100% { background-color: #002751; }
+    }
+
+    /* Modalità scura */
     .dark-mode {
-      --primary-bg: #f0f0f0;
-      --primary-color: #000000;
-      --nav-bg: #dddddd;
-      --highlight: #0056b3;
-      --glow-1: #007bff;
-      --glow-2: #002751;
-    }
-
-    .dark-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background-color: var(--highlight);
-      color: black;
-      border: none;
-      padding: 10px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
+      background-color: #121212;
+      color: white;
     }
 
     nav {
       width: 60px;
       height: 100vh;
-      background-color: var(--nav-bg);
+      background-color: #021d2d;
       position: fixed;
       top: 0;
       left: 0;
@@ -99,8 +78,7 @@
     }
 
     .nav-links a:hover {
-      background-color: var(--highlight);
-      color: black;
+      background-color: #002781;
     }
 
     .nav-links a i {
@@ -134,7 +112,7 @@
     h1 {
       font-size: 36px;
       text-align: center;
-      color: var(--primary-color);
+      color: #ffffff;
       background-color: #004568;
       padding: 15px 30px;
       border-radius: 25px;
@@ -147,7 +125,7 @@
     .content {
       font-size: 18px;
       line-height: 1.6;
-      color: var(--primary-color);
+      color: #ffffff;
       padding-bottom: 50px;
       max-width: 900px;
       margin: auto;
@@ -155,19 +133,48 @@
 
     .highlight {
       font-weight: bold;
-      color: var(--glow-2);
+      color: #ffffff;
       transition: color 0.3s ease;
     }
 
     .highlight:hover {
-      color: var(--primary-color);
+      color: #ffffff;
     }
+
+    /* Dark mode colors */
+    .dark-mode h1 {
+      background-color: #1e1e1e;
+    }
+
+    .dark-mode .nav-links a {
+      color: white;
+    }
+
+    .dark-mode .nav-links a:hover {
+      background-color: #1a2b41;
+    }
+
+    /* Aggiungere il pulsante per il dark mode nell'angolo in alto a destra */
+    .dark-toggle {
+      font-size: 24px;
+      color: white;
+      background: none;
+      border: none;
+      cursor: pointer;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      transition: color 0.3s ease;
+    }
+
+    .dark-toggle:hover {
+      color: #f39c12;
+    }
+
   </style>
 </head>
 
 <body>
-  <button class="dark-toggle" onclick="toggleDarkMode()">🌓</button>
-
   <nav>
     <div class="hamburger">
       <div></div>
@@ -181,17 +188,22 @@
     </div>
   </nav>
 
+  <!-- Pulsante del tema posizionato nell'angolo in alto a destra -->
+  <button class="dark-toggle" onclick="toggleDarkMode()" id="theme-toggle">
+    <i class="bx bx-moon" id="theme-icon"></i> <!-- Icona di luna iniziale -->
+  </button>
+
   <div class="main-content">
     <h1>Componenti Elettronici del Progetto</h1>
     <div class="content">
-      <p><span class="highlight"> Micro Servo:</span><br>
+      <p><span class="highlight">Micro Servo:</span><br>
         Il micro servo è un piccolo motore che può ruotare in base agli impulsi inviati dalla scheda Arduino UNO. Di solito, ruota da 0° a 180°, ma alcuni modelli arrivano fino a 270°. È composto da tre cavi:<br>
         - <b>Marrone</b> → collegato a <b>GND</b> (terra)<br>
         - <b>Rosso</b> → collegato a <b>5V</b> (alimentazione)<br>
         - <b>Arancione</b> → collegato al <b>pin 9</b> (segnale)
       </p>
 
-      <p><span class="highlight"> Resistenza:</span><br>
+      <p><span class="highlight">Resistenza:</span><br>
         La resistenza è un componente a due terminali usato per limitare la corrente elettrica, dividere la tensione o generare calore. Il suo valore si calcola tramite il codice colori (4 bande):<br>
         1. Prima banda: prima cifra significativa<br>
         2. Seconda banda: seconda cifra significativa<br>
@@ -204,6 +216,16 @@
   <script>
     function toggleDarkMode() {
       document.body.classList.toggle("dark-mode");
+
+      // Cambiare l'icona
+      const icon = document.getElementById('theme-icon');
+      if (document.body.classList.contains('dark-mode')) {
+        icon.classList.remove('bx-moon');
+        icon.classList.add('bx-sun');
+      } else {
+        icon.classList.remove('bx-sun');
+        icon.classList.add('bx-moon');
+      }
     }
   </script>
 </body>

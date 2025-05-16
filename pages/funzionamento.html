@@ -18,6 +18,8 @@
       --nav-bg: #021d2d;
       --glow-1: #64ffda;
       --glow-2: #007bff;
+      --cta-bg: #0056b3;
+      --cta-hover: #00468c;
     }
 
     body {
@@ -29,23 +31,40 @@
       transition: background-color 0.5s, color 0.5s;
     }
 
+    .dark-mode {
+      --primary-bg: #f0f0f0;
+      --primary-color: #000000;
+      --nav-bg: #dddddd;
+      --highlight: #0056b3;
+      --glow-1: #007bff;
+      --glow-2: #002751;
+      --cta-bg: #0056b3;
+      --cta-hover: #00468c;
+    }
+
     nav {
       background-color: var(--nav-bg);
-      padding: 15px;
+      padding: 15px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
     nav a {
-      margin-right: 15px;
+      margin-right: 20px;
       color: var(--primary-color);
       text-decoration: none;
       font-weight: bold;
+      transition: color 0.3s, transform 0.3s;
+      padding: 10px 15px;
+      border-radius: 6px;
     }
 
     nav a:hover {
       color: var(--highlight);
+      background-color: var(--cta-bg);
+      transform: scale(1.05);
     }
 
     .toggle-dark {
@@ -71,35 +90,41 @@
       text-align: center;
       margin-bottom: 30px;
       color: var(--highlight);
+      font-size: 2.5rem;
     }
 
     .step {
       cursor: pointer;
       background-color: var(--nav-bg);
       border-radius: 10px;
-      padding: 15px 20px;
-      margin-bottom: 15px;
-      transition: background-color 0.3s;
+      padding: 20px;
+      margin-bottom: 20px;
+      transition: background-color 0.3s, color 0.3s, transform 0.3s;
       text-decoration: none;
       color: var(--primary-color);
+      font-size: 1.2rem;
       display: block;
     }
 
     .step:hover {
       background-color: var(--highlight);
       color: black;
+      transform: translateY(-5px);
     }
 
-    .dark-mode {
-      --primary-bg: #f0f0f0;
-      --primary-color: #000000;
-      --nav-bg: #dddddd;
-      --highlight: #0056b3;
-      --glow-1: #007bff;
-      --glow-2: #002751;
+    .step h2 {
+      margin: 0;
     }
-</style>
 
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      color: var(--primary-color);
+      background-color: var(--nav-bg);
+      padding: 20px;
+    }
+
+  </style>
 </head>
 
 <body>
@@ -130,14 +155,19 @@
     </a>
   </section>
 
+  <footer>
+    <p>&copy; 2024 - Tutti i diritti riservati</p>
+  </footer>
+
   <script>
     function toggleDarkMode() {
       const body = document.body;
       const icon = document.getElementById("icon");
 
+      // Attiva/disattiva classe dark-mode sul body
       body.classList.toggle("dark-mode");
 
-      // Cambia icona
+      // Cambia l'icona da luna a sole e viceversa
       if (body.classList.contains("dark-mode")) {
         icon.setAttribute("name", "sun");
       } else {
