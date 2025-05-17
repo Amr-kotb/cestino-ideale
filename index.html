@@ -212,7 +212,8 @@
         <!-- Il testo sarà popolato dinamicamente con JavaScript -->
       </div>
       <audio id="audio-message" controls>
-        <source src="/idea.mp3" type="audio/mp3">
+        <source src="./audio/idea.mp3" type="audio/mp3">
+        <source src="./audio/idea.ogg" type="audio/ogg">
         Il tuo browser non supporta l'elemento audio.
       </audio>
       <div class="time-remaining" id="remaining-time"></div>
@@ -274,6 +275,7 @@
       let interval = null;
 
       audio.addEventListener("play", () => {
+        console.log("Audio inizia a suonare");
         clearInterval(interval);
         interval = setInterval(() => {
           const currentTime = audio.currentTime;
@@ -295,6 +297,11 @@
         clearInterval(interval);
         spanParole.forEach(span => span.classList.remove("highlighted"));
       });
+
+      // Gestione degli errori del file audio
+      audio.onerror = function() {
+        console.error("Errore nel caricamento del file audio");
+      };
     };
   </script>
 </body>
