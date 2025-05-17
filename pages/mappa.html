@@ -3,10 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <title>Codice del cestino intelligente</title>
+  <style>
+    @keyframes backgroundChange {
+      0% { background-color: #007bff; }
+      100% { background-color: #002751; }
+    }
 
-    <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 0;
       display: flex;
@@ -14,15 +18,37 @@
       animation: backgroundChange 6s infinite alternate;
     }
 
-    @keyframes backgroundChange {
-      0% { background-color: #007bff; }
-      100% { background-color: #002751; }
+    header {
+      position: fixed;
+      top: 0;
+      left: 60px;
+      right: 0;
+      height: 50px;
+      background-color: #002751;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      color: white;
+      z-index: 10;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+
+    header a {
+      color: #ffffff;
+      text-decoration: none;
+      margin-right: 20px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    header a:hover {
+      color: #007bff;
     }
 
     nav {
       width: 60px;
       height: 100vh;
-      background-color: #021d2d;
+      background-color: #002751;
       position: fixed;
       top: 0;
       left: 0;
@@ -64,10 +90,11 @@
       text-decoration: none;
       padding: 15px;
       box-sizing: border-box;
-      transition: margin-right 2s, color 1s;    }
+      transition: background-color 0.3s;
+    }
 
     .nav-links a:hover {
-      background-color: #002781;
+      background-color: #0056b3;
     }
 
     .nav-links a i {
@@ -88,66 +115,27 @@
 
     .main-content {
       margin-left: 60px;
-      padding: 20px;
+      padding: 70px 20px 20px;
       flex-grow: 1;
       transition: margin-left 0.3s ease;
       width: 100%;
+      display: flex;
     }
 
     nav:hover ~ .main-content {
       margin-left: 220px;
     }
 
-    h1 {
-      font-size: 36px;
-      text-align: center;
-      color: #ffffff;
-      background-color: #004568;
-      padding: 15px 30px;
-      border-radius: 25px;
-      margin: 30px auto;
-      width: auto;
-      max-width: 80%;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    }
-
-    .content {
-      font-size: 18px;
-      line-height: 1.6;
-      color: #ffffff;
-      padding-bottom: 50px;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    .highlight {
-      font-weight: bold;
-      color: #011932;
-      transition: color 0.3s ease;
-    }
-
-    .highlight:hover {
-      color: #ffffff;
-    }
-  </style>
-
-  
-  <style>
-    body {
-      display: flex;
-      margin: 0;
-      font-family: sans-serif;
-    }
     .diagram {
-      width: 35%;
-      background-color: #f0f0f0;
+      width: 30%;
+      background-color: #f8f9fa;
       padding: 20px;
       border-right: 2px solid #ccc;
-      height: 100vh;
       overflow-y: auto;
     }
+
     .code {
-      width: 65%;
+      width: 70%;
       background-color: #ffffff;
       color: black;
       padding: 20px;
@@ -155,18 +143,26 @@
       height: 100vh;
       font-family: monospace;
     }
+
     .block {
-      background-color: #d3eaff;
-      border: 2px solid #0077cc;
+      background-color: #e0f0ff;
+      border: 2px solid #007bff;
       padding: 12px;
       margin-bottom: 10px;
       cursor: pointer;
       border-radius: 6px;
       text-align: center;
+      transition: background-color 0.2s;
     }
+
+    .block:hover {
+      background-color: #d0e8ff;
+    }
+
     .highlight {
-      background-color: yellow;
+      background-color: #ffff99;
     }
+
     pre {
       white-space: pre-wrap;
     }
@@ -174,34 +170,86 @@
 </head>
 <body>
 
-<div class="diagram">
-  <div class="block" onclick="highlight('setup')">🔧 Setup</div>
-  <div class="block" onclick="highlight('loop')">🔄 Inizio loop</div>
-  <div class="block" onclick="highlight('change')">🕒 Cambio tipo rifiuto</div>
-  <div class="block" onclick="highlight('measure')">📏 Misura distanza</div>
-  <div class="block" onclick="highlight('detect')">✅ Primo rilevamento</div>
-  <div class="block" onclick="highlight('servo')">🚮 Azione servo/buzzer</div>
-  <div class="block" onclick="highlight('close')">🛑 Servo chiuso</div>
-</div>
+<!-- Barra laterale -->
+<nav>
+  <div class="hamburger">
+    <div></div><div></div><div></div>
+  </div>
+  <div class="nav-links">
+    <a href="/pages/funzionamento.html"><i>🔙</i><span>Indietro</span></a>
+    <a href="/index.html"><i>🏠</i><span>Home</span></a>
 
-<div class="code">
-<pre>
+  </div>
+</nav>
+
+
+<!-- Contenuti -->
+<div class="main-content">
+  <div class="diagram">
+    <div class="block" onclick="highlight('includes')">📚 Librerie</div>
+    <div class="block" onclick="highlight('defines')">🔌 Definizioni pin</div>
+    <div class="block" onclick="highlight('objects')">🛠️ Oggetti</div>
+    <div class="block" onclick="highlight('variables')">📊 Variabili</div>
+    <div class="block" onclick="highlight('setup')">🔧 Setup</div>
+    <div class="block" onclick="highlight('loop')">🔄 Loop principale</div>
+    <div class="block" onclick="highlight('change')">🔄 Cambio tipo rifiuto</div>
+    <div class="block" onclick="highlight('distance')">📏 Misura distanza</div>
+    <div class="block" onclick="highlight('selection')">✅ Selezione rifiuto</div>
+    <div class="block" onclick="highlight('action')">🚮 Azione servo/buzzer</div>
+  </div>
+
+  <div class="code">
+    <pre>
+<span id="includes">
+#include &lt;LiquidCrystal.h&gt;
+#include &lt;Servo.h&gt;
+</span>
+
+<span id="defines">
+#define buzzerPin 13
+#define rsLCD 12
+#define eLCD 11
+#define db4LCD 10
+#define db5LCD 9
+#define db6LCD 8
+#define db7LCD 7
+#define SERVO 6
+#define rLED A0
+#define vLED A1
+#define bLED A2
+#define trigPin 2
+#define echoPin 3
+</span>
+
+<span id="objects">
+LiquidCrystal lcd(rsLCD, eLCD, db4LCD, db5LCD, db6LCD, db7LCD);
+Servo myServo;
+</span>
+
+<span id="variables">
+bool statoBuzzer = 0;
+const int distanzaLimite = 25;
+String tipiRifiuto[] = {"Carta", "Plastica", "Indiff.", "Umido", "Vetro", "Lattine"};
+int indiceRifiuto = 0;
+bool rifiutoFissato = false;
+unsigned long tempoUltimoCambio = 0;
+const unsigned long intervalloCambio = 3000;
+</span>
+
 <span id="setup">
 void setup() {
-  lcd.begin(16, 2);                     // Inizializza LCD
-  Serial.begin(9600);                   // Avvia comunicazione seriale
-  lcd.setCursor(0, 0);                  // Imposta il cursore sulla prima riga
-  lcd.print("Tipo rifiuto:");           // Scrive il titolo
-  lcd.setCursor(0, 1);                  // Seconda riga
-  lcd.print(tipiRifiuto[indiceRifiuto]); // Mostra il primo tipo
-
-  myServo.attach(9, 500, 2500);         // Collega il servo al pin 9
-  myServo.write(0);                     // Posizione chiusa
-
-  pinMode(trigPin, OUTPUT);            // Trigger come uscita
-  pinMode(echoPin, INPUT);             // Echo come ingresso
-  pinMode(buzzerPin, OUTPUT);          // Buzzer in uscita
-  pinMode(ledPin, OUTPUT);             // LED in uscita
+  lcd.begin(16, 2);
+  Serial.begin(9600);
+  lcd.setCursor(0, 0);
+  lcd.print("Tipo rifiuto:");
+  lcd.setCursor(0, 1);
+  lcd.print(tipiRifiuto[indiceRifiuto]);
+  myServo.attach(SERVO, 500, 2500);
+  myServo.write(0);
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+  pinMode(buzzerPin, OUTPUT);
+  pinMode(rLED, OUTPUT);
 }
 </span>
 
@@ -211,66 +259,61 @@ void loop() {
 
 <span id="change">
   if (!rifiutoFissato && millis() - tempoUltimoCambio >= intervalloCambio) {
-    indiceRifiuto = (indiceRifiuto + 1) % 6;  // Cambia tipo rifiuto
+    indiceRifiuto = (indiceRifiuto + 1) % 6;
     lcd.setCursor(0, 1);
-    lcd.print("                ");           // Cancella riga
+    lcd.print("                ");
     lcd.setCursor(0, 1);
-    lcd.print(tipiRifiuto[indiceRifiuto]);   // Mostra nuovo tipo
-    tempoUltimoCambio = millis();            // Reset timer
+    lcd.print(tipiRifiuto[indiceRifiuto]);
+    tempoUltimoCambio = millis();
   }
 </span>
 
-<span id="measure">
+<span id="distance">
   long durata, distanza;
-  digitalWrite(trigPin, LOW);          // Pulizia segnale
+  digitalWrite(trigPin, LOW);
   delayMicroseconds(2);
-  digitalWrite(trigPin, HIGH);         // Invia impulso
+  digitalWrite(trigPin, HIGH);
   delayMicroseconds(10);
   digitalWrite(trigPin, LOW);
-  durata = pulseIn(echoPin, HIGH);     // Misura eco
-  distanza = durata * 0.034 / 2;       // Calcolo distanza in cm
+  durata = pulseIn(echoPin, HIGH);
+  distanza = durata * 0.034 / 2;
 </span>
 
-<span id="detect">
+<span id="selection">
   if (!rifiutoFissato && distanza > 0 && distanza <= distanzaLimite) {
-    rifiutoFissato = true;                   // Blocca tipo scelto
+    rifiutoFissato = true;
     lcd.clear();
     lcd.setCursor(0, 0);
-    lcd.print("Rifiuto scelto:");           // Conferma scelta
+    lcd.print("Rifiuto scelto:");
     lcd.setCursor(0, 1);
     lcd.print(tipiRifiuto[indiceRifiuto]);
   }
 </span>
 
-<span id="servo">
+<span id="action">
   if (distanza > 0 && distanza <= distanzaLimite) {
-    myServo.write(90);                      // Apre il coperchio
-
+    myServo.write(90);
     if (statoBuzzer == 0) {
       for (int i = 0; i < 5; i++) {
-        tone(buzzerPin, 600);               // Suono
-        digitalWrite(ledPin, HIGH);         // LED acceso
+        tone(buzzerPin, 600);
+        analogWrite(rLED, 255);
         delay(100);
-        noTone(buzzerPin);                  // Silenzio
-        digitalWrite(ledPin, LOW);          // LED spento
+        noTone(buzzerPin);
+        analogWrite(rLED, 0);
         delay(100);
       }
-      statoBuzzer = 1;                      // Evita ripetizione
+      statoBuzzer = 1;
     }
-
-    delay(2000);                            // Attesa
+    delay(2000);
+  } else {
+    myServo.write(0);
+    statoBuzzer = 0;
   }
-</span>
-
-<span id="close">
-  else {
-    myServo.write(0);                       // Chiude coperchio
-    statoBuzzer = 0;                        // Resetta stato buzzer
-  }
-  delay(500);                               // Pausa ciclo
+  delay(500);
 }
 </span>
-</pre>
+    </pre>
+  </div>
 </div>
 
 <script>
