@@ -42,6 +42,7 @@
       max-width: 500px;
       border-radius: 10px;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      display: none; /* Nasconde inizialmente */
     }
 
     .payment-confirmation h2 {
@@ -94,10 +95,23 @@
       background-color: #2ecc71;
     }
 
-    .loading {
-      font-size: 50px;
+    .loading-screen {
+      font-size: 22px;
       color: #27ae60;
-      display: none;
+      text-align: center;
+      display: block;
+    }
+
+    .loading-screen .spinner {
+      font-size: 40px;
+      animation: spin 1s linear infinite;
+      display: block;
+      margin: 20px auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
   </style>
 </head>
@@ -105,31 +119,33 @@
 
 <!-- Container principale -->
 <div class="container">
-  <div class="payment-confirmation">
-    <!-- Icona di successo -->
+  <!-- Schermata di caricamento -->
+  <div class="loading-screen" id="loadingScreen">
+    <div class="spinner">&#x1F310;</div>
+    <p>Caricamento in corso...</p>
+  </div>
+
+  <!-- Blocco di conferma nascosto inizialmente -->
+  <div class="payment-confirmation" id="confirmationBox">
     <div class="success-icon">
-      &#10004; <!-- Segno di spunta -->
+      &#10004;
     </div>
     
     <h2>Pagamento Completato!</h2>
-    <h3>prodotto 4</h3>
     <p>Il tuo pagamento è stato effettuato con successo.</p>
     
-    <!-- Dettagli pagamento -->
     <div class="details">
       <h4>Dettagli del pagamento:</h4>
-      <p><strong>Importo:</strong> €199.99</p>
-      <p><strong>Metodo di pagamento:</strong> Visa</p>
-      <p><strong>Data del pagamento:</strong> 13 Maggio 2025</p>
+      <p><strong>Importo:</strong> €49.99</p>
+      <p><strong>Metodo di pagamento:</strong> <span id="metodoPagamento"></span></p>
+      <p><strong>Data del pagamento:</strong> <span id="dataPagamento"></span></p>
       <p><strong>ID Transazione:</strong> #XYZ123456789</p>
     </div>
     
-    <!-- Pulsante per tornare alla pagina principale -->
     <a href="../index.html" class="back-button" onclick="showLoading()">Torna alla home</a>
     
-    <!-- Animazione di caricamento -->
     <div class="loading" id="loading">
-      &#x231b; <!-- Icona di orologio -->
+      &#x231b;
     </div>
   </div>
 </div>
@@ -138,10 +154,27 @@
   function showLoading() {
     const loading = document.getElementById('loading');
     loading.style.display = 'block';
-    setTimeout(function() {
-      window.location.href = 'index.html'; // Redirige alla home dopo 2 secondi
-    }, 2000); // tempo per la simulazione del caricamento
+    setTimeout(function () {
+      window.location.href = '../index.html';
+    }, 2000);
   }
+
+  // Mostra il blocco di conferma dopo il caricamento simulato
+  document.addEventListener("DOMContentLoaded", function () {
+    const oggi = new Date();
+    const opzioniData = { day: 'numeric', month: 'long', year: 'numeric' };
+    const dataFormattata = oggi.toLocaleDateString('it-IT', opzioniData);
+
+    const metodo = "Visa";
+
+    // Simula caricamento iniziale di 3 secondi
+    setTimeout(function () {
+      document.getElementById('loadingScreen').style.display = 'none';
+      document.getElementById('confirmationBox').style.display = 'block';
+      document.getElementById('dataPagamento').textContent = dataFormattata;
+      document.getElementById('metodoPagamento').textContent = metodo;
+    }, 3000);
+  });
 </script>
 
 </body>

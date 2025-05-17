@@ -104,6 +104,8 @@
       height: 34px;
       margin-top: 5px;
       filter: drop-shadow(0 0 1px #000);
+      opacity: 0.3; /* Nasconde i loghi di default */
+      transition: opacity 0.3s ease;
     }
 
     .submit-btn {
@@ -119,6 +121,25 @@
 
     .submit-btn:hover {
       background: #2ecc71;
+    }
+
+    /* Pulsante "Procedi con il pagamento" */
+    .cta-button {
+      display: inline-block;
+      padding: 12px 25px;
+      font-size: 18px;
+      color: white;
+      background-color: #27ae60;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background-color 0.3s, transform 0.2s;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      margin-top: 20px;
+    }
+
+    .cta-button:hover {
+      background-color: #2ecc71;
+      transform: scale(1.05);
     }
   </style>
 </head>
@@ -162,13 +183,12 @@
       </div>
 
       <div class="col">
-        <h3 class="title">prodotto 4</h3>
         <h4 class="title">Dati della carta</h4>
         <div class="inputBox">
           <span>Carte accettate:</span>
           <img src="https://upload.wikimedia.org/wikipedia/commons/1/16/Former_Visa_%28company%29_logo.svg" alt="Visa">
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/999px-Mastercard-logo.svg.png" alt="Mastercard">
-          <img src="data:image/png;base64,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" alt="American Express">
+          <img src="https://www.svgrepo.com/show/49021/american-express-logo.svg" alt="American Express">
         </div>
         <div class="inputBox">
           <span>Nome sulla carta:</span>
@@ -180,9 +200,8 @@
         </div>
         <div class="inputBox">
           <span>Scadenza:</span>
-          <input type="text" placeholder="MM/AA" maxlength="5" pattern="\d{2}/\d{2}">
+          <input type="text" id="expiry-date" placeholder="MM/AA" maxlength="5" pattern="\d{2}/\d{2}">
         </div>
-
         <div class="flex">
           <div class="inputBox">
             <span>CVV:</span>
@@ -190,17 +209,14 @@
           </div>
         </div>
       </div>
-    
     </div>
 
-    <div><a class="cta-btn" href="../procedi-pagamenti/procedi4.html">procedi con il pagamento</a></div>
-
+    <!-- Pulsante aggiornato -->
+    <div style="text-align: center;">
+      <a href="../procedi-pagamenti/procedi4.html" class="cta-button">Procedi con il pagamento</a>
+    </div>
   </form>
-
-</div>    
-
-
-<!-- Script per riconoscimento della carta -->
+</div>
 <script>
   const cardNumberInput = document.getElementById("card-number");
 
@@ -209,24 +225,17 @@
     value = value.match(/.{1,4}/g)?.join(" ") ?? "";
     e.target.value = value;
 
-    // Riconoscimento tipo carta
-    const cardBrand = document.querySelector(".inputBox span[for='card-brand']");
+    // Nascondi tutti i loghi
     const cardLogos = document.querySelectorAll(".inputBox img");
+    cardLogos.forEach(logo => logo.style.opacity = "0.3");
 
-    // Nascondi tutte le immagini di carte
-    cardLogos.forEach(logo => logo.style.display = "none");
-
+    // Riconosci il tipo di carta
     if (/^4/.test(value)) {
-      cardBrand.textContent = "Carta: VISA";
-      document.querySelector("img[alt='Visa']").style.display = "block";
+      document.querySelector("img[alt='Visa']").style.opacity = "1"; // Mostra Visa
     } else if (/^5[1-5]/.test(value)) {
-      cardBrand.textContent = "Carta: MasterCard";
-      document.querySelector("img[alt='Mastercard']").style.display = "block";
+      document.querySelector("img[alt='Mastercard']").style.opacity = "1"; // Mostra Mastercard
     } else if (/^3[47]/.test(value)) {
-      cardBrand.textContent = "Carta: American Express";
-      document.querySelector("img[alt='American Express']").style.display = "block";
-    } else {
-      cardBrand.textContent = "Carta: Sconosciuta";
+      document.querySelector("img[alt='American Express']").style.opacity = "1"; // Mostra American Express
     }
   });
 </script>
@@ -237,49 +246,30 @@
     particles: {
       number: {
         value: 50,
-        density: {
-          enable: true,
-          value_area: 800
-        }
+        density: { enable: true, value_area: 800 }
       },
-      color: {
-        value: "#ffffff"
-      },
+      color: { value: "#ffffff" },
       shape: {
-        type: "circle",
-        stroke: {
-          width: 0,
-          color: "#000000"
-        }
+        type: "triangle", // Cambia la forma in triangolo
+        stroke: { width: 0, color: "#000000" }
       },
       opacity: {
         value: 0.5,
         random: true,
-        anim: {
-          enable: true,
-          speed: 1,
-          opacity_min: 0.1,
-          sync: false
-        }
+        anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false }
       },
       size: {
-        value: 3,
+        value: 10,  // Modifica la dimensione delle particelle
         random: true,
-        anim: {
-          enable: true,
-          speed: 40,
-          size_min: 0.1,
-          sync: false
-        }
+        anim: { enable: true, speed: 40, size_min: 0.1, sync: false }
       },
       move: {
         enable: true,
-        speed: 3,
+        speed: 2,  // Modifica la velocità di movimento
         direction: "none",
-        random: false,
-        straight: false,
+        random: true,
         out_mode: "out",
-        bounce: false
+        attract: { enable: true, rotateX: 600, rotateY: 1200 }
       }
     },
     interactivity: {
@@ -287,14 +277,16 @@
       events: {
         onhover: {
           enable: true,
-          mode: "repulse"
+          mode: "repulse"  // Effetto di respingimento delle particelle al passaggio del mouse
         },
-        onclick: {
-          enable: true,
-          mode: "push"
-        }
+        onclick: { enable: true, mode: "push" }
+      },
+      modes: {
+        repulse: { distance: 100, duration: 0.4 },
+        push: { particles_nb: 4 }
       }
-    }
+    },
+    retina_detect: true
   });
 </script>
 

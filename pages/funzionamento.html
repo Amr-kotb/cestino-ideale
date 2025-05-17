@@ -7,8 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Funzionamento del Cestino Intelligente</title>
   <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-  <link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" href="../css/var.css">
 
   <style>
     :root {
@@ -29,6 +27,9 @@
       margin: 0;
       padding: 0;
       transition: background-color 0.5s, color 0.5s;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
     .dark-mode {
@@ -80,30 +81,56 @@
       transform: scale(1.2);
     }
 
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
     #funzionamento {
-      padding: 30px;
-      max-width: 800px;
-      margin: auto;
+      max-width: 1000px;
+      text-align: center;
     }
 
     h1 {
-      text-align: center;
-      margin-bottom: 30px;
       color: var(--highlight);
       font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+
+    p.description {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      max-width: 700px;
+      margin-inline: auto;
+      line-height: 1.6;
+    }
+
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      justify-items: center;
+      margin-top: 20px;
     }
 
     .step {
-      cursor: pointer;
-      background-color: var(--nav-bg);
-      border-radius: 10px;
-      padding: 20px;
-      margin-bottom: 20px;
-      transition: background-color 0.3s, color 0.3s, transform 0.3s;
+      background-color: rgba(0, 162, 255, 0.3);
+      border-radius: 15px;
+      padding: 25px;
+      width: 100%;
+      max-width: 250px;
+      transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
       text-decoration: none;
       color: var(--primary-color);
-      font-size: 1.2rem;
-      display: block;
+      font-size: 1.1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
     }
 
     .step:hover {
@@ -112,18 +139,16 @@
       transform: translateY(-5px);
     }
 
-    .step h2 {
-      margin: 0;
+    .step box-icon {
+      margin-bottom: 10px;
     }
 
     footer {
       text-align: center;
-      margin-top: 40px;
       color: var(--primary-color);
       background-color: var(--nav-bg);
       padding: 20px;
     }
-
   </style>
 </head>
 
@@ -139,21 +164,33 @@
     </button>
   </nav>
 
-  <section id="funzionamento">
-    <h1>Funzionamento e Componenti del Cestino Intelligente</h1>
+  <main>
+    <section id="funzionamento">
+      <h1>Funzionamento e Componenti del Cestino Intelligente</h1>
+      <p class="description">
+        Il nostro cestino funziona in questo modo: tramite un sensore a ultrasuoni, appena l’utente si avvicina a 25 cm, viene inviato un impulso al servomotore che apre il coperchio. Durante l’apertura, il LED RGB lampeggia e il buzzer suona.<br>
+        Tramite il sensore a ultrasuoni è possibile selezionare il tipo di rifiuto. All’avvio, il display LCD mostra ciclicamente i tipi di spazzatura: carta, plastica, indifferenziata, umido, vetro e lattine. Ogni tipo cambia ogni 30 secondi.<br>
+        Quando il sensore rileva un oggetto per la prima volta, il ciclo si blocca e viene fissato il tipo di rifiuto mostrato in quel momento.
+      </p>
 
-    <a href="./componenti.html" class="step">
-      <h2>Componenti</h2>
-    </a>
+      <div class="card-container">
+        <a href="./componenti.html" class="step">
+          <box-icon name="cog" size="lg"></box-icon>
+          <h2>Componenti</h2>
+        </a>
 
-    <a href="./vantaggi.html" class="step">
-      <h2>Vantaggi</h2>
-    </a>
+        <a href="./vantaggi.html" class="step">
+          <box-icon name="award" size="lg"></box-icon>
+          <h2>Vantaggi</h2>
+        </a>
 
-    <a href="./prezzo.html" class="step">
-      <h2>Prezzo</h2>
-    </a>
-  </section>
+        <a href="./prezzo.html" class="step">
+          <box-icon name="credit-card" size="lg"></box-icon>
+          <h2>Prezzo</h2>
+        </a>
+      </div>
+    </section>
+  </main>
 
   <footer>
     <p>&copy; 2024 - Tutti i diritti riservati</p>
@@ -163,16 +200,8 @@
     function toggleDarkMode() {
       const body = document.body;
       const icon = document.getElementById("icon");
-
-      // Attiva/disattiva classe dark-mode sul body
       body.classList.toggle("dark-mode");
-
-      // Cambia l'icona da luna a sole e viceversa
-      if (body.classList.contains("dark-mode")) {
-        icon.setAttribute("name", "sun");
-      } else {
-        icon.setAttribute("name", "moon");
-      }
+      icon.setAttribute("name", body.classList.contains("dark-mode") ? "sun" : "moon");
     }
   </script>
 
