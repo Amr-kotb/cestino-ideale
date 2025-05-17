@@ -100,7 +100,6 @@
     .cta-button:hover {
       background-color: #00ffaa;
     }
-    /* MODIFICA PER IL BOTTONE DARK MODE */
     .dark-toggle {
       position: fixed;
       top: 20px;
@@ -182,7 +181,6 @@
   </style>
 </head>
 <body>
-  <!-- Bottone Dark Mode senza quadrato -->
   <button class="dark-toggle" onclick="toggleDarkMode()" title="Attiva/disattiva dark mode">
     <box-icon name="moon" id="icon" type="solid"></box-icon>
   </button>
@@ -207,6 +205,19 @@
       </div>
       <button class="cta-button" onclick="window.location.href='./pages/prodotti.html'">Scopri di più</button>
     </section>
+
+    <!-- Sezione Audio con testo sincronizzato -->
+    <section class="audio-container">
+      <div class="audio-text" id="highlight-text">
+        <!-- Il testo sarà popolato dinamicamente con JavaScript -->
+      </div>
+      <audio id="audio-message" controls>
+        <source src="/idea.mp3" type="audio/mp3">
+        Il tuo browser non supporta l'elemento audio.
+      </audio>
+      <div class="time-remaining" id="remaining-time"></div>
+    </section>
+    
   </main>
 
   <footer>
@@ -217,10 +228,8 @@
     <section>
       <h2>Seguici</h2>
       <p>
-        <a href="https://www.instagram.com" target="_blank" class="social-icon">Instagram</a>
-        |
-        <a href="https://www.tiktok.com" target="_blank" class="social-icon">TikTok</a>
-        |
+        <a href="https://www.instagram.com" target="_blank" class="social-icon">Instagram</a> |
+        <a href="https://www.tiktok.com" target="_blank" class="social-icon">TikTok</a> |
         <a href="https://www.discord.com" target="_blank" class="social-icon">Discord</a>
       </p>
     </section>
@@ -228,7 +237,6 @@
   </footer>
 
   <script>
-    // Funzione per il Dark Mode Toggle
     function toggleDarkMode() {
       const body = document.body;
       const icon = document.getElementById("icon");
@@ -238,7 +246,6 @@
     }
 
     window.onload = () => {
-      // Applica tema salvato
       if (localStorage.getItem("darkMode") === "true") {
         document.body.classList.add("dark-mode");
       }
@@ -248,13 +255,10 @@
       const remainingDisplay = document.getElementById("remaining-time");
 
       const testo = `La nostra idea è quella di un cestino che sia comodo e che agevoli la vita delle persone. 
-      Il nostro è un cestino intelligente e programmabile.
-       Per programmabile intendiamo la possibilità, tramite un piccolo schermo LCD e un sensore, 
-       di cambiare il tipo di spazzatura che andremo a buttare nel cestino. Questo cestino oltre
-        ad avere uno schermo per visualizzare il tipo di spazzatura da buttare dentro è dotato di: 
-        un led che lampeggia durante l'apertura, un buzzer che suona durante l’apertura, un piccolo
-         motore per farlo aprire e un sensore per farsi che quando qualcuno si avvicina si apre, ma permette 
-         anche di scegliere il tipo di rifiuto.`; 
+      Il nostro è un cestino intelligente e programmabile. Per programmabile intendiamo la possibilità, tramite un piccolo schermo LCD e un sensore, 
+      di cambiare il tipo di spazzatura che andremo a buttare nel cestino. Questo cestino oltre ad avere uno schermo per visualizzare il tipo di spazzatura da buttare dentro è dotato di: 
+      un led che lampeggia durante l'apertura, un buzzer che suona durante l’apertura, un piccolo motore per farlo aprire e un sensore per farsi che quando qualcuno si avvicina si apre, 
+      ma permette anche di scegliere il tipo di rifiuto.`; 
 
       const parole = testo.split(" ");
       textElement.innerHTML = "";
@@ -266,7 +270,6 @@
         return span;
       });
 
-      // Velocità aumentata per migliorare sincronizzazione
       const tempoPerParola = 0.33;
       let interval = null;
 
@@ -283,7 +286,7 @@
 
           const duration = isNaN(audio.duration) ? 0 : audio.duration;
           const remainingTime = Math.max(0, Math.floor(duration - currentTime));
-          remainingDisplay.innerText = remainingTime;
+          remainingDisplay.innerText = `Tempo rimanente: ${remainingTime} secondi`;
         }, 100);
       });
 
