@@ -100,17 +100,23 @@
     .cta-button:hover {
       background-color: #00ffaa;
     }
+    /* MODIFICA PER IL BOTTONE DARK MODE */
     .dark-toggle {
       position: fixed;
       top: 20px;
       right: 20px;
-      background-color: var(--highlight);
-      color: black;
+      background-color: transparent;
       border: none;
-      padding: 10px;
-      border-radius: 6px;
+      padding: 0;
       cursor: pointer;
-      font-weight: bold;
+      font-size: 2rem;
+      color: var(--highlight);
+    }
+    .dark-toggle box-icon {
+      transition: color 0.3s;
+    }
+    .dark-toggle:hover box-icon {
+      color: #fff;
     }
     footer {
       background-color: var(--nav-bg);
@@ -176,7 +182,11 @@
   </style>
 </head>
 <body>
-  <button class="dark-toggle" onclick="toggleDarkMode()" aria-label="Attiva/disattiva modalità scura">🌓</button>
+  <!-- Bottone Dark Mode senza quadrato -->
+  <button class="dark-toggle" onclick="toggleDarkMode()" title="Attiva/disattiva dark mode">
+    <box-icon name="moon" id="icon" type="solid"></box-icon>
+  </button>
+
   <main>
     <header>
       <h1>Ti serve un cestino?</h1>
@@ -196,25 +206,6 @@
         <img src="./img/cestino/ChatGPT_Image_10_mag_2025__13_44_51-removebg-preview.png" alt="Icona cestino destra" class="animated-trash" />
       </div>
       <button class="cta-button" onclick="window.location.href='./pages/prodotti.html'">Scopri di più</button>
-    </section>
-
-    <!-- Sezione Audio -->
-    <section class="audio-container">
-      <h2>Ascolta il nostro messaggio</h2>
-      <div id="audio-text" class="audio-text">
-        <p id="highlight-text">
-          La nostra idea è quella di un cestino che sia comodo e che agevoli la vita delle persone.
-          Il nostro è un <strong>cestino intelligente e programmabile</strong>. Per programmabile intendiamo la possibilità,
-          tramite un piccolo schermo LCD e un sensore, di cambiare il tipo di spazzatura da inserire nel cestino.
-          Questo cestino è dotato di: un <strong>LED lampeggiante</strong> durante l'apertura, un <strong>buzzer</strong> che suona,
-          un <strong>motore</strong> per l'apertura automatica e un <strong>sensore di prossimità</strong>.
-        </p>
-      </div>
-      <audio id="audio-message" controls preload="auto">
-        <source src="/audio/idea.mp3" type="audio/mp3">
-        Il tuo browser non supporta l'elemento audio.
-      </audio>
-      <div id="time-remaining" class="time-remaining">Tempo rimasto: <span id="remaining-time">0</span> sec</div>
     </section>
   </main>
 
@@ -239,8 +230,11 @@
   <script>
     // Funzione per il Dark Mode Toggle
     function toggleDarkMode() {
-      document.body.classList.toggle("dark-mode");
-      localStorage.setItem("darkMode", document.body.classList.contains("dark-mode"));
+      const body = document.body;
+      const icon = document.getElementById("icon");
+      body.classList.toggle("dark-mode");
+      icon.setAttribute("name", body.classList.contains("dark-mode") ? "sun" : "moon");
+      localStorage.setItem("darkMode", body.classList.contains("dark-mode"));
     }
 
     window.onload = () => {
@@ -260,7 +254,7 @@
         ad avere uno schermo per visualizzare il tipo di spazzatura da buttare dentro è dotato di: 
         un led che lampeggia durante l'apertura, un buzzer che suona durante l’apertura, un piccolo
          motore per farlo aprire e un sensore per farsi che quando qualcuno si avvicina si apre, ma permette 
-         anche di scegliere il tipo di rifiuto.`;
+         anche di scegliere il tipo di rifiuto.`; 
 
       const parole = testo.split(" ");
       textElement.innerHTML = "";

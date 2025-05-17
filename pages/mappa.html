@@ -178,10 +178,8 @@
   <div class="nav-links">
     <a href="/pages/funzionamento.html"><i>🔙</i><span>Indietro</span></a>
     <a href="/index.html"><i>🏠</i><span>Home</span></a>
-
   </div>
 </nav>
-
 
 <!-- Contenuti -->
 <div class="main-content">
@@ -201,55 +199,55 @@
   <div class="code">
     <pre>
 <span id="includes">
-#include &lt;LiquidCrystal.h&gt;
-#include &lt;Servo.h&gt;
+#include &lt;LiquidCrystal.h&gt;  // Libreria per il display LCD
+#include &lt;Servo.h&gt;          // Libreria per il controllo del servo motore
 </span>
 
 <span id="defines">
-#define buzzerPin 13
-#define rsLCD 12
-#define eLCD 11
-#define db4LCD 10
-#define db5LCD 9
-#define db6LCD 8
-#define db7LCD 7
-#define SERVO 6
-#define rLED A0
-#define vLED A1
-#define bLED A2
-#define trigPin 2
-#define echoPin 3
+#define buzzerPin 13            // Pin per il buzzer
+#define rsLCD 12                // Pin RS del display LCD
+#define eLCD 11                 // Pin E del display LCD
+#define db4LCD 10               // Pin DB4 del display LCD
+#define db5LCD 9                // Pin DB5 del display LCD
+#define db6LCD 8                // Pin DB6 del display LCD
+#define db7LCD 7                // Pin DB7 del display LCD
+#define SERVO 6                 // Pin del servo motore
+#define rLED A0                 // Pin LED rosso
+#define vLED A1                 // Pin LED verde
+#define bLED A2                 // Pin LED blu
+#define trigPin 2              // Pin del sensore ultrasonico (Trigger)
+#define echoPin 3              // Pin del sensore ultrasonico (Echo)
 </span>
 
 <span id="objects">
-LiquidCrystal lcd(rsLCD, eLCD, db4LCD, db5LCD, db6LCD, db7LCD);
-Servo myServo;
+LiquidCrystal lcd(rsLCD, eLCD, db4LCD, db5LCD, db6LCD, db7LCD);  // Oggetto per il display LCD
+Servo myServo;  // Oggetto per il servo motore
 </span>
 
 <span id="variables">
-bool statoBuzzer = 0;
-const int distanzaLimite = 25;
-String tipiRifiuto[] = {"Carta", "Plastica", "Indiff.", "Umido", "Vetro", "Lattine"};
-int indiceRifiuto = 0;
-bool rifiutoFissato = false;
-unsigned long tempoUltimoCambio = 0;
-const unsigned long intervalloCambio = 3000;
+bool statoBuzzer = 0;                   // Stato del buzzer (acceso/spento)
+const int distanzaLimite = 25;             // Limite di distanza per rilevare un rifiuto
+String tipiRifiuto[] = {"Carta", "Plastica", "Indiff.", "Umido", "Vetro", "Lattine"}; // Array di tipi di rifiuti
+int indiceRifiuto = 0;                            // Indice del tipo di rifiuto selezionato
+bool rifiutoFissato = false;                      // Flag per verificare se il rifiuto è stato selezionato
+unsigned long tempoUltimoCambio = 0;             // Tempo dell'ultimo cambio di tipo rifiuto
+const unsigned long intervalloCambio = 3000;     // Intervallo di tempo per cambiare tipo rifiuto
 </span>
 
 <span id="setup">
 void setup() {
-  lcd.begin(16, 2);
-  Serial.begin(9600);
-  lcd.setCursor(0, 0);
-  lcd.print("Tipo rifiuto:");
-  lcd.setCursor(0, 1);
-  lcd.print(tipiRifiuto[indiceRifiuto]);
-  myServo.attach(SERVO, 500, 2500);
-  myServo.write(0);
-  pinMode(trigPin, OUTPUT);
-  pinMode(echoPin, INPUT);
-  pinMode(buzzerPin, OUTPUT);
-  pinMode(rLED, OUTPUT);
+  lcd.begin(16, 2);                  // Inizializza il display LCD
+  Serial.begin(9600);               // Inizializza la comunicazione seriale
+  lcd.setCursor(0, 0);             // Imposta il cursore sulla prima riga
+  lcd.print("Tipo rifiuto:");     // Mostra il testo "Tipo rifiuto:"
+  lcd.setCursor(0, 1);                    // Imposta il cursore sulla seconda riga
+  lcd.print(tipiRifiuto[indiceRifiuto]);     // Mostra il primo tipo di rifiuto
+  myServo.attach(SERVO, 500, 2500);          // Collega il servo al pin specificato
+  myServo.write(0);                      // Posiziona il servo a 0 gradi
+  pinMode(trigPin, OUTPUT);                // Imposta il pin del trigger come uscita
+  pinMode(echoPin, INPUT);           // Imposta il pin dell'echo come ingresso
+  pinMode(buzzerPin, OUTPUT);         // Imposta il pin del buzzer come uscita
+  pinMode(rLED, OUTPUT);           // Imposta il pin del LED rosso come uscita
 }
 </span>
 
@@ -258,58 +256,62 @@ void loop() {
 </span>
 
 <span id="change">
+  // Cambia tipo di rifiuto ogni intervallo di tempo
   if (!rifiutoFissato && millis() - tempoUltimoCambio >= intervalloCambio) {
-    indiceRifiuto = (indiceRifiuto + 1) % 6;
-    lcd.setCursor(0, 1);
-    lcd.print("                ");
-    lcd.setCursor(0, 1);
-    lcd.print(tipiRifiuto[indiceRifiuto]);
-    tempoUltimoCambio = millis();
-  }
+    indiceRifiuto = (indiceRifiuto + 1) % 6;                  // Seleziona il prossimo tipo di rifiuto
+    lcd.setCursor(0, 1);                                      // Posiziona il cursore sulla seconda riga
+    lcd.print("                ");                            // Cancella la riga
+    lcd.setCursor(0, 1);                                      // Ritorna al primo carattere della seconda riga
+    lcd.print(tipiRifiuto[indiceRifiuto]);                     // Mostra il nuovo tipo di rifiuto
+    tempoUltimoCambio = millis();                             // Aggiorna il tempo dell'ultimo cambio
+  } 
 </span>
 
 <span id="distance">
   long durata, distanza;
+  // Misura la distanza utilizzando il sensore ultrasonico
   digitalWrite(trigPin, LOW);
   delayMicroseconds(2);
   digitalWrite(trigPin, HIGH);
   delayMicroseconds(10);
   digitalWrite(trigPin, LOW);
-  durata = pulseIn(echoPin, HIGH);
-  distanza = durata * 0.034 / 2;
+  durata = pulseIn(echoPin, HIGH);                  // Calcola la durata dell'eco
+  distanza = durata * 0.034 / 2;                  // Calcola la distanza in cm
 </span>
 
 <span id="selection">
+  // Se la distanza è valida, seleziona il rifiuto
   if (!rifiutoFissato && distanza > 0 && distanza <= distanzaLimite) {
-    rifiutoFissato = true;
-    lcd.clear();
-    lcd.setCursor(0, 0);
-    lcd.print("Rifiuto scelto:");
-    lcd.setCursor(0, 1);
-    lcd.print(tipiRifiuto[indiceRifiuto]);
+    rifiutoFissato = true;                // Imposta il rifiuto come selezionato
+    lcd.clear();                         // Cancella il display LCD
+    lcd.setCursor(0, 0);                 // Posiziona il cursore sulla prima riga
+    lcd.print("Rifiuto scelto:");          // Mostra il testo "Rifiuto scelto:"
+    lcd.setCursor(0, 1);                     // Posiziona il cursore sulla seconda riga
+    lcd.print(tipiRifiuto[indiceRifiuto]);        // Mostra il tipo di rifiuto selezionato
   }
 </span>
 
 <span id="action">
+  // Azione del servo e del buzzer quando un rifiuto è selezionato
   if (distanza > 0 && distanza <= distanzaLimite) {
-    myServo.write(90);
+    myServo.write(90);               // Muove il servo a 90 gradi
     if (statoBuzzer == 0) {
       for (int i = 0; i < 5; i++) {
-        tone(buzzerPin, 600);
-        analogWrite(rLED, 255);
+        tone(buzzerPin, 600);             // Emessa un suono dal buzzer
+        analogWrite(rLED, 255);            // Accende il LED rosso
         delay(100);
-        noTone(buzzerPin);
-        analogWrite(rLED, 0);
+        noTone(buzzerPin);                // Spegne il buzzer
+        analogWrite(rLED, 0);                // Spegne il LED rosso
         delay(100);
       }
-      statoBuzzer = 1;
+      statoBuzzer = 1;               // Imposta lo stato del buzzer su acceso
     }
-    delay(2000);
+    delay(2000);                // Attende 2 secondi
   } else {
-    myServo.write(0);
-    statoBuzzer = 0;
+    myServo.write(0);          // Riporta il servo a 0 gradi
+    statoBuzzer = 0;               // Imposta lo stato del buzzer su spento
   }
-  delay(500);
+  delay(500);           // Attende mezzo secondo
 }
 </span>
     </pre>
