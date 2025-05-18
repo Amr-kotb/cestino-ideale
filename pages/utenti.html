@@ -229,6 +229,16 @@
     #reviews-form {
       transition: opacity 0.5s ease;
     }
+
+    #user-count-section {
+      text-align: center;
+      font-size: 3rem;  /* Aumenta la dimensione del testo */
+      font-weight: bold;
+      color: var(--highlight); /* Colore per il contatore */
+      animation: glow 2s ease-in-out infinite alternate; /* Effetto lampeggiante */
+      padding: 20px 0;
+      margin-top: 20px; /* Posiziona il contatore in alto */
+    }
   </style>
 </head>
 <body>
@@ -245,6 +255,11 @@
       <a href="/index.html">🏠Home</a>
       <a href="/pages/faq.html">FAQ</a>
     </nav>
+
+    <!-- Contatore utenti in alto -->
+    <section id="user-count-section">
+      <h3>Numero di utenti: <span id="user-count">0</span></h3>
+    </section>
 
     <section class="animated-section" id="impact-section">
       <h2 class="glow-title">Recensioni dei Clienti</h2>
@@ -361,9 +376,25 @@
       }, 2000);
     }
 
+    function animateUserCount() {
+      let count = 0;
+      const maxCount = 404;
+      const countElement = document.getElementById("user-count");
+
+      const interval = setInterval(() => {
+        count++;
+        countElement.textContent = count;
+
+        if (count >= maxCount) {
+          clearInterval(interval);
+        }
+      }, 10); // Regola la velocità dell'animazione
+    }
+
     window.onload = () => {
       loadReview();
-      setInterval(loadReview, 5000); // Cambia recensione ogni 5 secondi se visione singola
+      setInterval(loadReview, 5000); // Cambia recensione ogni 5 secondi
+      animateUserCount(); // Avvia l'animazione del contatore
     };
   </script>
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Recensioni - Cestino Ideale</title>
+  <title>FAQ - Cestino Ideale</title>
   <link rel="icon" href="./img/cestino/ChatGPT_Image_10_mag_2025__13_44_51-removebg-preview.png" type="image/x-icon">
   <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
   <style>
@@ -112,18 +112,18 @@
       padding: 2rem;
     }
 
-    #reviews-container {
+    #faq-container {
       background-color: #021d2d;
       border-radius: 8px;
       padding: 20px;
       max-width: 700px;
       margin: 20px auto;
-      text-align: center;
+      text-align: left;
       font-size: 1.2rem;
       transition: max-height 0.5s ease-in-out;
     }
 
-    #reviews-container.scrollable {
+    #faq-container.scrollable {
       max-height: 400px;
       overflow-y: auto;
       scroll-behavior: smooth;
@@ -131,8 +131,7 @@
       border: 1px solid var(--highlight);
     }
 
-    .review-item {
-      text-align: left;
+    .faq-item {
       cursor: pointer;
       background-color: rgba(255, 255, 255, 0.05);
       padding: 10px;
@@ -141,18 +140,18 @@
       transition: background-color 0.3s;
     }
 
-    .review-item:hover {
+    .faq-item:hover {
       background-color: rgba(255, 255, 255, 0.1);
     }
 
-    .review-answer {
+    .faq-answer {
       display: none;
       padding-top: 5px;
       font-size: 1rem;
       color: var(--primary-color);
     }
 
-    .review-answer.active {
+    .faq-answer.active {
       display: block;
     }
 
@@ -193,7 +192,7 @@
       text-align: center;
     }
 
-    #user-review {
+    #user-faq {
       width: 100%;
       height: 100px;
       padding: 10px;
@@ -201,32 +200,22 @@
       border-radius: 8px;
       border: 2px solid #ccc;
       background-color: #021d2d;
+      color: white;
       transition: all 0.3s ease;
     }
 
-    #user-review:focus {
+    #user-faq:focus {
       border-color: var(--highlight);
       background-color: #e6f7f7;
       box-shadow: 0 0 10px var(--highlight);
-    }
-
-    button {
-      margin-top: 10px;
-      background-color: var(--highlight);
-      color: rgb(255, 4, 4);
-      padding: 12px 20px;
-      border: none;
-      border-radius: 6px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background-color 0.3s;
+      color: black;
     }
 
     button:hover {
       background-color: #007bff;
     }
 
-    #reviews-form {
+    #faq-form {
       transition: opacity 0.5s ease;
     }
   </style>
@@ -238,33 +227,34 @@
 
   <main>
     <header>
-      <h1>Recensioni - Cestino Ideale</h1>
+      <h1>FAQ - Cestino Ideale</h1>
     </header>
     <nav>
       <a href="/index.html">🏠Home</a>
-      <a href="/pages/utenti.html">utenti</a>
+      <a href="/pages/utenti.html">Utenti</a>
     </nav>
 
     <section class="animated-section" id="impact-section">
-      <h2 class="glow-title">Recensioni dei Clienti</h2>
-      <div id="reviews-container">
-        <h3 id="review-question"></h3>
-        <p id="review-answer"></p>
+      <h2 class="glow-title">FAQ</h2>
+      <div id="faq-container">
+        <h3 id="faq-question"></h3>
+        <p id="faq-answer"></p>
       </div>
 
-      <button class="cta-button" onclick="toggleReviews()">Visualizza tutte le recensioni</button>
+      <button class="cta-button" onclick="toggleFAQ()">Visualizza tutte le FAQ</button>
 
-      <div id="reviews-form">
-        <h3>Lascia una recensione</h3>
-        <textarea id="user-review" placeholder="Scrivi la tua recensione qui..."></textarea>
-        <button onclick="submitReview()">Invia recensione</button>
+      <div id="faq-form">
+        <h3>Lascia una domanda</h3>
+        <textarea id="user-faq" placeholder="Scrivi la tua domanda qui..."></textarea>
+        <button class="cta-button" onclick="submitFAQ()">Invia domanda</button>
       </div>
+
 
       <div id="spinner-container">
         <div class="spinner"></div>
         <p>Caricamento...</p>
       </div>
-      <div id="feedback-message">Grazie per la tua recensione!</div>
+      <div id="feedback-message">Grazie per la tua domanda!</div>
     </section>
   </main>
 
@@ -292,77 +282,78 @@
       localStorage.setItem("darkMode", body.classList.contains("dark-mode"));
     }
 
-    const reviewData = [
-      { review: "Ottimo prodotto, davvero soddisfatto!" },
-      { review: "Servizio veloce e affidabile, consiglio vivamente!" },
-      { review: "Mi piace molto, qualità eccellente!" },
-      { review: "Buon acquisto, ma il packaging potrebbe essere migliorato." },
-      { review: "Funziona benissimo, molto utile nella vita quotidiana!" }
+    const faqData = [
+      { question: "Cos'è Cestino Ideale?", answer: "Cestino Ideale è un dispositivo per il riciclo intelligente." },
+      { question: "Come funziona?", answer: "Funziona grazie a sensori che riconoscono i materiali." },
+      { question: "È facile da usare?", answer: "Sì, è estremamente intuitivo e facile da usare." },
+      { question: "Quali materiali posso riciclare?", answer: "Puoi riciclare plastica, carta, vetro, e metallo." },
+      { question: "C'è un'app per monitorarlo?", answer: "Sì, l'app ti permette di controllare il funzionamento in tempo reale." }
     ];
 
-    let currentReviewIndex = 0;
-    let reviewVisible = false;
+    let currentFAQIndex = 0;
+    let faqVisible = false;
 
-    function loadReview() {
-      const reviewQuestion = document.getElementById('review-question');
-      const reviewAnswer = document.getElementById('review-answer');
-      reviewQuestion.textContent = "Recensione:";
-      reviewAnswer.textContent = reviewData[currentReviewIndex].review;
-      currentReviewIndex = (currentReviewIndex + 1) % reviewData.length;
+    function loadFAQ() {
+      const faqQuestion = document.getElementById('faq-question');
+      const faqAnswer = document.getElementById('faq-answer');
+      faqQuestion.textContent = faqData[currentFAQIndex].question;
+      faqAnswer.textContent = faqData[currentFAQIndex].answer;
+      currentFAQIndex = (currentFAQIndex + 1) % faqData.length;
     }
 
-    function toggleReviews() {
-      const reviewsContainer = document.getElementById('reviews-container');
+    function toggleFAQ() {
+      const faqContainer = document.getElementById('faq-container');
       const toggleButton = document.querySelector('.cta-button');
 
-      if (reviewVisible) {
-        reviewsContainer.classList.remove("scrollable");
-        reviewsContainer.innerHTML = "<h3 id='review-question'></h3><p id='review-answer'></p>";
-        loadReview();
-        toggleButton.textContent = "Visualizza tutte le recensioni";
-        reviewVisible = false;
+      if (faqVisible) {
+        faqContainer.classList.remove("scrollable");
+        faqContainer.innerHTML = "<h3 id='faq-question'></h3><p id='faq-answer'></p>";
+        loadFAQ();
+        toggleButton.textContent = "Visualizza tutte le FAQ";
+        faqVisible = false;
       } else {
-        let reviewsHtml = "";
-        reviewData.forEach((item, index) => {
-          reviewsHtml += `
-            <div class="review-item">
-              <p>${item.review}</p>
+        let faqHtml = "";
+        faqData.forEach((item, index) => {
+          faqHtml += `
+            <div class="faq-item" onclick="this.querySelector('.faq-answer').classList.toggle('active')">
+              <p>${item.question}</p>
+              <div class="faq-answer">${item.answer}</div>
             </div>
           `;
         });
-        reviewsContainer.innerHTML = reviewsHtml;
-        reviewsContainer.classList.add("scrollable");
-        toggleButton.textContent = "Visualizza di meno";
-        reviewVisible = true;
+        faqContainer.innerHTML = faqHtml;
+        faqContainer.classList.add("scrollable");
+        toggleButton.textContent = "Nascondi le FAQ";
+        faqVisible = true;
       }
     }
 
-    function submitReview() {
-      const reviewText = document.getElementById('user-review').value;
+    function submitFAQ() {
+      const faqText = document.getElementById('user-faq').value;
       const spinnerContainer = document.getElementById("spinner-container");
       const feedbackMessage = document.getElementById("feedback-message");
-      const reviewInputContainer = document.getElementById('reviews-form');
+      const faqInputContainer = document.getElementById('faq-form');
 
-      if (!reviewText) {
-        alert("Per favore scrivi una recensione!");
+      if (!faqText.trim()) {
+        alert("Per favore scrivi una domanda!");
         return;
       }
 
       spinnerContainer.style.display = "block";
       feedbackMessage.style.display = "none";
-      reviewInputContainer.style.display = "none";
+      faqInputContainer.style.display = "none";
 
       setTimeout(() => {
         spinnerContainer.style.display = "none";
         feedbackMessage.style.display = "block";
-        reviewInputContainer.style.display = "block";
-        document.getElementById('user-review').value = "";
+        faqInputContainer.style.display = "block";
+        document.getElementById('user-faq').value = "";
       }, 2000);
     }
 
     window.onload = () => {
-      loadReview();
-      setInterval(loadReview, 5000); // Cambia recensione ogni 5 secondi se visione singola
+      loadFAQ();
+      setInterval(loadFAQ, 5000);
     };
   </script>
 </body>
