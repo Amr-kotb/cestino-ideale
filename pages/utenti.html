@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cestino Ideale</title>
+  <title>Recensioni - Cestino Ideale</title>
   <link rel="icon" href="./img/cestino/ChatGPT_Image_10_mag_2025__13_44_51-removebg-preview.png" type="image/x-icon">
   <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
   <style>
@@ -86,7 +86,7 @@
     .cta-button {
       margin-top: 20px;
       background-color: var(--highlight);
-      color: black;
+      color: rgb(255, 0, 0);
       padding: 10px 20px;
       border: none;
       border-radius: 6px;
@@ -112,79 +112,48 @@
       padding: 2rem;
     }
 
-    #review-container, #review-form {
+    #reviews-container {
       background-color: #021d2d;
       border-radius: 8px;
       padding: 20px;
       max-width: 700px;
       margin: 20px auto;
+      text-align: center;
+      font-size: 1.2rem;
+      transition: max-height 0.5s ease-in-out;
     }
 
-    #review-form textarea {
-      width: 100%;
+    #reviews-container.scrollable {
+      max-height: 400px;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+      padding-right: 10px;
+      border: 1px solid var(--highlight);
+    }
+
+    .review-item {
+      text-align: left;
+      cursor: pointer;
+      background-color: rgba(255, 255, 255, 0.05);
       padding: 10px;
-      border-radius: 8px;
-      border: 1px solid #ddd;
-      font-size: 1rem;
-      height: 150px;
+      border-radius: 6px;
       margin-bottom: 10px;
-      background-color: #021d2d;
+      transition: background-color 0.3s;
+    }
+
+    .review-item:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .review-answer {
+      display: none;
+      padding-top: 5px;
+      font-size: 1rem;
       color: var(--primary-color);
     }
 
-    #review-form button {
-      padding: 10px 20px;
-      background-color: var(--highlight);
-      border: none;
-      border-radius: 8px;
-      color: black;
-      font-size: 1rem;
-      cursor: pointer;
-    }
-
-    #feedback-message {
-      display: none;
-      background-color: #00ffaa;
-      color: black;
-      padding: 10px;
-      border-radius: 8px;
-      margin-top: 10px;
-      text-align: center;
-    }
-
-    #star-rating {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      gap: 5px;
-    }
-
-    #star-rating input[type="radio"] {
-      display: none;
-    }
-
-    #star-rating label {
-      font-size: 2rem;
-      color: gray;
-      cursor: pointer;
-      outline: none;
-    }
-
-    #star-rating input:checked + label,
-    #star-rating input:checked + label ~ label {
-      color: gold;
-    }
-
-    #star-rating label:hover,
-    #star-rating label:hover ~ label {
-      color: gold;
-    }
-
-    #selected-rating {
-      text-align: center;
-      font-weight: bold;
-      margin-top: 10px;
-      color: var(--highlight);
+    .review-answer.active {
+      display: block;
     }
 
     @keyframes fadeSlideIn {
@@ -196,16 +165,81 @@
       from { text-shadow: 0 0 10px var(--glow-1), 0 0 20px var(--glow-2); }
       to { text-shadow: 0 0 20px var(--glow-2), 0 0 40px; }
     }
+
+    .spinner {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid var(--highlight);
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      animation: spin 1s linear infinite;
+      margin: 10px auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    #feedback-message {
+      display: none;
+      font-size: 1rem;
+      color: var(--highlight);
+      margin-top: 15px;
+    }
+
+    #spinner-container {
+      display: none;
+      text-align: center;
+    }
+
+    #user-review {
+      width: 100%;
+      height: 100px;
+      padding: 10px;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      border: 2px solid #ccc;
+      background-color: #021d2d;
+      transition: all 0.3s ease;
+    }
+
+    #user-review:focus {
+      border-color: var(--highlight);
+      background-color: #e6f7f7;
+      box-shadow: 0 0 10px var(--highlight);
+    }
+
+    button {
+      margin-top: 10px;
+      background-color: var(--highlight);
+      color: rgb(255, 4, 4);
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #007bff;
+    }
+
+    #reviews-form {
+      transition: opacity 0.5s ease;
+    }
   </style>
 </head>
 <body>
+
   <button class="dark-toggle" onclick="toggleDarkMode()" title="Attiva/disattiva dark mode">
     <box-icon name="moon" id="icon" type="solid"></box-icon>
   </button>
 
   <main>
     <header>
-      <h1>Ti serve un cestino?</h1>
+      <h1>Recensioni - Cestino Ideale</h1>
     </header>
     <nav>
       <a href="/index.html">🏠Home</a>
@@ -213,36 +247,25 @@
     </nav>
 
     <section class="animated-section" id="impact-section">
-      <h2 class="glow-title">Impatto del nostro progetto</h2>
-      <div>
-        <span id="client-count" style="font-size: 3rem; color: var(--highlight);">0</span>+ <br/>
-        <p>Persone hanno provato il nostro cestino intelligente!</p>
+      <h2 class="glow-title">Recensioni dei Clienti</h2>
+      <div id="reviews-container">
+        <h3 id="review-question"></h3>
+        <p id="review-answer"></p>
       </div>
 
-      <div id="review-container">
-        <p><strong>Recensione:</strong> “Un'idea geniale! Questo cestino ha davvero migliorato la mia vita quotidiana.” – <em>Marco R.</em></p>
-      </div>
+      <button class="cta-button" onclick="toggleReviews()">Visualizza tutte le recensioni</button>
 
-      <div id="review-form">
-        <h3>Aggiungi la tua recensione:</h3>
+      <div id="reviews-form">
+        <h3>Lascia una recensione</h3>
         <textarea id="user-review" placeholder="Scrivi la tua recensione qui..."></textarea>
-
-        <div id="star-rating" role="radiogroup" aria-label="Valutazione">
-          <input type="radio" id="rating-1" name="rating" value="1" aria-label="1 stella"><label for="rating-1" tabindex="0">&#9733;</label>
-          <input type="radio" id="rating-2" name="rating" value="2" aria-label="2 stelle"><label for="rating-2" tabindex="0">&#9733;</label>
-          <input type="radio" id="rating-3" name="rating" value="3" aria-label="3 stelle"><label for="rating-3" tabindex="0">&#9733;</label>
-          <input type="radio" id="rating-4" name="rating" value="4" aria-label="4 stelle"><label for="rating-4" tabindex="0">&#9733;</label>
-          <input type="radio" id="rating-5" name="rating" value="5" aria-label="5 stelle"><label for="rating-5" tabindex="0">&#9733;</label>
-        </div>
-
-        <p id="selected-rating"></p>
-
-        <input type="file" id="review-image" accept="image/*,video/*" />
         <button onclick="submitReview()">Invia recensione</button>
       </div>
 
-      <div id="feedback-message">Recensione inviata con successo!</div>
-      <div id="user-reviews"></div>
+      <div id="spinner-container">
+        <div class="spinner"></div>
+        <p>Caricamento...</p>
+      </div>
+      <div id="feedback-message">Grazie per la tua recensione!</div>
     </section>
   </main>
 
@@ -254,8 +277,8 @@
     <section>
       <h2>Seguici</h2>
       <p>
-        <a href="https://www.instagram.com/cestinoautomatico/" target="_blank" class="social-icon">Instagram</a> |
-        <a href="https://vm.tiktok.com/ZNdrq1qBE/" target="_blank" class="social-icon">TikTok</a>
+        <a href="https://www.instagram.com/cestinoautomatico/" target="_blank">Instagram</a> |
+        <a href="https://vm.tiktok.com/ZNdrq1qBE/" target="_blank">TikTok</a>
       </p>
     </section>
     <p>&copy; 2024 - Tutti i diritti riservati</p>
@@ -270,61 +293,79 @@
       localStorage.setItem("darkMode", body.classList.contains("dark-mode"));
     }
 
-    window.onload = () => {
-      if (localStorage.getItem("darkMode") === "true") {
-        document.body.classList.add("dark-mode");
-      }
+    const reviewData = [
+      { review: "Ottimo prodotto, davvero soddisfatto!" },
+      { review: "Servizio veloce e affidabile, consiglio vivamente!" },
+      { review: "Mi piace molto, qualità eccellente!" },
+      { review: "Buon acquisto, ma il packaging potrebbe essere migliorato." },
+      { review: "Funziona benissimo, molto utile nella vita quotidiana!" }
+    ];
 
-      let count = 0;
-      const clientCountElement = document.getElementById('client-count');
-      const targetCount = 404;
-      const incrementClientCount = setInterval(() => {
-        if (count < targetCount) {
-          count++;
-          clientCountElement.innerText = count;
-        } else {
-          clearInterval(incrementClientCount);
-        }
-      }, 20);
+    let currentReviewIndex = 0;
+    let reviewVisible = false;
 
-      document.querySelectorAll('#star-rating label').forEach(label => {
-        label.addEventListener('click', () => {
-          const rating = label.previousElementSibling.value;
-          document.getElementById('selected-rating').textContent = `Hai selezionato ${rating} stella${rating > 1 ? 'e' : ''}`;
-        });
+    function loadReview() {
+      const reviewQuestion = document.getElementById('review-question');
+      const reviewAnswer = document.getElementById('review-answer');
+      reviewQuestion.textContent = "Recensione:";
+      reviewAnswer.textContent = reviewData[currentReviewIndex].review;
+      currentReviewIndex = (currentReviewIndex + 1) % reviewData.length;
+    }
 
-        label.addEventListener('keydown', e => {
-          if (['Enter', ' '].includes(e.key)) {
-            e.preventDefault();
-            label.previousElementSibling.checked = true;
-            label.click();
-          }
-        });
-      });
-    };
+    function toggleReviews() {
+      const reviewsContainer = document.getElementById('reviews-container');
+      const toggleButton = document.querySelector('.cta-button');
 
-    function submitReview() {
-      const userReview = document.getElementById('user-review').value;
-      const rating = document.querySelector('input[name="rating"]:checked');
-      const feedbackMessage = document.getElementById('feedback-message');
-
-      if (userReview.trim()) {
-        const container = document.getElementById('user-reviews');
-        const newReview = document.createElement('div');
-        const reviewRating = rating ? rating.value : 'Nessuna valutazione';
-        newReview.innerHTML = `<p><strong>Recensione:</strong> "${userReview}" – <em>Utente anonimo</em><br/><strong>Valutazione:</strong> ${reviewRating} stelle</p>`;
-        container.appendChild(newReview);
-        document.getElementById('user-review').value = '';
-        document.querySelectorAll('input[name="rating"]').forEach(el => el.checked = false);
-        document.getElementById('selected-rating').textContent = '';
-        feedbackMessage.style.display = 'block';
-        setTimeout(() => {
-          feedbackMessage.style.display = 'none';
-        }, 3000);
+      if (reviewVisible) {
+        reviewsContainer.classList.remove("scrollable");
+        reviewsContainer.innerHTML = "<h3 id='review-question'></h3><p id='review-answer'></p>";
+        loadReview();
+        toggleButton.textContent = "Visualizza tutte le recensioni";
+        reviewVisible = false;
       } else {
-        alert('Per favore, scrivi una recensione prima di inviarla!');
+        let reviewsHtml = "";
+        reviewData.forEach((item, index) => {
+          reviewsHtml += `
+            <div class="review-item">
+              <p>${item.review}</p>
+            </div>
+          `;
+        });
+        reviewsContainer.innerHTML = reviewsHtml;
+        reviewsContainer.classList.add("scrollable");
+        toggleButton.textContent = "Visualizza di meno";
+        reviewVisible = true;
       }
     }
+
+    function submitReview() {
+      const reviewText = document.getElementById('user-review').value;
+      const spinnerContainer = document.getElementById("spinner-container");
+      const feedbackMessage = document.getElementById("feedback-message");
+      const reviewInputContainer = document.getElementById('reviews-form');
+
+      if (!reviewText) {
+        alert("Per favore scrivi una recensione!");
+        return;
+      }
+
+      spinnerContainer.style.display = "block";
+      feedbackMessage.style.display = "none";
+      reviewInputContainer.style.display = "none";
+
+      setTimeout(() => {
+        spinnerContainer.style.display = "none";
+        feedbackMessage.style.display = "block";
+        reviewInputContainer.style.display = "block";
+        document.getElementById('user-review').value = "";
+      }, 2000);
+    }
+
+    window.onload = () => {
+      loadReview();
+      setInterval(loadReview, 5000); // Cambia recensione ogni 5 secondi se visione singola
+    };
   </script>
+
 </body>
 </html>
