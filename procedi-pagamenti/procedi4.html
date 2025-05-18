@@ -163,17 +163,21 @@
   // Mostra il blocco di conferma dopo il caricamento simulato
   document.addEventListener("DOMContentLoaded", function () {
     const oggi = new Date();
-    const opzioniData = { day: 'numeric', month: 'long', year: 'numeric' };
-    const dataFormattata = oggi.toLocaleDateString('it-IT', opzioniData);
+    const opzioniData = { day: 'numeric', month: 'long', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
+    const dataFormattata = oggi.toLocaleString('it-IT', opzioniData);
 
-    const metodo = "Visa";
+    // Imposta il metodo di pagamento (modifica qui per il tipo di pagamento effettivo)
+    const metodo = "Visa"; // Ad esempio, se il pagamento è con Visa
+
+    // Verifica che la variabile metodo sia correttamente valorizzata
+    console.log("Metodo di pagamento:", metodo);
 
     // Simula caricamento iniziale di 3 secondi
     setTimeout(function () {
       document.getElementById('loadingScreen').style.display = 'none';
       document.getElementById('confirmationBox').style.display = 'block';
       document.getElementById('dataPagamento').textContent = dataFormattata;
-      document.getElementById('metodoPagamento').textContent = metodo;
+      document.getElementById('metodoPagamento').textContent = metodo; // Inserisce il metodo di pagamento
     }, 3000);
   });
 </script>

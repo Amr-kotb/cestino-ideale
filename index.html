@@ -276,6 +276,13 @@
         font-size: 1rem;
       }
     }
+
+    footer p.partita-iva {
+      font-size: 1rem;
+      color: var(--primary-color);
+      margin-top: 10px;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -290,7 +297,7 @@
     <nav>
       <a href="./pages/prodotti.html">I nostri prodotti</a>
       <a href="./pages/funzionamento.html">Funzionamento</a>
-      <a href="./pages/vantaggi.html">numero utenti</a>
+      <a href="./pages/utenti.html">numero utenti</a>
       <a href="./pages/faq.html">FAQ</a>
       <a href="./pages/chi siamo.html">chi siamo</a>
     </nav>
@@ -315,7 +322,6 @@
       </audio>
       <div class="time-remaining" id="remaining-time"></div>
     </section>
-    
   </main>
 
   <footer>
@@ -326,12 +332,12 @@
     <section>
       <h2>Seguici</h2>
       <p>
-        <a href="https://www.instagram.com" target="_blank" class="social-icon">Instagram</a> |
-        <a href="https://www.tiktok.com" target="_blank" class="social-icon">TikTok</a> |
-        <a href="https://www.discord.com" target="_blank" class="social-icon">Discord</a>
+        <a href="https://www.instagram.com/cestinoautomatico/?igsh=MWhhaGQ4c2JoZXZ3bg%3D%3D" target="_blank" class="social-icon">Instagram</a> |
+        <a href="https://vm.tiktok.com/ZNdrq1qBE/" target="_blank" class="social-icon">TikTok</a>
       </p>
     </section>
     <p>&copy; 2024 - Tutti i diritti riservati</p>
+    <p class="partita-iva">Partita IVA: IT12345678901</p>
   </footer>
 
   <script>
@@ -368,7 +374,7 @@
         return span;
       });
 
-      const tempoPerParola = 0.33;
+      const tempoPerParola = 0.35; // tempo per evidenziare
       let interval = null;
 
       audio.addEventListener("play", () => {

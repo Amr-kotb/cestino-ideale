@@ -25,10 +25,10 @@
     }
 
     body.dark-mode {
-      --primary-bg: #f0f0f0; /* Light background for dark mode */
-      --primary-color: #000000; /* Dark text color for dark mode */
-      --nav-bg: #dddddd; /* Light nav background for dark mode */
-      --highlight: #0056b3; /* Adjust highlight color for dark mode */
+      --primary-bg: #f0f0f0;
+      --primary-color: #000000;
+      --nav-bg: #dddddd;
+      --highlight: #0056b3;
       --glow-1: #007bff;
       --glow-2: #002751;
     }
@@ -42,7 +42,6 @@
     header h1 {
       font-size: 2.5rem;
       margin: 0;
-      color: var(--primary-color);
     }
 
     nav {
@@ -67,12 +66,6 @@
       transform: scale(1.05);
     }
 
-    #intro {
-      text-align: center;
-      padding: 20px;
-      font-size: 1.2rem;
-    }
-
     .animated-section {
       opacity: 0;
       transform: translateY(40px);
@@ -82,14 +75,10 @@
       max-width: 800px;
       margin: 0 auto;
       text-align: center;
-      font-size: 1.1rem;
-      line-height: 1.6;
     }
 
     .glow-title {
       font-size: 2.5rem;
-      font-weight: bold;
-      color: var(--primary-color);
       animation: glow 2s ease-in-out infinite alternate;
       margin-bottom: 1rem;
     }
@@ -103,11 +92,6 @@
       border-radius: 6px;
       font-size: 1rem;
       cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    .cta-button:hover {
-      background-color: #00ffaa;
     }
 
     .dark-toggle {
@@ -116,10 +100,9 @@
       right: 20px;
       background-color: transparent;
       border: none;
-      padding: 0;
-      cursor: pointer;
       font-size: 2rem;
       color: var(--highlight);
+      cursor: pointer;
     }
 
     footer {
@@ -129,26 +112,12 @@
       padding: 2rem;
     }
 
-    footer a {
-      color: var(--highlight);
-      text-decoration: none;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      display: inline-block;
-      margin: 0 10px;
-    }
-
-    footer a.social-icon:hover {
-      transform: translateY(-6px) scale(1.1);
-      box-shadow: 0 6px 12px rgba(100, 255, 218, 0.3);
-    }
-
     #review-container, #review-form {
       background-color: #021d2d;
       border-radius: 8px;
       padding: 20px;
       max-width: 700px;
       margin: 20px auto;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
     #review-form textarea {
@@ -159,8 +128,8 @@
       font-size: 1rem;
       height: 150px;
       margin-bottom: 10px;
-      color: var(--primary-color);
       background-color: #021d2d;
+      color: var(--primary-color);
     }
 
     #review-form button {
@@ -171,11 +140,6 @@
       color: black;
       font-size: 1rem;
       cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    #review-form button:hover {
-      background-color: #00ffaa;
     }
 
     #feedback-message {
@@ -186,14 +150,13 @@
       border-radius: 8px;
       margin-top: 10px;
       text-align: center;
-      font-weight: bold;
     }
 
     #star-rating {
       display: flex;
+      flex-direction: row;
       justify-content: center;
       gap: 5px;
-      margin-bottom: 10px;
     }
 
     #star-rating input[type="radio"] {
@@ -204,26 +167,24 @@
       font-size: 2rem;
       color: gray;
       cursor: pointer;
+      outline: none;
     }
 
-    #star-rating input:checked ~ label,
+    #star-rating input:checked + label,
+    #star-rating input:checked + label ~ label {
+      color: gold;
+    }
+
     #star-rating label:hover,
     #star-rating label:hover ~ label {
       color: gold;
     }
 
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 2rem;
-      }
-      .animated-section {
-        padding: 1.5rem;
-        font-size: 1rem;
-      }
-      .cta-button {
-        padding: 8px 16px;
-        font-size: 0.9rem;
-      }
+    #selected-rating {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 10px;
+      color: var(--highlight);
     }
 
     @keyframes fadeSlideIn {
@@ -247,7 +208,7 @@
       <h1>Ti serve un cestino?</h1>
     </header>
     <nav>
-      <a href="/index.html">Home</a>
+      <a href="/index.html">🏠Home</a>
       <a href="/pages/faq.html">FAQ</a>
     </nav>
 
@@ -266,15 +227,15 @@
         <h3>Aggiungi la tua recensione:</h3>
         <textarea id="user-review" placeholder="Scrivi la tua recensione qui..."></textarea>
 
-        <div id="star-rating">
-          <input type="radio" id="rating-5" name="rating" value="5"><label for="rating-5">&#9733;</label>
-          <input type="radio" id="rating-4" name="rating" value="4"><label for="rating-4">&#9733;</label>
-          <input type="radio" id="rating-3" name="rating" value="3"><label for="rating-3">&#9733;</label>
-          <input type="radio" id="rating-2" name="rating" value="2"><label for="rating-2">&#9733;</label>
-          <input type="radio" id="rating-1" name="rating" value="1"><label for="rating-1">&#9733;</label>
+        <div id="star-rating" role="radiogroup" aria-label="Valutazione">
+          <input type="radio" id="rating-1" name="rating" value="1" aria-label="1 stella"><label for="rating-1" tabindex="0">&#9733;</label>
+          <input type="radio" id="rating-2" name="rating" value="2" aria-label="2 stelle"><label for="rating-2" tabindex="0">&#9733;</label>
+          <input type="radio" id="rating-3" name="rating" value="3" aria-label="3 stelle"><label for="rating-3" tabindex="0">&#9733;</label>
+          <input type="radio" id="rating-4" name="rating" value="4" aria-label="4 stelle"><label for="rating-4" tabindex="0">&#9733;</label>
+          <input type="radio" id="rating-5" name="rating" value="5" aria-label="5 stelle"><label for="rating-5" tabindex="0">&#9733;</label>
         </div>
 
-
+        <p id="selected-rating"></p>
 
         <input type="file" id="review-image" accept="image/*,video/*" />
         <button onclick="submitReview()">Invia recensione</button>
@@ -293,9 +254,8 @@
     <section>
       <h2>Seguici</h2>
       <p>
-        <a href="https://www.instagram.com" target="_blank" class="social-icon">Instagram</a> |
-        <a href="https://www.tiktok.com" target="_blank" class="social-icon">TikTok</a> |
-        <a href="https://www.discord.com" target="_blank" class="social-icon">Discord</a>
+        <a href="https://www.instagram.com/cestinoautomatico/" target="_blank" class="social-icon">Instagram</a> |
+        <a href="https://vm.tiktok.com/ZNdrq1qBE/" target="_blank" class="social-icon">TikTok</a>
       </p>
     </section>
     <p>&copy; 2024 - Tutti i diritti riservati</p>
@@ -318,7 +278,6 @@
       let count = 0;
       const clientCountElement = document.getElementById('client-count');
       const targetCount = 404;
-
       const incrementClientCount = setInterval(() => {
         if (count < targetCount) {
           count++;
@@ -327,6 +286,21 @@
           clearInterval(incrementClientCount);
         }
       }, 20);
+
+      document.querySelectorAll('#star-rating label').forEach(label => {
+        label.addEventListener('click', () => {
+          const rating = label.previousElementSibling.value;
+          document.getElementById('selected-rating').textContent = `Hai selezionato ${rating} stella${rating > 1 ? 'e' : ''}`;
+        });
+
+        label.addEventListener('keydown', e => {
+          if (['Enter', ' '].includes(e.key)) {
+            e.preventDefault();
+            label.previousElementSibling.checked = true;
+            label.click();
+          }
+        });
+      });
     };
 
     function submitReview() {
@@ -335,13 +309,14 @@
       const feedbackMessage = document.getElementById('feedback-message');
 
       if (userReview.trim()) {
-        const userReviewsContainer = document.getElementById('user-reviews');
+        const container = document.getElementById('user-reviews');
         const newReview = document.createElement('div');
         const reviewRating = rating ? rating.value : 'Nessuna valutazione';
         newReview.innerHTML = `<p><strong>Recensione:</strong> "${userReview}" – <em>Utente anonimo</em><br/><strong>Valutazione:</strong> ${reviewRating} stelle</p>`;
-        userReviewsContainer.appendChild(newReview);
+        container.appendChild(newReview);
         document.getElementById('user-review').value = '';
         document.querySelectorAll('input[name="rating"]').forEach(el => el.checked = false);
+        document.getElementById('selected-rating').textContent = '';
         feedbackMessage.style.display = 'block';
         setTimeout(() => {
           feedbackMessage.style.display = 'none';

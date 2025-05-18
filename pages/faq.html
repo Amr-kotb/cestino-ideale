@@ -7,7 +7,6 @@
   <link rel="icon" href="./img/cestino/ChatGPT_Image_10_mag_2025__13_44_51-removebg-preview.png" type="image/x-icon">
   <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
   <style>
-    /* Inserire il tuo CSS qui */
     :root {
       --primary-bg: #002751;
       --primary-color: #ffffff;
@@ -25,7 +24,7 @@
       transition: background-color 0.4s, color 0.4s;
     }
 
-    .dark-mode {
+    body.dark-mode {
       --primary-bg: #f0f0f0;
       --primary-color: #000000;
       --nav-bg: #dddddd;
@@ -43,7 +42,6 @@
     header h1 {
       font-size: 2.5rem;
       margin: 0;
-      color: var(--primary-color);
     }
 
     nav {
@@ -77,16 +75,23 @@
       max-width: 800px;
       margin: 0 auto;
       text-align: center;
-      font-size: 1.1rem;
-      line-height: 1.6;
     }
 
     .glow-title {
       font-size: 2.5rem;
-      font-weight: bold;
-      color: var(--primary-color);
       animation: glow 2s ease-in-out infinite alternate;
       margin-bottom: 1rem;
+    }
+
+    .cta-button {
+      margin-top: 20px;
+      background-color: var(--highlight);
+      color: black;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
     }
 
     .dark-toggle {
@@ -95,10 +100,9 @@
       right: 20px;
       background-color: transparent;
       border: none;
-      padding: 0;
-      cursor: pointer;
       font-size: 2rem;
       color: var(--highlight);
+      cursor: pointer;
     }
 
     footer {
@@ -108,71 +112,24 @@
       padding: 2rem;
     }
 
-    footer a {
-      color: var(--highlight);
-      text-decoration: none;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      display: inline-block;
-      margin: 0 10px;
-    }
-
-    footer a.social-icon:hover {
-      transform: translateY(-6px) scale(1.1);
-      box-shadow: 0 6px 12px rgba(100, 255, 218, 0.3);
-    }
-
     #faq-container {
       background-color: #021d2d;
       border-radius: 8px;
       padding: 20px;
       max-width: 700px;
       margin: 20px auto;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      font-size: 1.2rem;
     }
 
-    .faq-item {
-      padding: 10px;
-      border-bottom: 1px solid #ddd;
+    #faq-container h3 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
     }
 
-    .faq-item:last-child {
-      border-bottom: none;
-    }
-
-    .faq-question {
-      font-weight: bold;
-    }
-
-    .faq-author {
-      margin-top: 5px;
-      color: #ddd;
-      font-style: italic;
-    }
-
-    #faq-form {
-      margin-top: 20px;
-    }
-
-    #faq-form input, #faq-form textarea {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 8px;
-      border: 1px solid #ddd;
-    }
-
-    #faq-form button {
-      background-color: var(--highlight);
-      border: none;
-      border-radius: 8px;
-      padding: 10px 20px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    #faq-form button:hover {
-      background-color: #00ffaa;
+    #faq-container p {
+      font-size: 1.2rem;
+      margin-top: 10px;
     }
 
     @keyframes fadeSlideIn {
@@ -183,6 +140,72 @@
     @keyframes glow {
       from { text-shadow: 0 0 10px var(--glow-1), 0 0 20px var(--glow-2); }
       to { text-shadow: 0 0 20px var(--glow-2), 0 0 40px; }
+    }
+
+    /* Spinner per il caricamento */
+    .spinner {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid var(--highlight);
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      animation: spin 1s linear infinite;
+      margin: 10px auto;
+    }
+
+    /* Animazione dello spinner */
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    #feedback-message {
+      display: none;
+      font-size: 1rem;
+      color: var(--highlight);
+      margin-top: 15px;
+    }
+
+    #spinner-container {
+      display: none;
+      text-align: center;
+    }
+
+    #user-faq {
+      width: 100%;
+      height: 100px;
+      padding: 10px;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      border: 2px solid #ccc;
+      background-color: #f9f9f9;
+      transition: all 0.3s ease;
+    }
+
+    #user-faq:focus {
+      border-color: var(--highlight);
+      background-color: #e6f7f7;
+      box-shadow: 0 0 10px var(--highlight);
+    }
+
+    button {
+      margin-top: 10px;
+      background-color: var(--highlight);
+      color: black;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #007bff;
+    }
+
+    #faq-form {
+      transition: opacity 0.5s ease;
     }
   </style>
 </head>
@@ -195,26 +218,32 @@
     <header>
       <h1>Domande Frequenti (FAQ)</h1>
     </header>
-
     <nav>
-      <a href="/index.html">Home</a>
-      <a href="/pages/utenti.html">utenti</a>
+      <a href="/index.html">🏠Home</a>
+      <a href="/pages/faq.html">FAQ</a>
     </nav>
 
     <section class="animated-section" id="impact-section">
       <h2 class="glow-title">FAQ - Domande Frequenti</h2>
-
       <div id="faq-container">
-        <!-- FAQ dinamiche qui -->
+        <!-- La domanda e la risposta saranno caricate qui dinamicamente -->
+        <h3 id="faq-question"></h3>
+        <p id="faq-answer"></p>
       </div>
 
-      <!-- Form per aggiungere nuove FAQ -->
+      <button class="cta-button" onclick="toggleFAQ()">Visualizza tutte le FAQ</button>
+
       <div id="faq-form">
-        <h3>Aggiungi una FAQ:</h3>
-        <input type="text" id="faq-question" placeholder="Domanda" required />
-        <input type="text" id="faq-author" placeholder="Nome dell'autore" required />
-        <button onclick="addFAQ()">Aggiungi FAQ</button>
+        <h3>Hai una domanda?</h3>
+        <textarea id="user-faq" placeholder="Scrivi la tua domanda qui..."></textarea>
+        <button onclick="submitFAQ()">Invia domanda</button>
       </div>
+
+      <div id="spinner-container">
+        <div class="spinner"></div>
+        <p>Caricamento...</p>
+      </div>
+      <div id="feedback-message">Grazie per il tuo FAQ, ti arriverà una risposta il più presto possibile.</div>
     </section>
   </main>
 
@@ -226,9 +255,8 @@
     <section>
       <h2>Seguici</h2>
       <p>
-        <a href="https://www.instagram.com" target="_blank" class="social-icon">Instagram</a> |
-        <a href="https://www.tiktok.com" target="_blank" class="social-icon">TikTok</a> |
-        <a href="https://www.discord.com" target="_blank" class="social-icon">Discord</a>
+        <a href="https://www.instagram.com/cestinoautomatico/" target="_blank">Instagram</a> |
+        <a href="https://vm.tiktok.com/ZNdrq1qBE/" target="_blank">TikTok</a>
       </p>
     </section>
     <p>&copy; 2024 - Tutti i diritti riservati</p>
@@ -243,69 +271,81 @@
       localStorage.setItem("darkMode", body.classList.contains("dark-mode"));
     }
 
-    window.onload = () => {
-      if (localStorage.getItem("darkMode") === "true") {
-        document.body.classList.add("dark-mode");
-      }
+    // Array con domande e risposte
+    const faqData = [
+      { question: "Come posso contattare il servizio clienti?", answer: "Puoi contattare il servizio clienti via email o telefono, tutti i dettagli sono nella sezione 'Contattaci'." },
+      { question: "Quanto tempo ci vuole per ricevere il prodotto?", answer: "I tempi di consegna variano, ma in genere ci vogliono tra 3-5 giorni lavorativi." },
+      { question: "Posso restituire un prodotto?", answer: "Sì, puoi restituire il prodotto entro 14 giorni dalla ricezione, seguendo le nostre politiche di reso." },
+      { question: "Offrite garanzia sui vostri prodotti?", answer: "Sì, tutti i nostri prodotti hanno una garanzia di 2 anni dalla data di acquisto." },
+      { question: "Accettate pagamenti con carta di credito?", answer: "Sì, accettiamo tutte le principali carte di credito e di debito." },
+    ];
 
-      const faqItems = [
-        {
-          question: "Cosa fa il nostro cestino?",
-          author: "Marco Rossi"
-        },
-        {
-          question: "Come posso utilizzare il cestino?",
-          author: "Giulia Bianchi"
-        },
-        {
-          question: "Quanto costa il cestino?",
-          author: "Luca Verdi"
-        },
-        {
-          question: "Quali sono i vantaggi del cestino?",
-          author: "Francesca Neri"
-        }
-      ];
+    let currentFAQIndex = 0;
+    let faqVisible = false;
 
-      let currentFAQIndex = 0;
-      const faqContainer = document.getElementById("faq-container");
+    // Funzione per caricare una domanda e risposta
+    function loadFAQ() {
+      const faqContainer = document.getElementById('faq-container');
+      const faqQuestion = document.getElementById('faq-question');
+      const faqAnswer = document.getElementById('faq-answer');
 
-      function updateFAQ() {
-        const faqItem = faqItems[currentFAQIndex];
-        faqContainer.innerHTML = `
-          <div class="faq-item">
-            <div class="faq-question">${faqItem.question}</div>
-            <div class="faq-author">Autore: ${faqItem.author}</div>
-          </div>
-        `;
-        currentFAQIndex = (currentFAQIndex + 1) % faqItems.length;
-      }
+      faqQuestion.textContent = faqData[currentFAQIndex].question;
+      faqAnswer.textContent = faqData[currentFAQIndex].answer;
 
-      setInterval(updateFAQ, 5000); // Cambia la FAQ ogni 5 secondi
-      updateFAQ(); // Inizializza la prima FAQ
-    };
+      currentFAQIndex = (currentFAQIndex + 1) % faqData.length; // Incrementa e torna al primo se arriva alla fine
+    }
 
-    function addFAQ() {
-      const question = document.getElementById("faq-question").value;
-      const author = document.getElementById("faq-author").value;
-
-      if (question && author) {
-        const faqContainer = document.getElementById("faq-container");
-        const newFAQItem = document.createElement("div");
-        newFAQItem.classList.add("faq-item");
-        newFAQItem.innerHTML = `
-          <div class="faq-question">${question}</div>
-          <div class="faq-author">Autore: ${author}</div>
-        `;
-        faqContainer.appendChild(newFAQItem);
-
-        // Pulire il modulo
-        document.getElementById("faq-question").value = "";
-        document.getElementById("faq-author").value = "";
+    // Funzione per visualizzare tutte le FAQ
+    function toggleFAQ() {
+      const faqContainer = document.getElementById('faq-container');
+      if (faqVisible) {
+        faqContainer.innerHTML = "<h3 id='faq-question'></h3><p id='faq-answer'></p>"; // Nascondi tutte le FAQ
+        faqVisible = false;
       } else {
-        alert("Per favore, inserisci sia una domanda che un nome dell'autore.");
+        let faqHtml = "";
+        faqData.forEach(item => {
+          faqHtml += `<h3>${item.question}</h3><p>${item.answer}</p><hr>`;
+        });
+        faqContainer.innerHTML = faqHtml;
+        faqVisible = true;
       }
     }
+
+    // Funzione per inviare una FAQ
+    function submitFAQ() {
+      const faqText = document.getElementById('user-faq').value;
+      const spinnerContainer = document.getElementById("spinner-container");
+      const feedbackMessage = document.getElementById("feedback-message");
+      const faqInputContainer = document.getElementById('faq-form'); // Contenitore del modulo di invio
+
+      if (!faqText) {
+        alert("Per favore scrivi una domanda!");
+        return;
+      }
+
+      // Mostra lo spinner di caricamento
+      spinnerContainer.style.display = "block";
+
+      // Nascondi il messaggio di feedback inizialmente
+      feedbackMessage.style.display = "none";
+
+      // Nascondi il modulo dopo l'invio
+      faqInputContainer.style.display = "none";
+
+      // Simula il caricamento (ad esempio 2 secondi)
+      setTimeout(() => {
+        // Nascondi lo spinner e mostra il messaggio di conferma
+        spinnerContainer.style.display = "none";
+        feedbackMessage.style.display = "block";
+
+        // Mostra di nuovo il modulo di invio FAQ
+        faqInputContainer.style.display = "block";
+        document.getElementById('user-faq').value = ""; // Pulisce il campo di testo
+      }, 2000); // 2 secondi di caricamento simulato
+    }
+
+    // Carica la prima FAQ quando la pagina viene caricata
+    window.onload = loadFAQ;
   </script>
 </body>
 </html>
