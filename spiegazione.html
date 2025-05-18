@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cestino Ideale</title>
+  <link rel="icon" href="./img/cestino/ChatGPT_Image_10_mag_2025__13_44_51-removebg-preview.png" type="image/x-icon">
+  <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  <style>
+    :root {
+      --primary-bg: #002751;
+      --primary-color: #ffffff;
+      --highlight: #64ffda;
+      --nav-bg: #021d2d;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: var(--primary-bg);
+      color: var(--primary-color);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      transition: background-color 0.4s, color 0.4s;
+    }
+
+    header {
+      background-color: var(--nav-bg);
+      padding: 20px;
+      width: 100%;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0;
+      color: var(--primary-color);
+    }
+
+    .content {
+      margin-top: 50px;
+      font-size: 1.2rem;
+      line-height: 1.8;
+      max-width: 800px;
+      padding: 0 20px;
+    }
+
+    .content h2 {
+      font-size: 2rem;
+      color: var(--highlight);
+    }
+
+    footer {
+      background-color: var(--nav-bg);
+      color: var(--primary-color);
+      text-align: center;
+      padding: 1.5rem;
+      width: 100%;
+    }
+
+    footer a {
+      color: var(--highlight);
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    .dark-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: transparent;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      font-size: 2rem;
+      color: var(--highlight);
+    }
+
+    .dark-mode {
+      --primary-bg: #f0f0f0;
+      --primary-color: #000000;
+      --nav-bg: #dddddd;
+      --highlight: #0056b3;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+
+      .content {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Dark Mode Toggle -->
+  <button class="dark-toggle" onclick="toggleDarkMode()" title="Attiva/disattiva dark mode">
+    <box-icon name="moon" id="icon" type="solid"></box-icon>
+  </button>
+
+  <!-- Main Content -->
+  <header>
+    <h1>Cestino Ideale</h1>
+  </header>
+
+  <div class="content">
+    <h2>HTML, CSS, JS: Cosa sono?</h2>
+    <p><strong>HTML (HyperText Markup Language)</strong>: È il linguaggio di base per la creazione di pagine web. Definisce la struttura della pagina e permette di includere contenuti come testo, immagini e link.</p>
+    <p><strong>CSS (Cascading Style Sheets)</strong>: Viene utilizzato per definire lo stile delle pagine web, come il layout, i colori, i font e gli effetti visivi. CSS rende le pagine web più attraenti e leggibili.</p>
+    <p><strong>JS (JavaScript)</strong>: È un linguaggio di programmazione che permette di aggiungere interattività e dinamismo alle pagine web. Con JavaScript è possibile gestire eventi come click, animazioni e interazioni utente.</p>
+  </div>
+
+  <!-- Footer with Social Links -->
+  <footer>
+    <section>
+      <h2>Seguici</h2>
+      <p>
+        <a href="https://www.instagram.com/cestinoautomatico/?igsh=MWhhaGQ4c2JoZXZ3bg%3D%3D" target="_blank">Instagram</a> |
+        <a href="https://vm.tiktok.com/ZNdrq1qBE/" target="_blank">TikTok</a>
+      </p>
+    </section>
+    <p>&copy; 2024 - Tutti i diritti riservati</p>
+  </footer>
+
+  <script>
+    function toggleDarkMode() {
+      const body = document.body;
+      const icon = document.getElementById("icon");
+      body.classList.toggle("dark-mode");
+      icon.setAttribute("name", body.classList.contains("dark-mode") ? "sun" : "moon");
+      localStorage.setItem("darkMode", body.classList.contains("dark-mode"));
+    }
+
+    window.onload = () => {
+      if (localStorage.getItem("darkMode") === "true") {
+        document.body.classList.add("dark-mode");
+      }
+    };
+  </script>
+</body>
+</html>
