@@ -2,10 +2,10 @@
 <html lang="it">
 
 <head>
-  <link rel="icon" href="../img/cestino/ChatGPT_Image_10_mag_2025__13_44_51-removebg-preview.png" type="image/x-icon">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cestino Intelligente</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cestino Ideale</title>
+  <link rel="icon" href="./img/cestino/ChatGPT_Image_10_mag_2025__13_44_51-removebg-preview.png" type="image/x-icon">
   <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/var.css">
@@ -41,22 +41,37 @@
       position: fixed;
       top: 20px;
       right: 20px;
-      background-color: transparent;  /* Rimuovi il quadrato di sfondo */
+      background-color: transparent;
       color: var(--primary-color);
       border: none;
-      padding: 5px;  /* Riduci il padding per far sì che l'icona non sia in un quadrato */
+      padding: 5px;
       cursor: pointer;
       font-weight: bold;
       z-index: 1000;
       display: flex;
       justify-content: center;
       align-items: center;
-      border-radius: 50%;  /* Rendi il bottone rotondo */
+      border-radius: 50%;
       transition: all 0.3s ease;
     }
 
     .dark-toggle:hover {
       background-color: var(--highlight);
+    }
+
+    /* Logo posizionato in alto a sinistra */
+    .logo-back-to-home {
+      width: 40px;
+      height: auto;
+      cursor: pointer;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .logo-back-to-home:hover {
+      transform: scale(1.1); /* Ingrandisce il logo al passaggio del mouse */
     }
 
     nav {
@@ -169,6 +184,11 @@
 </head>
 
 <body>
+  <!-- Logo con link che torna alla home -->
+  <a href="../index.html">
+    <img src="../img/cestino/ChatGPT_Image_10_mag_2025__13_44_51-removebg-preview.png" alt="Logo" class="logo-back-to-home" />
+  </a>
+
   <!-- Bottone per cambiare il tema -->
   <button class="dark-toggle" onclick="toggleDarkMode()" id="dark-mode-toggle">
     <box-icon name="moon" id="icon" type="solid"></box-icon>
@@ -223,7 +243,6 @@
             <span>TikTok</span>
           </a>
         </li>
-        
       </ul>
     </section>
     <br>

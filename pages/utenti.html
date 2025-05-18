@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Recensioni - Cestino Ideale</title>
+  <title>Cestino Ideale</title>
   <link rel="icon" href="./img/cestino/ChatGPT_Image_10_mag_2025__13_44_51-removebg-preview.png" type="image/x-icon">
   <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
   <style>
@@ -37,6 +37,19 @@
       background-color: var(--nav-bg);
       padding: 20px;
       text-align: center;
+      position: relative; /* Aggiunto per posizionare il logo */
+    }
+
+    /* Logo posizionato in alto a sinistra */
+    .logo-container {
+      position: absolute; /* Posiziona il logo in modo assoluto */
+      top: 20px;
+      left: 20px;
+    }
+
+    .logo-container img {
+      width: 80px;  /* Imposta la larghezza del logo */
+      height: auto; /* Mantiene le proporzioni del logo */
     }
 
     header h1 {
@@ -243,16 +256,21 @@
 </head>
 <body>
 
+  <!-- Dark Mode Toggle -->
   <button class="dark-toggle" onclick="toggleDarkMode()" title="Attiva/disattiva dark mode">
     <box-icon name="moon" id="icon" type="solid"></box-icon>
   </button>
 
   <main>
     <header>
+      <!-- Logo cliccabile per tornare alla homepage -->
+      <a href="index.html" class="logo-container">
+        <img src="/img/cestino/ChatGPT_Image_10_mag_2025__13_44_51-removebg-preview.png" alt="Logo" class="logo" />
+      </a>
       <h1>Recensioni - Cestino Ideale</h1>
     </header>
     <nav>
-      <a href="./index.html">🏠Home</a>
+      <a href="/index.html">🏠Home</a>
       <a href="faq.html">FAQ</a>
     </nav>
 
@@ -300,6 +318,7 @@
   </footer>
 
   <script>
+    // Funzione per attivare/disattivare la modalità scura
     function toggleDarkMode() {
       const body = document.body;
       const icon = document.getElementById("icon");
@@ -308,6 +327,7 @@
       localStorage.setItem("darkMode", body.classList.contains("dark-mode"));
     }
 
+    // Dati delle recensioni
     const reviewData = [
       { review: "Ottimo prodotto, davvero soddisfatto!" },
       { review: "Servizio veloce e affidabile, consiglio vivamente!" },
@@ -319,6 +339,7 @@
     let currentReviewIndex = 0;
     let reviewVisible = false;
 
+    // Funzione per caricare una recensione
     function loadReview() {
       const reviewQuestion = document.getElementById('review-question');
       const reviewAnswer = document.getElementById('review-answer');
@@ -327,6 +348,7 @@
       currentReviewIndex = (currentReviewIndex + 1) % reviewData.length;
     }
 
+    // Funzione per visualizzare tutte le recensioni
     function toggleReviews() {
       const reviewsContainer = document.getElementById('reviews-container');
       const toggleButton = document.querySelector('.cta-button');
@@ -353,6 +375,7 @@
       }
     }
 
+    // Funzione per inviare una recensione
     function submitReview() {
       const reviewText = document.getElementById('user-review').value;
       const spinnerContainer = document.getElementById("spinner-container");
@@ -376,6 +399,7 @@
       }, 2000);
     }
 
+    // Funzione per animare il contatore degli utenti
     function animateUserCount() {
       let count = 0;
       const maxCount = 404;

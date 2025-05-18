@@ -2,10 +2,10 @@
 <html lang="it">
 
 <head>
-  <meta charset="UTF-8">
-  <link rel="icon" href="../img/cestino/ChatGPT_Image_10_mag_2025__13_44_51-removebg-preview.png" type="image/x-icon">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Funzionamento del Cestino Intelligente</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cestino Ideale</title>
+  <link rel="icon" href="./img/cestino/ChatGPT_Image_10_mag_2025__13_44_51-removebg-preview.png" type="image/x-icon">
   <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 
   <style>
@@ -47,13 +47,19 @@
       background-color: var(--nav-bg);
       padding: 15px 30px;
       display: flex;
-      justify-content: space-between;
+      justify-content: space-between; /* Spazio tra i link e il pulsante */
       align-items: center;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
+    nav .links {
+      display: flex;
+      gap: 20px; /* Spazio tra i link */
+      justify-content: center; /* Centra i link */
+      flex-grow: 1; /* Occupa tutto lo spazio disponibile per centrare i link */
+    }
+
     nav a {
-      margin-right: 20px;
       color: var(--primary-color);
       text-decoration: none;
       font-weight: bold;
@@ -155,7 +161,7 @@
 <body>
 
   <nav>
-    <div>
+    <div class="links">
       <a href="../index.html">🏠Home</a>
       <a href="./mappa.html">Vedi Codice</a>
     </div>

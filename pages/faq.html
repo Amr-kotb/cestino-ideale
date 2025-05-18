@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FAQ - Cestino Ideale</title>
+  <title>Cestino Ideale</title>
   <link rel="icon" href="./img/cestino/ChatGPT_Image_10_mag_2025__13_44_51-removebg-preview.png" type="image/x-icon">
   <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
   <style>
@@ -37,11 +37,27 @@
       background-color: var(--nav-bg);
       padding: 20px;
       text-align: center;
+      position: relative;
     }
 
     header h1 {
       font-size: 2.5rem;
       margin: 0;
+    }
+
+    /* Add logo styles */
+    .logo-back-to-home {
+      width: 50px; /* Set the width of the logo */
+      height: auto;
+      cursor: pointer;
+      position: absolute; /* Positioning it in the top-left corner */
+      top: 20px;
+      left: 20px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .logo-back-to-home:hover {
+      transform: scale(1.1); /* Slightly enlarge the logo on hover */
     }
 
     nav {
@@ -227,11 +243,16 @@
 
   <main>
     <header>
+      <!-- Home logo link -->
+      <a href="/index.html">
+        <img src="/img/cestino/ChatGPT_Image_10_mag_2025__13_44_51-removebg-preview.png" alt="Cestino Ideale Logo" class="logo-back-to-home" />
+      </a>
       <h1>FAQ - Cestino Ideale</h1>
     </header>
+
     <nav>
-      <a href="./index.html">🏠Home</a>
-      <a href="./pages/utenti.html">Utenti</a>
+      <a href="/index.html">🏠Home</a>
+      <a href="/pages/utenti.html">Utenti</a>
     </nav>
 
     <section class="animated-section" id="impact-section">
@@ -248,7 +269,6 @@
         <textarea id="user-faq" placeholder="Scrivi la tua domanda qui..."></textarea>
         <button class="cta-button" onclick="submitFAQ()">Invia domanda</button>
       </div>
-
 
       <div id="spinner-container">
         <div class="spinner"></div>

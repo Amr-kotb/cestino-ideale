@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chi siamo - Cestino Ideale</title>
-  <link rel="icon" href="./img/logo.png" type="image/x-icon" />
+  <title>Cestino Ideale</title>
+  <link rel="icon" href="./img/cestino/ChatGPT_Image_10_mag_2025__13_44_51-removebg-preview.png" type="image/x-icon">
   <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
   <style>
     :root {
@@ -28,11 +28,27 @@
       background-color: var(--nav-bg);
       padding: 20px;
       text-align: center;
+      position: relative;
     }
 
     header h1 {
       font-size: 2.5rem;
       margin: 0;
+    }
+
+    /* Add logo styles */
+    .logo-back-to-home {
+      width: 50px; /* Set the width of the logo */
+      height: auto;
+      cursor: pointer;
+      position: absolute; /* Positioning it in the top-left corner */
+      top: 20px;
+      left: 20px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .logo-back-to-home:hover {
+      transform: scale(1.1); /* Slightly enlarge the logo on hover */
     }
 
     nav {
@@ -160,6 +176,10 @@
   </button>
 
   <header>
+    <!-- Home logo link -->
+    <a href="/index.html">
+      <img src="/img/cestino/ChatGPT_Image_10_mag_2025__13_44_51-removebg-preview.png" alt="Cestino Ideale Logo" class="logo-back-to-home" />
+    </a>
     <h1>Chi siamo</h1>
   </header>
 
@@ -173,23 +193,21 @@
       <h2 class="glow-title">Il nostro team</h2>
       <p>Siamo un team di studenti appassionati di tecnologia e sostenibilità ambientale.</p>
       <div class="team-grid">
-       
         <div class="team-member">
           <h3>Amr Kotb</h3>
           <p>Ideatore</p>
         </div>
 
-       <div class="team-member">
-          <h4>Galuppini christian</h4>
-          <p>progettista</p>
-       </div>
+        <div class="team-member">
+          <h4>Galuppini Christian</h4>
+          <p>Progettista</p>
+        </div>
 
-       <div class="team-member">
-          <h4>Marco sigillò</h4>
-          <p>sviluppatore</p>
-       </div>
-
-
+        <div class="team-member">
+          <h4>Marco Sigillò</h4>
+          <p>Sviluppatore</p>
+        </div>
+      </div>
     </section>
   </main>
 
@@ -197,8 +215,8 @@
     <h2>Contattaci</h2>
     <p>Scrivici a <a href="mailto:akotb594@gmail.com">akotb594@gmail.com</a> o chiamaci: +39 347 312 3532</p>
     <p>
-     <a href="https://www.instagram.com/cestinoautomatico/?igsh=MWhhaGQ4c2JoZXZ3bg%3D%3D" target="_blank" class="social-icon">Instagram</a> |
-        <a href="https://vm.tiktok.com/ZNdrq1qBE/" target="_blank" class="social-icon">TikTok</a> 
+      <a href="https://www.instagram.com/cestinoautomatico/?igsh=MWhhaGQ4c2JoZXZ3bg%3D%3D" target="_blank" class="social-icon">Instagram</a> |
+      <a href="https://vm.tiktok.com/ZNdrq1qBE/" target="_blank" class="social-icon">TikTok</a>
     </p>
     <p>&copy; 2024 - Tutti i diritti riservati</p>
   </footer>

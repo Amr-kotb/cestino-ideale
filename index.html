@@ -26,7 +26,24 @@
       background-color: var(--nav-bg);
       padding: 20px;
       text-align: center;
+      position: relative; /* Per permettere al logo di essere posizionato assolutamente */
     }
+
+    /* Logo in alto a sinistra */
+    .logo-container {
+      position: absolute;  /* Posiziona il logo in modo assoluto rispetto al body */
+      top: 20px;           /* Distanza dal bordo superiore */
+      left: 20px;          /* Distanza dal bordo sinistro */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-container img {
+      width: 100px;   /* Imposta la larghezza del logo */
+      height: auto;   /* Mantiene le proporzioni originali dell'immagine */
+    }
+
     header h1 {
       font-size: 2.5rem;
       margin: 0;
@@ -292,6 +309,10 @@
 
   <main>
     <header>
+      <!-- Logo che porta alla home -->
+      <a href="index.html" class="logo-container">
+        <img src="./img/cestino/ChatGPT_Image_10_mag_2025__13_44_51-removebg-preview.png" alt="Logo" class="logo" />
+      </a>
       <h1>Ti serve un cestino?</h1>
     </header>
     <nav>
