@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cestino Ideale</title>
+  <link rel="icon" href="./img/cestino/ChatGPT_Image_10_mag_2025__13_44_51-removebg-preview.png" type="image/x-icon">
+  <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  <style>
+    :root {
+      --primary-bg: #002751;
+      --primary-color: #ffffff;
+      --highlight: #64ffda;
+      --nav-bg: #021d2d;
+      --glow-1: #64ffda;
+      --glow-2: #007bff;
+    }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: var(--primary-bg);
+      color: var(--primary-color);
+      transition: background-color 0.4s, color 0.4s;
+    }
+    header {
+      background-color: var(--nav-bg);
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0;
+      color: var(--primary-color);
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      background-color: var(--nav-bg);
+      padding: 15px 0;
+    }
+    nav a {
+      color: var(--primary-color);
+      text-decoration: none;
+      padding: 10px 20px;
+      margin: 5px;
+      border-radius: 8px;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+    nav a:hover {
+      background-color: #0056b3;
+      transform: scale(1.05);
+    }
+    #intro {
+      text-align: center;
+      padding: 20px;
+      font-size: 1.2rem;
+    }
+    .animated-section {
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeSlideIn 1.5s ease-out forwards;
+      animation-delay: 0.5s;
+      padding: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+    .glow-title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: var(--primary-color);
+      animation: glow 2s ease-in-out infinite alternate;
+      margin-bottom: 1rem;
+    }
+    .cta-button {
+      margin-top: 20px;
+      background-color: var(--highlight);
+      color: black;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .cta-button:hover {
+      background-color: #00ffaa;
+    }
+    .dark-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: transparent;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      font-size: 2rem;
+      color: var(--highlight);
+    }
+    .dark-toggle box-icon {
+      transition: color 0.3s;
+    }
+    .dark-toggle:hover box-icon {
+      color: #fff;
+    }
+    footer {
+      background-color: var(--nav-bg);
+      color: var(--primary-color);
+      text-align: center;
+      padding: 2rem;
+    }
+    footer a {
+      color: var(--highlight);
+      text-decoration: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: inline-block;
+      margin: 0 10px;
+    }
+    footer a.social-icon:hover {
+      transform: translateY(-6px) scale(1.1);
+      box-shadow: 0 6px 12px rgba(100, 255, 218, 0.3);
+    }
+
+    /* Nuovo stile per il contenitore delle recensioni */
+    #review-container {
+      background-color: #021d2d; /* Colore di sfondo del rettangolo */
+      border-radius: 8px;
+      padding: 20px;
+      max-width: 700px;
+      margin: 20px auto;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      font-size: 1.2rem;
+      text-align: center;
+      color: var(--primary-color);
+    }
+
+    #review-container p {
+      font-size: 1.1rem;
+      margin: 0;
+    }
+
+    /* Nuovo stile per il modulo di recensione */
+    #review-form {
+      background-color: #021d2d;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px auto;
+      max-width: 700px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    #review-form textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      font-size: 1rem;
+      height: 150px;
+      margin-bottom: 10px;
+      color: var(--primary-color);
+      background-color: #021d2d;
+    }
+
+    #review-form button {
+      padding: 10px 20px;
+      background-color: var(--highlight);
+      border: none;
+      border-radius: 8px;
+      color: black;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #review-form button:hover {
+      background-color: #00ffaa;
+    }
+
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 10px var(--glow-1), 0 0 20px var(--glow-2); }
+      to { text-shadow: 0 0 20px var(--glow-2), 0 0 40px; }
+    }
+  </style>
+</head>
+<body>
+  <button class="dark-toggle" onclick="toggleDarkMode()" title="Attiva/disattiva dark mode">
+    <box-icon name="moon" id="icon" type="solid"></box-icon>
+  </button>
+
+  <main>
+    <header>
+      <h1>Ti serve un cestino?</h1>
+    </header>
+    <nav>
+      <a href="/index.html">Home</a>
+      <a href="./prodotti.html">I nostri prodotti</a>
+      <a href="./funzionamento.html">Funzionamento</a>
+    </nav>
+    <section id="intro">
+    </section>
+
+    <!-- Sezione Impatto del nostro progetto -->
+    <section class="animated-section" id="impact-section">
+      <h2 class="glow-title">Impatto del nostro progetto</h2>
+      <div>
+        <span id="client-count" style="font-size: 3rem; color: var(--highlight);">0</span>+ <br/>
+        <p>Persone hanno provato il nostro cestino intelligente!</p>
+      </div>
+
+      <!-- Contenitore delle recensioni -->
+      <div id="review-container">
+        <p><strong>Recensione:</strong> “Un'idea geniale! Questo cestino ha davvero migliorato la mia vita quotidiana. Finalmente posso separare i rifiuti in modo semplice e veloce. Lo consiglio vivamente!” – <em>Marco R.</em></p>
+      </div>
+
+      <!-- Modulo per aggiungere una recensione -->
+      <div id="review-form">
+        <h3>Aggiungi la tua recensione:</h3>
+        <textarea id="user-review" placeholder="Scrivi la tua recensione qui..."></textarea>
+        <button onclick="submitReview()">Invia recensione</button>
+      </div>
+
+      <div id="user-reviews">
+        <!-- Le recensioni degli utenti verranno visualizzate qui -->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <section>
+      <h2>Contattaci</h2>
+      <p>Scrivici a <a href="mailto:akotb594@gmail.com">akotb594@gmail.com</a> o chiamaci: <strong>+39 347 312 3532</strong></p>
+    </section>
+    <section>
+      <h2>Seguici</h2>
+      <p>
+        <a href="https://www.instagram.com" target="_blank" class="social-icon">Instagram</a> |
+        <a href="https://www.tiktok.com" target="_blank" class="social-icon">TikTok</a> |
+        <a href="https://www.discord.com" target="_blank" class="social-icon">Discord</a>
+      </p>
+    </section>
+    <p>&copy; 2024 - Tutti i diritti riservati</p>
+  </footer>
+
+  <script>
+    function toggleDarkMode() {
+      const body = document.body;
+      const icon = document.getElementById("icon");
+      body.classList.toggle("dark-mode");
+      icon.setAttribute("name", body.classList.contains("dark-mode") ? "sun" : "moon");
+      localStorage.setItem("darkMode", body.classList.contains("dark-mode"));
+    }
+
+    window.onload = () => {
+      if (localStorage.getItem("darkMode") === "true") {
+        document.body.classList.add("dark-mode");
+      }
+
+      // Incremento del numero di clienti
+      let count = 0;
+      const clientCountElement = document.getElementById('client-count');
+      const targetCount = 404;  // Modificato a 404 utenti
+
+      const incrementClientCount = setInterval(() => {
+        if (count < targetCount) {
+          count++;
+          clientCountElement.innerText = count;
+        } else {
+          clearInterval(incrementClientCount);
+        }
+      }, 20);
+
+      // Cambiamento delle recensioni ogni 5 secondi
+      const reviewContainer = document.getElementById('review-container');
+
+      const reviews = [
+        `<p><strong>Recensione:</strong> “Un'idea geniale! Questo cestino ha davvero migliorato la mia vita quotidiana. Finalmente posso separare i rifiuti in modo semplice e veloce. Lo consiglio vivamente!” – <em>Marco R.</em></p>`,
+
+        `<p><strong>Recensione:</strong> “Un prodotto veramente utile! La gestione dei rifiuti non è mai stata così semplice e comoda.” – <em>Luca P.</em></p>`,
+
+        `<p><strong>Recensione:</strong> “Con questo cestino, ho ridotto i miei rifiuti e migliorato la mia routine quotidiana. Consigliato!” – <em>Elena B.</em></p>`,
+
+        `<p><strong>Recensione:</strong> “Funzionalità sorprendente! Un must per chi vuole fare la propria parte per l'ambiente.” – <em>Giovanni T.</em></p>`
+      ];
+
+      let reviewIndex = 0;
+      const changeReview = () => {
+        reviewContainer.innerHTML = reviews[reviewIndex];
+        reviewIndex = (reviewIndex + 1) % reviews.length; // Ciclo attraverso le recensioni
+      };
+
+      // Prima recensione
+      changeReview();
+
+      // Cambia recensione ogni 5 secondi
+      setInterval(changeReview, 5000);
+    };
+
+    function submitReview() {
+      const userReview = document.getElementById('user-review').value;
+      if (userReview.trim()) {
+        const userReviewsContainer = document.getElementById('user-reviews');
+        const newReview = document.createElement('div');
+        newReview.innerHTML = `<p><strong>Recensione:</strong> "${userReview}" – <em>Utente anonimo</em></p>`;
+        userReviewsContainer.appendChild(newReview);
+        document.getElementById('user-review').value = ''; // Resetta il campo del testo
+      } else {
+        alert('Per favore, scrivi una recensione prima di inviarla!');
+      }
+    }
+  </script>
+</body>
+</html>
