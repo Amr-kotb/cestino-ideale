@@ -178,6 +178,104 @@
       50% { transform: rotate(5deg); }
       100% { transform: rotate(0deg); }
     }
+
+    /* Ottimizzazione mobile */
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      header {
+        padding: 15px;
+        text-align: left;
+      }
+
+      header h1 {
+        font-size: 2rem;
+        margin: 0;
+      }
+
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 0;
+      }
+
+      nav a {
+        padding: 10px;
+        width: 100%;
+        text-align: center;
+        margin: 5px 0;
+      }
+
+      #intro {
+        padding: 10px;
+        font-size: 1rem;
+      }
+
+      .animated-section {
+        padding: 1rem;
+        font-size: 1rem;
+        max-width: 100%;
+      }
+
+      .cta-button {
+        width: 100%;
+        font-size: 1.1rem;
+      }
+
+      .svg-container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .animated-trash {
+        width: 60px;
+        margin-bottom: 1rem;
+      }
+
+      footer {
+        padding: 1rem;
+      }
+
+      footer h2 {
+        font-size: 1.2rem;
+      }
+
+      footer p {
+        font-size: 1rem;
+      }
+
+      footer a {
+        font-size: 1rem;
+        display: inline-block;
+        margin: 5px 0;
+      }
+
+      .audio-container {
+        padding: 1rem;
+      }
+
+      .audio-text {
+        font-size: 1.4rem;
+        max-width: 100%;
+      }
+
+      .time-remaining {
+        font-size: 1.1rem;
+      }
+
+      .dark-toggle {
+        top: 10px;
+        right: 10px;
+        font-size: 1.5rem;
+      }
+
+      footer p a {
+        font-size: 1rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -190,9 +288,11 @@
       <h1>Ti serve un cestino?</h1>
     </header>
     <nav>
-      <a href="./index.html">Home</a>
       <a href="./pages/prodotti.html">I nostri prodotti</a>
       <a href="./pages/funzionamento.html">Funzionamento</a>
+      <a href="/pages/utenti.html">numero utenti</a>
+      <a href="/pages/faq.html">FAQ</a>
+      <a href="/pages/chi siamo.html">chi siamo</a>
     </nav>
     <section id="intro">
       <p>Questo sito fa al caso tuo!</p>
@@ -206,11 +306,8 @@
       <button class="cta-button" onclick="window.location.href='./pages/prodotti.html'">Scopri di più</button>
     </section>
 
-    <!-- Sezione Audio con testo sincronizzato -->
     <section class="audio-container">
-      <div class="audio-text" id="highlight-text">
-        <!-- Il testo sarà popolato dinamicamente con JavaScript -->
-      </div>
+      <div class="audio-text" id="highlight-text"></div>
       <audio id="audio-message" controls>
         <source src="./audio/idea.mp3" type="audio/mp3">
         <source src="./audio/idea.ogg" type="audio/ogg">

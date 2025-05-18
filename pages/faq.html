@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ - Cestino Ideale</title>
+  <link rel="icon" href="./img/cestino/ChatGPT_Image_10_mag_2025__13_44_51-removebg-preview.png" type="image/x-icon">
+  <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  <style>
+    /* Inserire il tuo CSS qui */
+    :root {
+      --primary-bg: #002751;
+      --primary-color: #ffffff;
+      --highlight: #64ffda;
+      --nav-bg: #021d2d;
+      --glow-1: #64ffda;
+      --glow-2: #007bff;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: var(--primary-bg);
+      color: var(--primary-color);
+      transition: background-color 0.4s, color 0.4s;
+    }
+
+    .dark-mode {
+      --primary-bg: #f0f0f0;
+      --primary-color: #000000;
+      --nav-bg: #dddddd;
+      --highlight: #0056b3;
+      --glow-1: #007bff;
+      --glow-2: #002751;
+    }
+
+    header {
+      background-color: var(--nav-bg);
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0;
+      color: var(--primary-color);
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      background-color: var(--nav-bg);
+      padding: 15px 0;
+    }
+
+    nav a {
+      color: var(--primary-color);
+      text-decoration: none;
+      padding: 10px 20px;
+      margin: 5px;
+      border-radius: 8px;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    nav a:hover {
+      background-color: #0056b3;
+      transform: scale(1.05);
+    }
+
+    .animated-section {
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeSlideIn 1.5s ease-out forwards;
+      animation-delay: 0.5s;
+      padding: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .glow-title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: var(--primary-color);
+      animation: glow 2s ease-in-out infinite alternate;
+      margin-bottom: 1rem;
+    }
+
+    .dark-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: transparent;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      font-size: 2rem;
+      color: var(--highlight);
+    }
+
+    footer {
+      background-color: var(--nav-bg);
+      color: var(--primary-color);
+      text-align: center;
+      padding: 2rem;
+    }
+
+    footer a {
+      color: var(--highlight);
+      text-decoration: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: inline-block;
+      margin: 0 10px;
+    }
+
+    footer a.social-icon:hover {
+      transform: translateY(-6px) scale(1.1);
+      box-shadow: 0 6px 12px rgba(100, 255, 218, 0.3);
+    }
+
+    #faq-container {
+      background-color: #021d2d;
+      border-radius: 8px;
+      padding: 20px;
+      max-width: 700px;
+      margin: 20px auto;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .faq-item {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-question {
+      font-weight: bold;
+    }
+
+    .faq-author {
+      margin-top: 5px;
+      color: #ddd;
+      font-style: italic;
+    }
+
+    #faq-form {
+      margin-top: 20px;
+    }
+
+    #faq-form input, #faq-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+    }
+
+    #faq-form button {
+      background-color: var(--highlight);
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #faq-form button:hover {
+      background-color: #00ffaa;
+    }
+
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px var(--glow-1), 0 0 20px var(--glow-2); }
+      to { text-shadow: 0 0 20px var(--glow-2), 0 0 40px; }
+    }
+  </style>
+</head>
+<body>
+  <button class="dark-toggle" onclick="toggleDarkMode()" title="Attiva/disattiva dark mode">
+    <box-icon name="moon" id="icon" type="solid"></box-icon>
+  </button>
+
+  <main>
+    <header>
+      <h1>Domande Frequenti (FAQ)</h1>
+    </header>
+
+    <nav>
+      <a href="/index.html">Home</a>
+      <a href="/pages/utenti.html">utenti</a>
+    </nav>
+
+    <section class="animated-section" id="impact-section">
+      <h2 class="glow-title">FAQ - Domande Frequenti</h2>
+
+      <div id="faq-container">
+        <!-- FAQ dinamiche qui -->
+      </div>
+
+      <!-- Form per aggiungere nuove FAQ -->
+      <div id="faq-form">
+        <h3>Aggiungi una FAQ:</h3>
+        <input type="text" id="faq-question" placeholder="Domanda" required />
+        <input type="text" id="faq-author" placeholder="Nome dell'autore" required />
+        <button onclick="addFAQ()">Aggiungi FAQ</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <section>
+      <h2>Contattaci</h2>
+      <p>Scrivici a <a href="mailto:akotb594@gmail.com">akotb594@gmail.com</a> o chiamaci: <strong>+39 347 312 3532</strong></p>
+    </section>
+    <section>
+      <h2>Seguici</h2>
+      <p>
+        <a href="https://www.instagram.com" target="_blank" class="social-icon">Instagram</a> |
+        <a href="https://www.tiktok.com" target="_blank" class="social-icon">TikTok</a> |
+        <a href="https://www.discord.com" target="_blank" class="social-icon">Discord</a>
+      </p>
+    </section>
+    <p>&copy; 2024 - Tutti i diritti riservati</p>
+  </footer>
+
+  <script>
+    function toggleDarkMode() {
+      const body = document.body;
+      const icon = document.getElementById("icon");
+      body.classList.toggle("dark-mode");
+      icon.setAttribute("name", body.classList.contains("dark-mode") ? "sun" : "moon");
+      localStorage.setItem("darkMode", body.classList.contains("dark-mode"));
+    }
+
+    window.onload = () => {
+      if (localStorage.getItem("darkMode") === "true") {
+        document.body.classList.add("dark-mode");
+      }
+
+      const faqItems = [
+        {
+          question: "Cosa fa il nostro cestino?",
+          author: "Marco Rossi"
+        },
+        {
+          question: "Come posso utilizzare il cestino?",
+          author: "Giulia Bianchi"
+        },
+        {
+          question: "Quanto costa il cestino?",
+          author: "Luca Verdi"
+        },
+        {
+          question: "Quali sono i vantaggi del cestino?",
+          author: "Francesca Neri"
+        }
+      ];
+
+      let currentFAQIndex = 0;
+      const faqContainer = document.getElementById("faq-container");
+
+      function updateFAQ() {
+        const faqItem = faqItems[currentFAQIndex];
+        faqContainer.innerHTML = `
+          <div class="faq-item">
+            <div class="faq-question">${faqItem.question}</div>
+            <div class="faq-author">Autore: ${faqItem.author}</div>
+          </div>
+        `;
+        currentFAQIndex = (currentFAQIndex + 1) % faqItems.length;
+      }
+
+      setInterval(updateFAQ, 5000); // Cambia la FAQ ogni 5 secondi
+      updateFAQ(); // Inizializza la prima FAQ
+    };
+
+    function addFAQ() {
+      const question = document.getElementById("faq-question").value;
+      const author = document.getElementById("faq-author").value;
+
+      if (question && author) {
+        const faqContainer = document.getElementById("faq-container");
+        const newFAQItem = document.createElement("div");
+        newFAQItem.classList.add("faq-item");
+        newFAQItem.innerHTML = `
+          <div class="faq-question">${question}</div>
+          <div class="faq-author">Autore: ${author}</div>
+        `;
+        faqContainer.appendChild(newFAQItem);
+
+        // Pulire il modulo
+        document.getElementById("faq-question").value = "";
+        document.getElementById("faq-author").value = "";
+      } else {
+        alert("Per favore, inserisci sia una domanda che un nome dell'autore.");
+      }
+    }
+  </script>
+</body>
+</html>
