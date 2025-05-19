@@ -47,16 +47,20 @@
       background-color: var(--nav-bg);
       padding: 15px 30px;
       display: flex;
-      justify-content: space-between; /* Spazio tra i link e il pulsante */
+      justify-content: space-between;
+      /* Spazio tra i link e il pulsante */
       align-items: center;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
     nav .links {
       display: flex;
-      gap: 20px; /* Spazio tra i link */
-      justify-content: center; /* Centra i link */
-      flex-grow: 1; /* Occupa tutto lo spazio disponibile per centrare i link */
+      gap: 20px;
+      /* Spazio tra i link */
+      justify-content: center;
+      /* Centra i link */
+      flex-grow: 1;
+      /* Occupa tutto lo spazio disponibile per centrare i link */
     }
 
     nav a {
@@ -156,6 +160,22 @@
       padding: 20px;
     }
   </style>
+  <script>
+    function toggleDarkMode() {
+      const body = document.body;
+      const icon = document.getElementById("icon");
+      body.classList.toggle("dark-mode");
+      icon.setAttribute("color", body.classList.contains("dark-mode") ? "#000000" : "#ffffff");
+      icon.setAttribute("name", body.classList.contains("dark-mode") ? "sun" : "moon");
+      localStorage.setItem("darkMode", body.classList.contains("dark-mode"));
+    }
+
+    window.onload = () => {
+      if (localStorage.getItem("darkMode") === "true") {
+        document.body.classList.add("dark-mode");
+      }
+    };
+  </script>
 </head>
 
 <body>
@@ -166,7 +186,7 @@
       <a href="./mappa.html">Vedi Codice</a>
     </div>
     <button class="toggle-dark" onclick="toggleDarkMode()" title="Attiva/disattiva dark mode">
-      <box-icon name="moon" id="icon" type="solid"></box-icon>
+      <box-icon name="moon" id="icon" type="solid" color="#FFFFFF"></box-icon>
     </button>
   </nav>
 
@@ -174,10 +194,25 @@
     <section id="funzionamento">
       <h1>Funzionamento e Componenti del Cestino Intelligente</h1>
       <p class="description">
-        Il nostro cestino funziona in questo modo: tramite un sensore a ultrasuoni, appena l’utente si avvicina a 25 cm, viene inviato un impulso al servomotore che apre il coperchio. Durante l’apertura, il LED RGB lampeggia e il buzzer suona.<br>
-        Tramite il sensore a ultrasuoni è possibile selezionare il tipo di rifiuto. All’avvio, il display LCD mostra ciclicamente i tipi di spazzatura: carta, plastica, indifferenziata, umido, vetro e lattine. Ogni tipo cambia ogni 30 secondi.<br>
-        Quando il sensore rileva un oggetto per la prima volta, il ciclo si blocca e viene fissato il tipo di rifiuto mostrato in quel momento.
+        Il nostro cestino funziona in questo modo: tramite un sensore a ultrasuoni, appena l’utente si avvicina a 25 cm,
+        viene inviato un impulso al servomotore che apre il coperchio. Durante l’apertura, il LED RGB lampeggia e il
+        buzzer suona.<br>
+        Tramite il sensore a ultrasuoni è possibile selezionare il tipo di rifiuto. All’avvio, il display LCD mostra
+        ciclicamente i tipi di spazzatura: carta, plastica, indifferenziata, umido, vetro e lattine. Ogni tipo cambia
+        ogni 30 secondi.<br>
+        Quando il sensore rileva un oggetto per la prima volta, il ciclo si blocca e viene fissato il tipo di rifiuto
+        mostrato in quel momento.
       </p>
+      <center>
+        <section class="audio-container" style="padding: 2rem;">
+          <div class="audio-text" id="highlight-text"></div>
+          <audio id="audio-message" controls>
+            <source src="../funzionamento.mp3" type="audio/mp3">
+            Il tuo browser non supporta l'elemento audio.
+          </audio>
+          <div class="time-remaining" id="remaining-time"></div>
+        </section>
+      </center>
 
       <div class="card-container">
         <a href="./componenti.html" class="step">
@@ -202,14 +237,7 @@
     <p>&copy; 2024 - Tutti i diritti riservati</p>
   </footer>
 
-  <script>
-    function toggleDarkMode() {
-      const body = document.body;
-      const icon = document.getElementById("icon");
-      body.classList.toggle("dark-mode");
-      icon.setAttribute("name", body.classList.contains("dark-mode") ? "sun" : "moon");
-    }
-  </script>
+
 
 </body>
 

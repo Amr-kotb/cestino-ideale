@@ -1,29 +1,15 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cestino Ideale</title>
   <link rel="icon" href="./img/cestino/ChatGPT_Image_10_mag_2025__13_44_51-removebg-preview.png" type="image/x-icon">
   <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/var.css">
   <style>
-    :root {
-      --primary-bg: #002751;
-      --primary-color: #ffffff;
-      --highlight: #64ffda;
-      --nav-bg: #021d2d;
-      --glow-1: #64ffda;
-      --glow-2: #007bff;
-    }
-
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: var(--primary-bg);
-      color: var(--primary-color);
-      transition: background-color 0.4s, color 0.4s;
-    }
-
     header {
       background-color: var(--nav-bg);
       padding: 20px;
@@ -38,17 +24,20 @@
 
     /* Add logo styles */
     .logo-back-to-home {
-      width: 50px; /* Set the width of the logo */
+      width: 50px;
+      /* Set the width of the logo */
       height: auto;
       cursor: pointer;
-      position: absolute; /* Positioning it in the top-left corner */
+      position: absolute;
+      /* Positioning it in the top-left corner */
       top: 20px;
       left: 20px;
       transition: transform 0.3s ease-in-out;
     }
 
     .logo-back-to-home:hover {
-      transform: scale(1.1); /* Slightly enlarge the logo on hover */
+      transform: scale(1.1);
+      /* Slightly enlarge the logo on hover */
     }
 
     nav {
@@ -160,31 +149,45 @@
     }
 
     @keyframes fadeSlideIn {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     @keyframes glow {
-      from { text-shadow: 0 0 10px var(--glow-1), 0 0 20px var(--glow-2); }
-      to { text-shadow: 0 0 20px var(--glow-2), 0 0 40px; }
+      from {
+        text-shadow: 0 0 10px var(--glow-1), 0 0 20px var(--glow-2);
+      }
+
+      to {
+        text-shadow: 0 0 20px var(--glow-2), 0 0 40px;
+      }
     }
   </style>
 </head>
+
 <body>
   <button class="dark-toggle" onclick="toggleDarkMode()" title="Attiva/disattiva dark mode">
-    <box-icon name="moon" id="icon" type="solid"></box-icon>
+    <box-icon name="moon" id="icon" type="solid" color="#ffffff"></box-icon>
   </button>
 
   <header>
     <!-- Home logo link -->
-    <a href="/index.html">
-      <img src="/img/cestino/ChatGPT_Image_10_mag_2025__13_44_51-removebg-preview.png" alt="Cestino Ideale Logo" class="logo-back-to-home" />
+    <a href="../index.html">
+      <img src="../img/cestino/ChatGPT_Image_10_mag_2025__13_44_51-removebg-preview.png" alt="Cestino Ideale Logo"
+        class="logo-back-to-home" />
     </a>
     <h1>Chi siamo</h1>
   </header>
 
   <nav>
-    <a href="/index.html">🏠Home</a>
+    <a href="../index.html">🏠Home</a>
     <a href="./funzionamento.html">Funzionamento</a>
   </nav>
 
@@ -193,6 +196,7 @@
       <h2 class="glow-title">Il nostro team</h2>
       <p>Siamo un team di studenti appassionati di tecnologia e sostenibilità ambientale.</p>
       <div class="team-grid">
+
         <div class="team-member">
           <h3>Amr Kotb</h3>
           <p>Ideatore</p>
@@ -215,7 +219,8 @@
     <h2>Contattaci</h2>
     <p>Scrivici a <a href="mailto:akotb594@gmail.com">akotb594@gmail.com</a> o chiamaci: +39 347 312 3532</p>
     <p>
-      <a href="https://www.instagram.com/cestinoautomatico/?igsh=MWhhaGQ4c2JoZXZ3bg%3D%3D" target="_blank" class="social-icon">Instagram</a> |
+      <a href="https://www.instagram.com/cestinoautomatico/?igsh=MWhhaGQ4c2JoZXZ3bg%3D%3D" target="_blank"
+        class="social-icon">Instagram</a> |
       <a href="https://vm.tiktok.com/ZNdrq1qBE/" target="_blank" class="social-icon">TikTok</a>
     </p>
     <p>&copy; 2024 - Tutti i diritti riservati</p>
@@ -227,6 +232,7 @@
       const icon = document.getElementById("icon");
       body.classList.toggle("dark-mode");
       icon.setAttribute("name", body.classList.contains("dark-mode") ? "sun" : "moon");
+      icon.setAttribute("color", body.classList.contains("dark-mode") ? "#000000" : "#ffffff");
       localStorage.setItem("darkMode", body.classList.contains("dark-mode"));
     }
 
@@ -237,4 +243,5 @@
     };
   </script>
 </body>
+
 </html>

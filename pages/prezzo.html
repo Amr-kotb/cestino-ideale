@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cestino Ideale</title>
   <link rel="icon" href="./img/cestino/ChatGPT_Image_10_mag_2025__13_44_51-removebg-preview.png" type="image/x-icon">
   <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-
+  <link rel="stylesheet" href="../css/var.css">
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -18,8 +19,13 @@
     }
 
     @keyframes backgroundChange {
-      0% { background-color: #007bff; }
-      100% { background-color: #002751; }
+      0% {
+        background-color: #007bff;
+      }
+
+      100% {
+        background-color: #002751;
+      }
     }
 
     nav {
@@ -98,7 +104,7 @@
       color: white;
     }
 
-    nav:hover ~ .main-content {
+    nav:hover~.main-content {
       margin-left: 220px;
     }
 
@@ -143,14 +149,9 @@
 
 <body>
   <nav>
-    <div class="hamburger">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
     <div class="nav-links">
-      <a href="../index.html"><i class='bx bx-home'></i><span>Home</span></a>
-      <a href="./funzionamento.html"><i class='bx bx-left-arrow-alt'></i><span>Vai Indietro</span></a>
+      <a href="../index.html"><i class='bx bx-home'></i><span>🏠Home</span></a>
+      <a href="./funzionamento.html"><i class='bx bx-left-arrow-alt'></i><span>🔙Vai Indietro</span></a>
       </span></a>
     </div>
   </nav>
@@ -160,7 +161,8 @@
 
     <div class="content">
       <p>
-        Per il nostro progetto di <strong>cestino automatico</strong>, abbiamo calcolato attentamente i costi dei componenti. Ecco una stima dei prezzi per la produzione di una singola unità:
+        Per il nostro progetto di <strong>cestino automatico</strong>, abbiamo calcolato attentamente i costi dei
+        componenti. Ecco una stima dei prezzi per la produzione di una singola unità:
       </p>
 
       <ul>
@@ -177,7 +179,8 @@
       <p><strong>Totale per unità singola: circa 35-40 €</strong></p>
 
       <p>
-        Tuttavia, se si avvia una produzione su larga scala (quantità di 100 o più unità), i costi possono diminuire sensibilmente grazie alle economie di scala:
+        Tuttavia, se si avvia una produzione su larga scala (quantità di 100 o più unità), i costi possono diminuire
+        sensibilmente grazie alle economie di scala:
       </p>
 
       <ul>
@@ -189,17 +192,44 @@
       </ul>
 
       <p>
-        In questo scenario, il costo per unità può scendere a circa <strong>20-25 €</strong>. Vendendo ogni cestino a <strong>50 €</strong>, si ottiene un margine lordo di circa <strong>25-30 €</strong> per unità.
+        In questo scenario, il costo per unità può scendere a circa <strong>20-25 €</strong>. Vendendo ogni cestino a
+        <strong>50 €</strong>, si ottiene un margine lordo di circa <strong>25-30 €</strong> per unità.
       </p>
 
       <p>
-        Questo margine può coprire le spese di imballaggio, marketing e distribuzione, rendendo il progetto <strong>sostenibile</strong> e potenzialmente <strong>commercializzabile</strong>.
+        Questo margine può coprire le spese di imballaggio, marketing e distribuzione, rendendo il progetto
+        <strong>sostenibile</strong> e potenzialmente <strong>commercializzabile</strong>.
       </p>
 
-      <p>
-        In conclusione, il <strong>cestino automatico</strong> rappresenta un progetto valido sia dal punto di vista <em>educativo</em> che <em>tecnologico</em>, con buone prospettive anche sul piano industriale.
-      </p>
+      <center>
+        <section class="audio-container" style="padding: 2rem;">
+          <div class="audio-text" id="highlight-text"></div>
+          <audio id="audio-message" controls>
+            <source src="../costi.mp3" type="audio/mp3">
+            Il tuo browser non supporta l'elemento audio.
+          </audio>
+          <div class="time-remaining" id="remaining-time"></div>
+        </section>
+      </center>
     </div>
   </div>
+  <footer>
+    <section>
+      <h2>Contattaci</h2>
+      <p>Scrivici a <a href="mailto:akotb594@gmail.com">akotb594@gmail.com</a> o chiamaci: <strong>+39 347 312
+          3532</strong></p>
+    </section>
+    <section>
+      <h2>Seguici</h2>
+      <p>
+        <a href="https://www.instagram.com/cestinoautomatico/?igsh=MWhhaGQ4c2JoZXZ3bg%3D%3D" target="_blank"
+          class="social-icon">Instagram</a> |
+        <a href="https://vm.tiktok.com/ZNdrq1qBE/" target="_blank" class="social-icon">TikTok</a>
+      </p>
+    </section>
+    <p>&copy; 2024 - Tutti i diritti riservati</p>
+    <p class="partita-iva">Partita IVA: IT12345678901</p>
+  </footer>
 </body>
+
 </html>

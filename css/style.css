@@ -1,36 +1,38 @@
 header {
-    background-color: #004568;
-    color: white;
-    padding: 20px 0;
+    background-color: var(--nav-bg);
+    padding: 20px;
+    width: 100%;
     text-align: center;
 }
 
 header h1 {
-    font-size: 60px;
+    font-size: 2.5rem;
+    color: var(--primary-color);
 }
 
 nav {
-    background-color: #013352;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    text-align: center;
-
+    background-color: var(--nav-bg);
+    padding: 15px 0;
 }
 
 nav a {
-    color: white;
+    color: var(--primary-color);
     padding: 15px 20px;
     font-size: 22px;
     font-weight: bold;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 8px;
+    margin: 5px;
 }
 
 nav a:hover {
-    background-color: #021d2d;
-    text-decoration: underline;
+    background-color: #0056b3;
+    transform: scale(1.05);
 }
 
 section {
@@ -39,9 +41,10 @@ section {
 }
 
 #intro {
-    padding: 40px 20px;
     text-align: center;
-    font-size: 30px;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.2rem;
 }
 
 #social ul {
@@ -186,4 +189,146 @@ section#funzionamento li h2 {
 section#funzionamento p {
     margin: 0.5rem 0 0;
     color: #ffffff;
+}
+
+.logo-container {
+    position: absolute;
+    /* Posiziona il logo in modo assoluto rispetto al body */
+    top: 20px;
+    /* Distanza dal bordo superiore */
+    left: 20px;
+    /* Distanza dal bordo sinistro */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-container img {
+    width: 100px;
+    /* Imposta la larghezza del logo */
+    height: auto;
+    /* Mantiene le proporzioni originali dell'immagine */
+}
+
+
+.animated-section {
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeSlideIn 1.5s ease-out forwards;
+    animation-delay: 0.5s;
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.glow-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    animation: glow 2s ease-in-out infinite alternate;
+    margin-bottom: 1rem;
+}
+
+.svg-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.animated-trash {
+    animation: swing 2s infinite ease-in-out;
+    width: 80px;
+    height: auto;
+}
+
+.cta-button {
+    margin-top: 20px;
+    background-color: var(--highlight);
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #00ffaa;
+}
+
+.dark-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: transparent;
+    color: var(--primary-color);
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.dark-toggle box-icon {
+    transition: color 0.3s;
+}
+
+.dark-toggle:hover box-icon {
+    color: #ffffff;
+}
+
+.dark-toggle:hover {
+    background-color: var(--highlight);
+}
+
+.highlighted {
+    background-color: var(--highlight);
+    color: black;
+    padding: 0.2rem;
+    border-radius: 4px;
+}
+
+.time-remaining {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.audio-container {
+    margin-top: 40px;
+    padding: 2rem;
+    text-align: center;
+}
+
+.audio-text {
+    font-size: 1.6rem;
+    line-height: 1.8;
+    max-width: 900px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.logo-back-to-home {
+    width: 40px;
+    height: auto;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.logo-back-to-home:hover {
+    transform: scale(1.1);
+    /* Ingrandisce il logo al passaggio del mouse */
 }

@@ -6,32 +6,9 @@
   <title>Cestino Ideale</title>
   <link rel="icon" href="./img/cestino/ChatGPT_Image_10_mag_2025__13_44_51-removebg-preview.png" type="image/x-icon">
   <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/var.css">
   <style>
-    :root {
-      --primary-bg: #002751;
-      --primary-color: #ffffff;
-      --highlight: #64ffda;
-      --nav-bg: #021d2d;
-      --glow-1: #64ffda;
-      --glow-2: #007bff;
-    }
-
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: var(--primary-bg);
-      color: var(--primary-color);
-      transition: background-color 0.4s, color 0.4s;
-    }
-
-    body.dark-mode {
-      --primary-bg: #f0f0f0;
-      --primary-color: #000000;
-      --nav-bg: #dddddd;
-      --highlight: #0056b3;
-      --glow-1: #007bff;
-      --glow-2: #002751;
-    }
 
     header {
       background-color: var(--nav-bg);
@@ -99,7 +76,7 @@
     .cta-button {
       margin-top: 20px;
       background-color: var(--highlight);
-      color: rgb(255, 0, 0);
+      color: var(--nav-bg);
       padding: 10px 20px;
       border: none;
       border-radius: 6px;
@@ -118,15 +95,9 @@
       cursor: pointer;
     }
 
-    footer {
-      background-color: var(--nav-bg);
-      color: var(--primary-color);
-      text-align: center;
-      padding: 2rem;
-    }
 
     #reviews-container {
-      background-color: #021d2d;
+      background-color: var(--nav-bg);
       border-radius: 8px;
       padding: 20px;
       max-width: 700px;
@@ -213,7 +184,8 @@
       font-size: 1.1rem;
       border-radius: 8px;
       border: 2px solid #ccc;
-      background-color: #021d2d;
+      background-color: var(--nav-bg);
+      color: var(--primary-color);
       transition: all 0.3s ease;
     }
 
@@ -221,12 +193,13 @@
       border-color: var(--highlight);
       background-color: #e6f7f7;
       box-shadow: 0 0 10px var(--highlight);
+      color: rgb(28, 28, 28);
     }
 
     button {
       margin-top: 10px;
       background-color: var(--highlight);
-      color: rgb(255, 4, 4);
+      color: var(--nav-bg);
       padding: 12px 20px;
       border: none;
       border-radius: 6px;
@@ -258,7 +231,7 @@
 
   <!-- Dark Mode Toggle -->
   <button class="dark-toggle" onclick="toggleDarkMode()" title="Attiva/disattiva dark mode">
-    <box-icon name="moon" id="icon" type="solid"></box-icon>
+    <box-icon name="moon" id="icon" type="solid" color="#ffffff"></box-icon>
   </button>
 
   <main>
@@ -324,6 +297,7 @@
       const icon = document.getElementById("icon");
       body.classList.toggle("dark-mode");
       icon.setAttribute("name", body.classList.contains("dark-mode") ? "sun" : "moon");
+      icon.setAttribute("color", body.classList.contains("dark-mode") ? "#000000" : "#ffffff");
       localStorage.setItem("darkMode", body.classList.contains("dark-mode"));
     }
 
