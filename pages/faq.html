@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,9 +9,8 @@
   <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/var.css">
-  
-  <style>
 
+  <style>
     header {
       background-color: var(--nav-bg);
       padding: 20px;
@@ -25,17 +25,20 @@
 
     /* Add logo styles */
     .logo-back-to-home {
-      width: 50px; /* Set the width of the logo */
+      width: 50px;
+      /* Set the width of the logo */
       height: auto;
       cursor: pointer;
-      position: absolute; /* Positioning it in the top-left corner */
+      position: absolute;
+      /* Positioning it in the top-left corner */
       top: 20px;
       left: 20px;
       transition: transform 0.3s ease-in-out;
     }
 
     .logo-back-to-home:hover {
-      transform: scale(1.1); /* Slightly enlarge the logo on hover */
+      transform: scale(1.1);
+      /* Slightly enlarge the logo on hover */
     }
 
     nav {
@@ -150,13 +153,25 @@
     }
 
     @keyframes fadeSlideIn {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     @keyframes glow {
-      from { text-shadow: 0 0 10px var(--glow-1), 0 0 20px var(--glow-2); }
-      to { text-shadow: 0 0 20px var(--glow-2), 0 0 40px; }
+      from {
+        text-shadow: 0 0 10px var(--glow-1), 0 0 20px var(--glow-2);
+      }
+
+      to {
+        text-shadow: 0 0 20px var(--glow-2), 0 0 40px;
+      }
     }
 
     .spinner {
@@ -170,8 +185,13 @@
     }
 
     @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
     }
 
     #feedback-message {
@@ -214,6 +234,7 @@
     }
   </style>
 </head>
+
 <body>
   <button class="dark-toggle" onclick="toggleDarkMode()" title="Attiva/disattiva dark mode">
     <box-icon name="moon" id="icon" type="solid" color="#ffffff"></box-icon>
@@ -223,14 +244,15 @@
     <header>
       <!-- Home logo link -->
       <a href="../index.html">
-        <img src="../img/cestino/ChatGPT_Image_10_mag_2025__13_44_51-removebg-preview.png" alt="Cestino Ideale Logo" class="logo-back-to-home" />
+        <img src="../img/cestino/ChatGPT_Image_10_mag_2025__13_44_51-removebg-preview.png" alt="Cestino Ideale Logo"
+          class="logo-back-to-home" />
       </a>
       <h1>FAQ - Cestino Ideale</h1>
     </header>
 
     <nav>
       <a href="../index.html">🏠Home</a>
-      <a href="../pages/utenti.html">Utenti</a>
+      <a href="./utenti.html">Utenti</a>
     </nav>
 
     <section class="animated-section" id="impact-section">
@@ -259,7 +281,8 @@
   <footer>
     <section>
       <h2>Contattaci</h2>
-      <p>Scrivici a <a href="mailto:akotb594@gmail.com">akotb594@gmail.com</a> o chiamaci: <strong>+39 347 312 3532</strong></p>
+      <p>Scrivici a <a href="mailto:akotb594@gmail.com">akotb594@gmail.com</a> o chiamaci: <strong>+39 347 312
+          3532</strong></p>
     </section>
     <section>
       <h2>Seguici</h2>
@@ -356,4 +379,5 @@
     };
   </script>
 </body>
+
 </html>
